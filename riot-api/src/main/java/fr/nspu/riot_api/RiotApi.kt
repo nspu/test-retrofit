@@ -25,7 +25,7 @@ import retrofit.android.MainThreadExecutor
  */
 class RiotApi(httpExecutor: Executor, callbackExecutor: Executor, private var accessToken: String) {
 
-    private val service: RiotService
+    val service: RiotService
 
     init {
         val restAdapter = RestAdapter.Builder()
