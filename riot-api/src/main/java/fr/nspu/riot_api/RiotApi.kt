@@ -17,24 +17,31 @@ import retrofit.android.MainThreadExecutor
  * Basic usage:
  * RiotApi riotApi = new RiotApi();
  *
+ *  * Create instance of RiotApi with given executors.
+ *   @param httpExecutor executor for http request. Cannot be null.
+ *   @param callbackExecutor executor for callbacks. If null is passed than the same
+ * thread that created the instance is used.
  */
-class RiotApi {
-    companion object {
+class RiotApi(httpExecutor: Executor, callbackExecutor: Executor, private var accessToken: String) {
 
-        /**
-         * Main Riot API endpoint
-         * Refer back to https://developer.riotgames.com/regional-endpoints.html to find your endpoint-country
-         */
-        val RIOT_API_ENDPOINT = "na1.api.riotgames.com"
+    private val service: RiotService
+
+    init {
+        val restAdapter = RestAdapter.Builder()
+                .setLogLevel(RestAdapter.LogLevel.BASIC)
+                .setExecutors(httpExecutor, callbackExecutor)
+                .setEndpoint(RIOT_API_ENDPOINT)
+                .setRequestInterceptor(ApiAuthenticator())
+                .build()
+        service = restAdapter.create(RiotService::class.java)
     }
 
+
     /**
-     * @return The RiotApi instance
+     *  New instance of RiotApi,
+     *  with single thread executor both for http and callbacks.
      */
-    val service: RiotService
-
-
-    private var accessToken: String? = null
+    constructor(accessToken: String) : this(Executors.newSingleThreadExecutor(), MainThreadExecutor(), accessToken)
 
     /**
      * The request interceptor that will add the header with OAuth
@@ -46,36 +53,12 @@ class RiotApi {
 
     }
 
-    /**
-     * Create instance of RiotApi with given executors.
-     *
-     * @param httpExecutor executor for http request. Cannot be null.
-     * @param callbackExecutor executor for callbacks. If null is passed than the same
-     * thread that created the instance is used.
-     */
-    constructor(httpExecutor: Executor, callbackExecutor: Executor) {
-        service = init(httpExecutor, callbackExecutor)
-    }
+    companion object {
 
-    /**
-     * New instance of RiotApi,
-     * with single thread executor both for http and callbacks.
-     */
-    constructor() {
-        val httpExecutor = Executors.newSingleThreadExecutor()
-        val callbackExecutor = MainThreadExecutor()
-        service = init(httpExecutor, callbackExecutor)
-    }
-
-    private fun init(httpExecutor: Executor, callbackExecutor: Executor): RiotService {
-
-        val restAdapter = RestAdapter.Builder()
-                .setLogLevel(RestAdapter.LogLevel.BASIC)
-                .setExecutors(httpExecutor, callbackExecutor)
-                .setEndpoint(RIOT_API_ENDPOINT)
-                .setRequestInterceptor(ApiAuthenticator())
-                .build()
-
-        return restAdapter.create(RiotService::class.java)
+        /**
+         * Main Riot API endpoint
+         * Refer back to https://developer.riotgames.com/regional-endpoints.html to find your endpoint-country
+         */
+        val RIOT_API_ENDPOINT = "na1.api.riotgames.com"
     }
 }
