@@ -4,6 +4,7 @@ package fr.nspu.riot_api
  * Created by nspu on 09/03/18.
  */
 
+import fr.nspu.riot_api.models.ErrorResponse
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 
@@ -35,7 +36,6 @@ class RiotApi(httpExecutor: Executor, callbackExecutor: Executor, private var ac
                 .build()
         service = restAdapter.create(RiotService::class.java)
     }
-
 
     /**
      *  New instance of RiotApi,

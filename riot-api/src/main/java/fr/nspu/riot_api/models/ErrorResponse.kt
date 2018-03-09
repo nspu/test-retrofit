@@ -3,7 +3,7 @@ package fr.nspu.riot_api.models
 import android.os.Parcel
 import android.os.Parcelable
 
-class ErrorResponse : Parcelable {
+class ErrorResponse() : Parcelable {
     lateinit var error: ErrorDetails
 
     override fun describeContents(): Int {
@@ -14,9 +14,7 @@ class ErrorResponse : Parcelable {
         dest.writeParcelable(this.error, 0)
     }
 
-    constructor() {}
-
-    protected constructor(parcel: Parcel) {
+    protected constructor(parcel: Parcel):this() {
         this.error = parcel.readParcelable(ErrorDetails::class.java.classLoader)
     }
 
