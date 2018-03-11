@@ -5,11 +5,6 @@ import java.lang.reflect.Field
 import java.lang.reflect.ParameterizedType
 import java.util.*
 
-/*
- * Inspired by the code in the Random Beans project which looks
- * cool but would be a bit of an overkill for these tests.
- * Random Beans repository URL: https://github.com/benas/random-beans
- */
 
 class ModelPopulator(vararg excludeFields: String) {
     private val mExcludeFields: MutableList<String>

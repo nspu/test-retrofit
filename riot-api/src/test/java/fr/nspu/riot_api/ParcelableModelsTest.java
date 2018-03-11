@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import fr.nspu.riot_api.models.Champion;
 import fr.nspu.riot_api.models.ChampionInfos;
 import fr.nspu.riot_api.models.ChampionLevelTip;
+import fr.nspu.riot_api.models.ChampionList;
 import fr.nspu.riot_api.models.ChampionPassive;
 import fr.nspu.riot_api.models.ChampionRecommandedBlockItem;
 import fr.nspu.riot_api.models.ChampionRecommandedData;
@@ -24,6 +25,12 @@ import fr.nspu.riot_api.models.ChampionSpell;
 import fr.nspu.riot_api.models.ChampionSpellVar;
 import fr.nspu.riot_api.models.ChampionStats;
 import fr.nspu.riot_api.models.Image;
+import fr.nspu.riot_api.models.Item;
+import fr.nspu.riot_api.models.ItemGold;
+import fr.nspu.riot_api.models.ItemGroup;
+import fr.nspu.riot_api.models.ItemInventoryDataStats;
+import fr.nspu.riot_api.models.ItemList;
+import fr.nspu.riot_api.models.ItemTree;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
@@ -50,6 +57,8 @@ public class ParcelableModelsTest {
 
     ArrayList<Class<? extends Parcelable>> getModelClasses() {
         return Lists.newArrayList(
+                Image.class,
+                ChampionList.class,
                 ChampionSpellVar.class,
                 ChampionInfos.class,
                 ChampionLevelTip.class,
@@ -59,8 +68,13 @@ public class ParcelableModelsTest {
                 ChampionSkin.class,
                 ChampionSpell.class,
                 ChampionStats.class,
-                Image.class,
-                Champion.class
+                Champion.class,
+                Item.class,
+                ItemGold.class,
+                ItemGroup.class,
+                ItemInventoryDataStats.class,
+                ItemList.class,
+                ItemTree.class
         );
     }
 

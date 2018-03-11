@@ -12,7 +12,7 @@ import java.util.*
 
 object TestUtils {
     private val TEST_DATA_DIR = "/fixtures/"
-    private val MAX_TEST_DATA_FILE_SIZE = 131072
+    private val MAX_TEST_DATA_FILE_SIZE = 4131072
     private val gson = Gson()
 
     private class ResponseBody internal constructor(private val mJson: String) : TypedInput {

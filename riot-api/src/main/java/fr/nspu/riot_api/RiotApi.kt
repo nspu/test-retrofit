@@ -4,6 +4,7 @@ package fr.nspu.riot_api
  * Created by nspu on 09/03/18.
  */
 
+import fr.nspu.riot_api.services.StaticDataService
 import retrofit.RequestInterceptor
 import retrofit.RestAdapter
 import retrofit.android.MainThreadExecutor
@@ -23,7 +24,7 @@ import java.util.concurrent.Executors
  */
 class RiotApi(httpExecutor: Executor, callbackExecutor: Executor, private var accessToken: String) {
 
-    val service: RiotService
+    val staticDataService: StaticDataService
 
     init {
         val restAdapter = RestAdapter.Builder()
@@ -32,7 +33,7 @@ class RiotApi(httpExecutor: Executor, callbackExecutor: Executor, private var ac
                 .setEndpoint(RIOT_API_ENDPOINT)
                 .setRequestInterceptor(ApiAuthenticator())
                 .build()
-        service = restAdapter.create(RiotService::class.java)
+        staticDataService = restAdapter.create(StaticDataService::class.java)
     }
 
     /**

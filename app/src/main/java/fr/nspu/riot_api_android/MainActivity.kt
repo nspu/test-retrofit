@@ -2,9 +2,9 @@ package fr.nspu.riot_api_android
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import fr.nspu.riot_api.RiotApi
 import fr.nspu.riot_api.models.Champion
+import fr.nspu.riot_api.models.ChampionList
 
 
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,19 +27,18 @@ class MainActivity : AppCompatActivity() {
 
         var options : Map<String, String> = hashMapOf("tags" to  "all", "champData" to "all")
 
-        var callback =  object : Callback<Champion> {
+        var callback =  object : Callback<ChampionList> {
             override fun failure(error: RetrofitError?) {
-                Log.e("aa", "")
             }
 
 
-            override fun success(t: Champion?, response: Response?) {
-                Log.e("aa", "")
+
+            override fun success(t: ChampionList?, response: Response?) {
             }
         }
 
 
-        riotApi.service.getChampion(62, options, callback)
+        riotApi.staticDataService.getChampions( options, callback)
     }
 
 }

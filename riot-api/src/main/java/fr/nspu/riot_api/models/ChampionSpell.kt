@@ -20,7 +20,7 @@ data class ChampionSpell(
         var maxrank: Int? = null,
         var costBurn: String? = null,
         var rangeBurn: String? = null,
-        var range: List<Int>? = null,   //This field is either a List of Integer or the String 'self' for spells that target one's own champion.
+        var range: List<Int>? = null,   //This field is either a List of Integer or the String 'self' for spells that target one's own StaticDataService.
         var cooldown: List<Double>? = null,
         var cost: List<Int>? = null,
         var key: String? = null,
@@ -32,7 +32,6 @@ data class ChampionSpell(
             source.readString(),
             source.readString(),
             source.readParcelable<ChampionLevelTip>(ChampionLevelTip::class.java.classLoader),
-
             source.createTypedArrayList(ChampionSpellVar.CREATOR),
             source.readString(),
             source.readParcelable<Image>(Image::class.java.classLoader),
