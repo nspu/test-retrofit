@@ -4,13 +4,11 @@ package fr.nspu.riot_api
  * Created by nspu on 09/03/18.
  */
 
-import fr.nspu.riot_api.models.ErrorResponse
-import java.util.concurrent.Executor
-import java.util.concurrent.Executors
-
 import retrofit.RequestInterceptor
 import retrofit.RestAdapter
 import retrofit.android.MainThreadExecutor
+import java.util.concurrent.Executor
+import java.util.concurrent.Executors
 
 /**
  * Creates and configures a REST adapter for Riot API.
@@ -48,8 +46,10 @@ class RiotApi(httpExecutor: Executor, callbackExecutor: Executor, private var ac
      * token to every request made with the wrapper.
      */
     private inner class ApiAuthenticator : RequestInterceptor {
-        override fun intercept(request: RequestInterceptor.RequestFacade)
-                = request.addQueryParam("key", accessToken!!)
+        override fun intercept(request: RequestInterceptor.RequestFacade){
+            request.addHeader("X-Riot-Token", accessToken!!)
+            request.addHeader("Accept-Language", "en-US,en;q=0.5\"")
+        }
 
     }
 
@@ -59,6 +59,6 @@ class RiotApi(httpExecutor: Executor, callbackExecutor: Executor, private var ac
          * Main Riot API endpoint
          * Refer back to https://developer.riotgames.com/regional-endpoints.html to find your endpoint-country
          */
-        val RIOT_API_ENDPOINT = "na1.api.riotgames.com"
+        const val RIOT_API_ENDPOINT = "https://na1.api.riotgames.com"
     }
 }

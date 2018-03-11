@@ -23,6 +23,9 @@ android {
         }
     }
 
+
+
+
 }
 
 dependencies {
@@ -35,6 +38,20 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    //test
+    testCompile("org.robolectric:robolectric:${ROBOLECTRIC_VERSION}") {
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'commons-logging', module: 'commons-logging'
+        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+    }
+    testCompile "com.google.guava:guava:${GUAVA_VERSION}"
+    testCompile "junit:junit:${JUNIT_VERSION}"
+    testCompile "org.easytesting:fest-assert-core:${FEST_ASSERT_CORE_VERSION}"
+    testCompile "org.mockito:mockito-core:${MOCKITO_CORE_VERSION}"
+
+    androidTestCompile 'com.android.support.test:runner:0.2'
+    androidTestCompile 'com.squareup.okhttp:okhttp:2.2.0'
 }
 repositories {
     mavenCentral()
