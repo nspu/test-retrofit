@@ -48,7 +48,11 @@ class ParcelableModelsTest {
                 MasteryTreeItem::class.java,
                 MasteryTreeList::class.java,
                 ProfileIconData::class.java,
-                ProfileIconDetails::class.java
+                ProfileIconDetails::class.java,
+                Realm::class.java,
+                ReforgedRune::class.java,
+                ReforgedRunePath::class.java,
+                ReforgedRuneSlot::class.java
         )
 
     @Test

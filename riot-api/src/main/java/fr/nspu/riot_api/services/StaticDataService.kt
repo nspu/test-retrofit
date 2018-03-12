@@ -160,4 +160,34 @@ interface StaticDataService {
 
     @GET(RiotUri.URI_STATIC_DATA_PROFILE_ICONS)
     fun getProfileIcons(@QueryMap options: Map<String, String>, callback: Callback<ProfileIconData>)
+
+    /**
+     * Realm
+     */
+    @GET(RiotUri.URI_STATIC_DATA_REALMS)
+    fun getRealms(): Realm?
+
+    @GET(RiotUri.URI_STATIC_DATA_REALMS)
+    fun getRealms(@QueryMap options: Map<String, String>): Realm?
+
+    @GET(RiotUri.URI_STATIC_DATA_REALMS)
+    fun getRealms(callback: Callback<Realm>)
+
+    @GET(RiotUri.URI_STATIC_DATA_REALMS)
+    fun getRealms(@QueryMap options: Map<String, String>, callback: Callback<Realm>)
+
+    /**
+     * Reforged Rune Paths
+     */
+    @GET(RiotUri.URI_STATIC_DATA_REFORGED_RUNE_PATHS)
+    fun getReforgedRunePaths(): List<ReforgedRunePath>?
+
+    @GET(RiotUri.URI_STATIC_DATA_REFORGED_RUNE_PATHS)
+    fun getReforgedRunePaths(@QueryMap options: Map<String, String>): List<ReforgedRunePath>?
+
+    @GET(RiotUri.URI_STATIC_DATA_REFORGED_RUNE_PATHS)
+    fun getReforgedRunePaths(callback: Callback<List<ReforgedRunePath>>)
+
+    @GET(RiotUri.URI_STATIC_DATA_REFORGED_RUNE_PATHS)
+    fun getReforgedRunePaths(@QueryMap options: Map<String, String>, callback: Callback<List<ReforgedRunePath>>)
 }

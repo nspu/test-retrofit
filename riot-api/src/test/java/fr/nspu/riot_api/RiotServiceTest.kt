@@ -200,6 +200,32 @@ class RiotServiceTest {
         this.compareJSONWithoutNulls(body, profileIconData)
     }
 
+    @Test
+    @Throws(IOException::class)
+    fun shouldGetRealmsData() {
+        val body = TestUtils.readTestData("realms.json")
+        val fixture = gson!!.fromJson(body, Realm::class.java)
+
+        val response = TestUtils.getResponseFromModel(fixture, Realm::class.java)
+        `when`(mockClient!!.execute(isA(Request::class.java))).thenReturn(response)
+
+        val realm = staticDataService!!.getRealms()
+        this.compareJSONWithoutNulls(body, realm)
+    }
+
+    @Test
+    @Throws(IOException::class)
+    fun shouldGetReforgedRunePathsData() {
+        val body = TestUtils.readTestData("reforged-rune-paths.json")
+        val fixture = gson!!.fromJson(body, List::class.java)
+
+        val response = TestUtils.getResponseFromModel(fixture, List::class.java)
+        `when`(mockClient!!.execute(isA(Request::class.java))).thenReturn(response)
+
+        val reforgedRunePaths = staticDataService!!.getReforgedRunePaths()
+        this.compareJSONWithoutNulls(body, reforgedRunePaths)
+    }
+
 
     /**
      * Compares the mapping fixture <-> object, ignoring NULL fields
