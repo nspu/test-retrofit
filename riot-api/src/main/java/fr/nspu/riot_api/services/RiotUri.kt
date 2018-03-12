@@ -16,7 +16,7 @@ object RiotUri {
     const val URI_STATIC_DATA_LANGUAGES = URI_SUFFIX_STATIC_DATA + "languages" //Retrieve supported languages data
     const val URI_STATIC_DATA_MAPS = URI_SUFFIX_STATIC_DATA + "maps" //Retrieve map data
     const val URI_STATIC_DATA_MASTERIES = URI_SUFFIX_STATIC_DATA + "masteries" //Retrieves mastery list
-    const val URI_STATIC_DATA_MASTERIE = URI_SUFFIX_STATIC_DATA + "masteries/{${ID}}" //Retrieves mastery item by ID
+    const val URI_STATIC_DATA_MASTERY = URI_SUFFIX_STATIC_DATA + "masteries/{${ID}}" //Retrieves mastery item by ID
     const val URI_STATIC_DATA_PROFILE_ICONS = URI_SUFFIX_STATIC_DATA + "profile-icons" //Retrieve profile icons
     const val URI_STATIC_DATA_REALMS = URI_SUFFIX_STATIC_DATA + "realms" //Retrieve realm data
     const val URI_STATIC_DATA_REFORGED_RUNE_PATHS = URI_SUFFIX_STATIC_DATA + "reforged-rune-paths" // Retrieves reforged rune path list

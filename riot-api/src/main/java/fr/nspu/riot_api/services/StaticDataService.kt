@@ -78,13 +78,13 @@ interface StaticDataService {
     fun getLanguageString(): LanguageStrings?
 
     @GET(RiotUri.URI_STATIC_DATA_LANGUAGE_STRING)
-    fun getLanguageString( @QueryMap options: Map<String, String>): LanguageStrings?
+    fun getLanguageString(@QueryMap options: Map<String, String>): LanguageStrings?
 
     @GET(RiotUri.URI_STATIC_DATA_LANGUAGE_STRING)
-    fun getLanguageString( callback: Callback<LanguageStrings>)
+    fun getLanguageString(callback: Callback<LanguageStrings>)
 
     @GET(RiotUri.URI_STATIC_DATA_LANGUAGE_STRING)
-    fun getLanguageString( @QueryMap options: Map<String, String>, callback: Callback<LanguageStrings>)
+    fun getLanguageString(@QueryMap options: Map<String, String>, callback: Callback<LanguageStrings>)
 
     /**
      * Language
@@ -93,13 +93,13 @@ interface StaticDataService {
     fun getLanguages(): List<String>?
 
     @GET(RiotUri.URI_STATIC_DATA_LANGUAGES)
-    fun getLanguages( @QueryMap options: Map<String, String>): List<String>?
+    fun getLanguages(@QueryMap options: Map<String, String>): List<String>?
 
     @GET(RiotUri.URI_STATIC_DATA_LANGUAGES)
-    fun getLanguages( callback: Callback<List<String>>)
+    fun getLanguages(callback: Callback<List<String>>)
 
     @GET(RiotUri.URI_STATIC_DATA_LANGUAGES)
-    fun getLanguages( @QueryMap options: Map<String, String>, callback: Callback<List<String>>)
+    fun getLanguages(@QueryMap options: Map<String, String>, callback: Callback<List<String>>)
 
     /**
      * Maps details
@@ -108,27 +108,42 @@ interface StaticDataService {
     fun getMaps(): Maps?
 
     @GET(RiotUri.URI_STATIC_DATA_MAPS)
-    fun getMaps( @QueryMap options: Map<String, String>): Maps?
+    fun getMaps(@QueryMap options: Map<String, String>): Maps?
 
     @GET(RiotUri.URI_STATIC_DATA_MAPS)
-    fun getMaps( callback: Callback<Maps>)
+    fun getMaps(callback: Callback<Maps>)
 
     @GET(RiotUri.URI_STATIC_DATA_MAPS)
-    fun getMaps( @QueryMap options: Map<String, String>, callback: Callback<Maps>)
+    fun getMaps(@QueryMap options: Map<String, String>, callback: Callback<Maps>)
 
     /**
-     * Mastery
+     * Masteries
      */
     @GET(RiotUri.URI_STATIC_DATA_MASTERIES)
     fun getMasteries(): MasteryList?
 
     @GET(RiotUri.URI_STATIC_DATA_MASTERIES)
-    fun getMasteries( @QueryMap options: Map<String, String>): MasteryList?
+    fun getMasteries(@QueryMap options: Map<String, String>): MasteryList?
 
     @GET(RiotUri.URI_STATIC_DATA_MASTERIES)
-    fun getMasteries( callback: Callback<MasteryList>)
+    fun getMasteries(callback: Callback<MasteryList>)
 
     @GET(RiotUri.URI_STATIC_DATA_MASTERIES)
-    fun getMasteries( @QueryMap options: Map<String, String>, callback: Callback<MasteryList>)
+    fun getMasteries(@QueryMap options: Map<String, String>, callback: Callback<MasteryList>)
+
+    /**
+     * Mastery
+     */
+    @GET(RiotUri.URI_STATIC_DATA_MASTERY)
+    fun getMastery(@Path(RiotUri.ID) masteryId: Int): Mastery?
+
+    @GET(RiotUri.URI_STATIC_DATA_MASTERY)
+    fun getMastery(@Path(RiotUri.ID) masteryId: Int,@QueryMap options: Map<String, String>): Mastery?
+
+    @GET(RiotUri.URI_STATIC_DATA_MASTERY)
+    fun getMastery(@Path(RiotUri.ID) itemId: Int,callback: Callback<Mastery>)
+
+    @GET(RiotUri.URI_STATIC_DATA_MASTERY)
+    fun getMastery(@Path(RiotUri.ID) masteryId: Int,@QueryMap options: Map<String, String>, callback: Callback<Mastery>)
 
 }
