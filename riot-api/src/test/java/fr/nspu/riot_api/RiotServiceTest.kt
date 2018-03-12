@@ -132,6 +132,32 @@ class RiotServiceTest {
         this.compareJSONWithoutNulls(body, languageStrings)
     }
 
+    @Test
+    @Throws(IOException::class)
+    fun shouldGetLanguagesData() {
+        val body = TestUtils.readTestData("languages.json")
+        val fixture = gson!!.fromJson(body, List::class.java)
+
+        val response = TestUtils.getResponseFromModel(fixture, List::class.java)
+        `when`(mockClient!!.execute(isA(Request::class.java))).thenReturn(response)
+
+        val languages = staticDataService!!.getLanguages()
+        this.compareJSONWithoutNulls(body, languages)
+    }
+
+    @Test
+    @Throws(IOException::class)
+    fun shouldGetMapsData() {
+        val body = TestUtils.readTestData("maps.json")
+        val fixture = gson!!.fromJson(body, Maps::class.java)
+
+        val response = TestUtils.getResponseFromModel(fixture, Maps::class.java)
+        `when`(mockClient!!.execute(isA(Request::class.java))).thenReturn(response)
+
+        val maps = staticDataService!!.getMaps()
+        this.compareJSONWithoutNulls(body, maps)
+    }
+
 
     /**
      * Compares the mapping fixture <-> object, ignoring NULL fields

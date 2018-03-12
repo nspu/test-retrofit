@@ -72,7 +72,7 @@ interface StaticDataService {
 
 
     /**
-     * Item
+     * Language string
      */
     @GET(RiotUri.URI_STATIC_DATA_LANGUAGE_STRING)
     fun getLanguageString(): LanguageStrings?
@@ -86,6 +86,34 @@ interface StaticDataService {
     @GET(RiotUri.URI_STATIC_DATA_LANGUAGE_STRING)
     fun getLanguageString( @QueryMap options: Map<String, String>, callback: Callback<LanguageStrings>)
 
+    /**
+     * Language
+     */
+    @GET(RiotUri.URI_STATIC_DATA_LANGUAGES)
+    fun getLanguages(): List<String>?
 
+    @GET(RiotUri.URI_STATIC_DATA_LANGUAGES)
+    fun getLanguages( @QueryMap options: Map<String, String>): List<String>?
+
+    @GET(RiotUri.URI_STATIC_DATA_LANGUAGES)
+    fun getLanguages( callback: Callback<List<String>>)
+
+    @GET(RiotUri.URI_STATIC_DATA_LANGUAGES)
+    fun getLanguages( @QueryMap options: Map<String, String>, callback: Callback<List<String>>)
+
+    /**
+     * Maps details
+     */
+    @GET(RiotUri.URI_STATIC_DATA_MAPS)
+    fun getMaps(): Maps?
+
+    @GET(RiotUri.URI_STATIC_DATA_MAPS)
+    fun getMaps( @QueryMap options: Map<String, String>): Maps?
+
+    @GET(RiotUri.URI_STATIC_DATA_MAPS)
+    fun getMaps( callback: Callback<Maps>)
+
+    @GET(RiotUri.URI_STATIC_DATA_MAPS)
+    fun getMaps( @QueryMap options: Map<String, String>, callback: Callback<Maps>)
 
 }

@@ -5,6 +5,7 @@ import android.os.Parcelable
 
 import com.google.common.collect.Lists
 import com.google.gson.GsonBuilder
+import fr.nspu.riot_api.models.*
 
 import org.fest.util.Arrays
 import org.junit.Test
@@ -12,26 +13,6 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 
 import java.util.ArrayList
-
-import fr.nspu.riot_api.models.Champion
-import fr.nspu.riot_api.models.ChampionInfos
-import fr.nspu.riot_api.models.ChampionLevelTip
-import fr.nspu.riot_api.models.ChampionList
-import fr.nspu.riot_api.models.ChampionPassive
-import fr.nspu.riot_api.models.ChampionRecommandedBlockItem
-import fr.nspu.riot_api.models.ChampionRecommandedData
-import fr.nspu.riot_api.models.ChampionSkin
-import fr.nspu.riot_api.models.ChampionSpell
-import fr.nspu.riot_api.models.ChampionSpellVar
-import fr.nspu.riot_api.models.ChampionStats
-import fr.nspu.riot_api.models.Image
-import fr.nspu.riot_api.models.Item
-import fr.nspu.riot_api.models.ItemGold
-import fr.nspu.riot_api.models.ItemGroup
-import fr.nspu.riot_api.models.ItemInventoryDataStats
-import fr.nspu.riot_api.models.ItemList
-import fr.nspu.riot_api.models.ItemTree
-import fr.nspu.riot_api.models.LanguageStrings
 
 import org.fest.assertions.api.Assertions.assertThat
 
@@ -58,7 +39,9 @@ class ParcelableModelsTest {
                 ItemInventoryDataStats::class.java,
                 ItemList::class.java,
                 ItemTree::class.java,
-                LanguageStrings::class.java
+                LanguageStrings::class.java,
+                MapDetails::class.java,
+                Maps::class.java
         )
 
     @Test
