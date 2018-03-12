@@ -3,10 +3,7 @@ package fr.nspu.riot_api
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonParser
-import fr.nspu.riot_api.models.Champion
-import fr.nspu.riot_api.models.ChampionList
-import fr.nspu.riot_api.models.Item
-import fr.nspu.riot_api.models.ItemList
+import fr.nspu.riot_api.models.*
 import fr.nspu.riot_api.services.StaticDataService
 import org.junit.Assert
 import org.junit.Before
@@ -120,6 +117,19 @@ class RiotServiceTest {
 
         val item = staticDataService!!.getItem(fixture.id!!, options)
         this.compareJSONWithoutNulls(body, item)
+    }
+
+    @Test
+    @Throws(IOException::class)
+    fun shouldGetLanguageStringsData() {
+        val body = TestUtils.readTestData("language-strings.json")
+        val fixture = gson!!.fromJson(body, LanguageStrings::class.java)
+
+        val response = TestUtils.getResponseFromModel(fixture, LanguageStrings::class.java)
+        `when`(mockClient!!.execute(isA(Request::class.java))).thenReturn(response)
+
+        val languageStrings = staticDataService!!.getLanguageString()
+        this.compareJSONWithoutNulls(body, languageStrings)
     }
 
 

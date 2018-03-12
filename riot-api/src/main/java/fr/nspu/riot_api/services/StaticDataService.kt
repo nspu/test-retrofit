@@ -1,9 +1,6 @@
 package fr.nspu.riot_api.services
 
-import fr.nspu.riot_api.models.Champion
-import fr.nspu.riot_api.models.ChampionList
-import fr.nspu.riot_api.models.Item
-import fr.nspu.riot_api.models.ItemList
+import fr.nspu.riot_api.models.*
 import retrofit.Callback
 import retrofit.http.GET
 import retrofit.http.Path
@@ -72,4 +69,23 @@ interface StaticDataService {
 
     @GET(RiotUri.URI_STATIC_DATA_CHAMPION)
     fun getItem(@Path(RiotUri.ID) itemId: Int, @QueryMap options: Map<String, String>, callback: Callback<Item>)
+
+
+    /**
+     * Item
+     */
+    @GET(RiotUri.URI_STATIC_DATA_LANGUAGE_STRING)
+    fun getLanguageString(): LanguageStrings?
+
+    @GET(RiotUri.URI_STATIC_DATA_LANGUAGE_STRING)
+    fun getLanguageString( @QueryMap options: Map<String, String>): LanguageStrings?
+
+    @GET(RiotUri.URI_STATIC_DATA_LANGUAGE_STRING)
+    fun getLanguageString( callback: Callback<LanguageStrings>)
+
+    @GET(RiotUri.URI_STATIC_DATA_LANGUAGE_STRING)
+    fun getLanguageString( @QueryMap options: Map<String, String>, callback: Callback<LanguageStrings>)
+
+
+
 }
