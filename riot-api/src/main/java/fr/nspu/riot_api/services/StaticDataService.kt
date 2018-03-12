@@ -190,4 +190,110 @@ interface StaticDataService {
 
     @GET(RiotUri.URI_STATIC_DATA_REFORGED_RUNE_PATHS)
     fun getReforgedRunePaths(@QueryMap options: Map<String, String>, callback: Callback<List<ReforgedRunePath>>)
+
+    /**
+     * Reforged Rune Path
+     */
+    @GET(RiotUri.URI_STATIC_DATA_REFORGED_RUNE_PATH)
+    fun getReforgedRunePath(@Path(RiotUri.ID) reforgedRunePathId: Int): ReforgedRunePath?
+
+    @GET(RiotUri.URI_STATIC_DATA_REFORGED_RUNE_PATH)
+    fun getReforgedRunePath(@Path(RiotUri.ID) reforgedRunePathId: Int,@QueryMap options: Map<String, String>): ReforgedRunePath?
+
+    @GET(RiotUri.URI_STATIC_DATA_REFORGED_RUNE_PATH)
+    fun getReforgedRunePath(@Path(RiotUri.ID) reforgedRunePathId: Int,callback: Callback<ReforgedRunePath>)
+
+    @GET(RiotUri.URI_STATIC_DATA_REFORGED_RUNE_PATH)
+    fun getReforgedRunePath(@Path(RiotUri.ID) reforgedRunePathId: Int,@QueryMap options: Map<String, String>, callback: Callback<ReforgedRunePath>)
+
+    /**
+     * Reforged Runes
+     */
+    @GET(RiotUri.URI_STATIC_DATA_REFORGED_RUNES)
+    fun getReforgedRunes(): List<ReforgedRune>?
+
+    @GET(RiotUri.URI_STATIC_DATA_REFORGED_RUNES)
+    fun getReforgedRunes(@QueryMap options: Map<String, String>): List<ReforgedRune>?
+
+    @GET(RiotUri.URI_STATIC_DATA_REFORGED_RUNES)
+    fun getReforgedRunes(callback: Callback<List<ReforgedRune>>)
+
+    @GET(RiotUri.URI_STATIC_DATA_REFORGED_RUNES)
+    fun getReforgedRunes(@QueryMap options: Map<String, String>, callback: Callback<List<ReforgedRune>>)
+
+    /**
+     * Reforged Rune Path
+     */
+    @GET(RiotUri.URI_STATIC_DATA_REFORGED_RUNE)
+    fun getReforgedRune(@Path(RiotUri.ID) reforgedRuneId: Int): ReforgedRune?
+
+    @GET(RiotUri.URI_STATIC_DATA_REFORGED_RUNE)
+    fun getReforgedRune(@Path(RiotUri.ID) reforgedRuneId: Int,@QueryMap options: Map<String, String>): ReforgedRune?
+
+    @GET(RiotUri.URI_STATIC_DATA_REFORGED_RUNE)
+    fun getReforgedRune(@Path(RiotUri.ID) reforgedRuneId: Int,callback: Callback<ReforgedRune>)
+
+    @GET(RiotUri.URI_STATIC_DATA_REFORGED_RUNE)
+    fun getReforgedRune(@Path(RiotUri.ID) reforgedRuneId: Int,@QueryMap options: Map<String, String>, callback: Callback<ReforgedRune>)
+
+    /**
+     * Runes
+     */
+    @GET(RiotUri.URI_STATIC_DATA_RUNES)
+    fun getRunes(): RuneList?
+
+    @GET(RiotUri.URI_STATIC_DATA_RUNES)
+    fun getRunes(@QueryMap options: Map<String, String>): RuneList?
+
+    @GET(RiotUri.URI_STATIC_DATA_RUNES)
+    fun getRunes(callback: Callback<RuneList>)
+
+    @GET(RiotUri.URI_STATIC_DATA_RUNES)
+    fun getRunes(@QueryMap options: Map<String, String>, callback: Callback<RuneList>)
+
+    /**
+     * Rune
+     */
+    @GET(RiotUri.URI_STATIC_DATA_RUNE)
+    fun getRune(@Path(RiotUri.ID) RuneId: Int): Rune?
+
+    @GET(RiotUri.URI_STATIC_DATA_RUNE)
+    fun getRune(@Path(RiotUri.ID) RuneId: Int,@QueryMap options: Map<String, String>): Rune?
+
+    @GET(RiotUri.URI_STATIC_DATA_RUNE)
+    fun getRune(@Path(RiotUri.ID) RuneId: Int,callback: Callback<Rune>)
+
+    @GET(RiotUri.URI_STATIC_DATA_RUNE)
+    fun getRune(@Path(RiotUri.ID) RuneId: Int,@QueryMap options: Map<String, String>, callback: Callback<Rune>)
+
+    /**
+     * SummonerSpells
+     */
+    @GET(RiotUri.URI_STATIC_DATA_SUMMONER_SPELLS)
+    fun getSummonerSpells(): SummonerSpellList?
+
+    @GET(RiotUri.URI_STATIC_DATA_SUMMONER_SPELLS)
+    fun getSummonerSpells(@QueryMap options: Map<String, String>): SummonerSpellList?
+
+    @GET(RiotUri.URI_STATIC_DATA_SUMMONER_SPELLS)
+    fun getSummonerSpells(callback: Callback<SummonerSpellList>)
+
+    @GET(RiotUri.URI_STATIC_DATA_SUMMONER_SPELLS)
+    fun getSummonerSpells(@QueryMap options: Map<String, String>, callback: Callback<SummonerSpellList>)
+
+    /**
+     * Rune
+     */
+    @GET(RiotUri.URI_STATIC_DATA_SUMMONER_SPELL)
+    fun getSummonerSpell(@Path(RiotUri.ID) summonerSpellId: Int): SummonerSpell?
+
+    @GET(RiotUri.URI_STATIC_DATA_SUMMONER_SPELL)
+    fun getSummonerSpell(@Path(RiotUri.ID) summonerSpellId: Int,@QueryMap options: Map<String, String>): SummonerSpell?
+
+    @GET(RiotUri.URI_STATIC_DATA_SUMMONER_SPELL)
+    fun getSummonerSpell(@Path(RiotUri.ID) summonerSpellId: Int,callback: Callback<SummonerSpell>)
+
+    @GET(RiotUri.URI_STATIC_DATA_SUMMONER_SPELL)
+    fun getSummonerSpell(@Path(RiotUri.ID) summonerSpellId: Int,@QueryMap options: Map<String, String>, callback: Callback<SummonerSpell>)
+
 }

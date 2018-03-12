@@ -25,7 +25,7 @@ class ParcelableModelsTest {
                 ChampionList::class.java,
                 ChampionSpellVar::class.java,
                 ChampionInfos::class.java,
-                ChampionLevelTip::class.java,
+                LevelTip::class.java,
                 ChampionPassive::class.java,
                 ChampionRecommandedBlockItem::class.java,
                 ChampionRecommandedData::class.java,
@@ -52,7 +52,14 @@ class ParcelableModelsTest {
                 Realm::class.java,
                 ReforgedRune::class.java,
                 ReforgedRunePath::class.java,
-                ReforgedRuneSlot::class.java
+                ReforgedRuneSlot::class.java,
+                MetaData::class.java,
+                Rune::class.java,
+                RuneList::class.java,
+                RuneStats::class.java,
+                SummonerSpell::class.java,
+                SummonerSpellList::class.java,
+                SpellVars::class.java
         )
 
     @Test

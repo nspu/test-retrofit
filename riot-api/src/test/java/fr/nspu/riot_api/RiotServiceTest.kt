@@ -226,6 +226,105 @@ class RiotServiceTest {
         this.compareJSONWithoutNulls(body, reforgedRunePaths)
     }
 
+    @Test
+    @Throws(IOException::class)
+    fun shouldGetReforgedRunePathData() {
+        val body = TestUtils.readTestData("reforged-rune-path.json")
+        val fixture = gson!!.fromJson(body, ReforgedRunePath::class.java)
+
+        val response = TestUtils.getResponseFromModel(fixture, ReforgedRunePath::class.java)
+        `when`(mockClient!!.execute(argThat(MatchesId(fixture.id!!)))).thenReturn(response)
+
+        val reforgedRunePath = staticDataService!!.getReforgedRunePath(fixture.id!!)
+        this.compareJSONWithoutNulls(body, reforgedRunePath)
+    }
+
+    @Test
+    @Throws(IOException::class)
+    fun shouldGetReforgedRunesData() {
+        val body = TestUtils.readTestData("reforged-runes.json")
+        val fixture = gson!!.fromJson(body, List::class.java)
+
+        val response = TestUtils.getResponseFromModel(fixture, List::class.java)
+        `when`(mockClient!!.execute(isA(Request::class.java))).thenReturn(response)
+
+        val reforgedRunes = staticDataService!!.getReforgedRunes()
+        this.compareJSONWithoutNulls(body, reforgedRunes)
+    }
+
+    @Test
+    @Throws(IOException::class)
+    fun shouldGetReforgedRuneData() {
+        val body = TestUtils.readTestData("reforged-rune.json")
+        val fixture = gson!!.fromJson(body, ReforgedRune::class.java)
+
+        val response = TestUtils.getResponseFromModel(fixture, ReforgedRune::class.java)
+        `when`(mockClient!!.execute(argThat(MatchesId(fixture.id!!)))).thenReturn(response)
+
+        val reforgedRune = staticDataService!!.getReforgedRune(fixture.id!!)
+        this.compareJSONWithoutNulls(body, reforgedRune)
+    }
+
+    @Test
+    @Throws(IOException::class)
+    fun shouldGetRunesData() {
+        val body = TestUtils.readTestData("runes.json")
+        val fixture = gson!!.fromJson(body, RuneList::class.java)
+
+        val response = TestUtils.getResponseFromModel(fixture, RuneList::class.java)
+        `when`(mockClient!!.execute(isA(Request::class.java))).thenReturn(response)
+
+        var options: Map<String, String> = hashMapOf("tags" to "all", "runeListData" to "all")
+
+        val runes = staticDataService!!.getRunes(options)
+        this.compareJSONWithoutNulls(body, runes)
+    }
+
+    @Test
+    @Throws(IOException::class)
+    fun shouldGetRuneData() {
+        val body = TestUtils.readTestData("rune.json")
+        val fixture = gson!!.fromJson(body, Rune::class.java)
+
+        val response = TestUtils.getResponseFromModel(fixture, Rune::class.java)
+        `when`(mockClient!!.execute(argThat(MatchesId(fixture.id!!)))).thenReturn(response)
+
+        var options: Map<String, String> = hashMapOf("tags" to "all", "runeData" to "all")
+
+        val rune = staticDataService!!.getRune(fixture.id!!, options)
+        this.compareJSONWithoutNulls(body, rune)
+    }
+
+    @Test
+    @Throws(IOException::class)
+    fun shouldGetSummonerSpellsData() {
+        val body = TestUtils.readTestData("summoner-spells.json")
+        val fixture = gson!!.fromJson(body, SummonerSpellList::class.java)
+
+        val response = TestUtils.getResponseFromModel(fixture, SummonerSpellList::class.java)
+        `when`(mockClient!!.execute(isA(Request::class.java))).thenReturn(response)
+
+        var options: Map<String, String> = hashMapOf("tags" to "all", "spellListData" to "all")
+
+        val runes = staticDataService!!.getSummonerSpells(options)
+        this.compareJSONWithoutNulls(body, runes)
+    }
+
+    @Test
+    @Throws(IOException::class)
+    fun shouldGetSummonerSpellData() {
+        val body = TestUtils.readTestData("summoner-spell.json")
+        val fixture = gson!!.fromJson(body, SummonerSpell::class.java)
+
+        val response = TestUtils.getResponseFromModel(fixture, SummonerSpell::class.java)
+        `when`(mockClient!!.execute(argThat(MatchesId(fixture.id!!)))).thenReturn(response)
+
+        var options: Map<String, String> = hashMapOf("tags" to "all", "spellData" to "all")
+
+        val rune = staticDataService!!.getSummonerSpell(fixture.id!!, options)
+        this.compareJSONWithoutNulls(body, rune)
+    }
+
 
     /**
      * Compares the mapping fixture <-> object, ignoring NULL fields

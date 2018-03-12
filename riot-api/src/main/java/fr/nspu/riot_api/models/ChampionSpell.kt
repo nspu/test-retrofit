@@ -9,7 +9,7 @@ import android.os.Parcelable
 data class ChampionSpell(
         var cooldownBurn: String? = null,
         var resource: String? = null,
-        var leveltip: ChampionLevelTip? = null,
+        var leveltip: LevelTip? = null,
         var vars: List<ChampionSpellVar>? = null,
         var costType: String? = null,
         var image: Image? = null,
@@ -31,7 +31,7 @@ data class ChampionSpell(
     constructor(source: Parcel) : this(
             source.readString(),
             source.readString(),
-            source.readParcelable<ChampionLevelTip>(ChampionLevelTip::class.java.classLoader),
+            source.readParcelable<LevelTip>(LevelTip::class.java.classLoader),
             source.createTypedArrayList(ChampionSpellVar.CREATOR),
             source.readString(),
             source.readParcelable<Image>(Image::class.java.classLoader),

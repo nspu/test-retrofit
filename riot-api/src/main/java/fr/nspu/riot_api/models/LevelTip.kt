@@ -7,8 +7,8 @@ import android.os.Parcelable
  * Created by nspu on 09/03/18.
  */
 
-data class ChampionLevelTip(var effect: List<String>? = null,
-                       var label: List<String>? = null) : Parcelable {
+data class LevelTip(var effect: List<String>? = null,
+                    var label: List<String>? = null) : Parcelable {
     constructor(source: Parcel) : this(
             source.createStringArrayList(),
             source.createStringArrayList()
@@ -23,9 +23,9 @@ data class ChampionLevelTip(var effect: List<String>? = null,
 
     companion object {
         @JvmField
-        val CREATOR: Parcelable.Creator<ChampionLevelTip> = object : Parcelable.Creator<ChampionLevelTip> {
-            override fun createFromParcel(source: Parcel): ChampionLevelTip = ChampionLevelTip(source)
-            override fun newArray(size: Int): Array<ChampionLevelTip?> = arrayOfNulls(size)
+        val CREATOR: Parcelable.Creator<LevelTip> = object : Parcelable.Creator<LevelTip> {
+            override fun createFromParcel(source: Parcel): LevelTip = LevelTip(source)
+            override fun newArray(size: Int): Array<LevelTip?> = arrayOfNulls(size)
         }
     }
 }
