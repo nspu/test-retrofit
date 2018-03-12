@@ -18,6 +18,7 @@ import org.robolectric.RobolectricTestRunner
 import retrofit.RestAdapter
 import retrofit.client.Client
 import retrofit.client.Request
+import retrofit.client.Response
 import java.io.IOException
 import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
@@ -184,6 +185,19 @@ class RiotServiceTest {
         var options: Map<String, String> = hashMapOf("tags" to "all", "masteryData" to "all")
         val mastery = staticDataService!!.getMastery(fixture.id!!, options)
         this.compareJSONWithoutNulls(body, mastery)
+    }
+
+    @Test
+    @Throws(IOException::class)
+    fun shouldGetProfileIconsData() {
+        val body = TestUtils.readTestData("profile-icons.json")
+        val fixture = gson!!.fromJson(body, ProfileIconData::class.java)
+
+        val response = TestUtils.getResponseFromModel(fixture, ProfileIconData::class.java)
+        `when`(mockClient!!.execute(isA(Request::class.java))).thenReturn(response)
+
+        val profileIconData = staticDataService!!.getProfileIcons()
+        this.compareJSONWithoutNulls(body, profileIconData)
     }
 
 

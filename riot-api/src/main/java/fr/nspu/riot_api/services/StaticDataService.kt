@@ -146,4 +146,18 @@ interface StaticDataService {
     @GET(RiotUri.URI_STATIC_DATA_MASTERY)
     fun getMastery(@Path(RiotUri.ID) masteryId: Int,@QueryMap options: Map<String, String>, callback: Callback<Mastery>)
 
+    /**
+     * Profile Icons
+     */
+    @GET(RiotUri.URI_STATIC_DATA_PROFILE_ICONS)
+    fun getProfileIcons(): ProfileIconData?
+
+    @GET(RiotUri.URI_STATIC_DATA_PROFILE_ICONS)
+    fun getProfileIcons(@QueryMap options: Map<String, String>): ProfileIconData?
+
+    @GET(RiotUri.URI_STATIC_DATA_PROFILE_ICONS)
+    fun getProfileIcons(callback: Callback<ProfileIconData>)
+
+    @GET(RiotUri.URI_STATIC_DATA_PROFILE_ICONS)
+    fun getProfileIcons(@QueryMap options: Map<String, String>, callback: Callback<ProfileIconData>)
 }

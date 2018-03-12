@@ -46,7 +46,9 @@ class ParcelableModelsTest {
                 MasteryList::class.java,
                 MasteryTree::class.java,
                 MasteryTreeItem::class.java,
-                MasteryTreeList::class.java
+                MasteryTreeList::class.java,
+                ProfileIconData::class.java,
+                ProfileIconDetails::class.java
         )
 
     @Test
