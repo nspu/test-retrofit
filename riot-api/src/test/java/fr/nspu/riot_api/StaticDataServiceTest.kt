@@ -1,63 +1,32 @@
 package fr.nspu.riot_api
 
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonParser
 import fr.nspu.riot_api.models.*
 import fr.nspu.riot_api.services.StaticDataService
-import org.junit.Assert
-import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.ArgumentMatcher
 import org.mockito.Matchers.argThat
 import org.mockito.Matchers.isA
 import org.mockito.Mockito.`when`
-import org.mockito.Mockito.mock
 import org.robolectric.RobolectricTestRunner
 import retrofit.RestAdapter
-import retrofit.client.Client
 import retrofit.client.Request
-import retrofit.client.Response
 import java.io.IOException
-import java.io.UnsupportedEncodingException
-import java.net.URLEncoder
 
 /**
  * Inspired by spotify-web-api-android
  */
 @RunWith(RobolectricTestRunner::class)
-class RiotServiceTest {
+class StaticDataServiceTest : ServiceTest(){
 
-    private var staticDataService: StaticDataService? = null
-    private var mockClient: Client? = null
-    private var gson: Gson? = null
+    var service: StaticDataService? = null
 
-    private inner class MatchesId internal constructor(private val mId: Int) : ArgumentMatcher<Request>() {
-
-        override fun matches(request: Any): Boolean {
-            try {
-                return (request as Request).url.contains(URLEncoder.encode(Integer.toString(mId), "UTF-8"))
-            } catch (e: UnsupportedEncodingException) {
-                return false
-            }
-
-        }
-    }
-
-    @Before
-    fun setUp() {
-        mockClient = mock(Client::class.java)
-
-        val restAdapter = RestAdapter.Builder()
+    override fun implementService() {
+                val restAdapter = RestAdapter.Builder()
                 .setClient(mockClient!!)
                 .setEndpoint(RiotApi.RIOT_API_ENDPOINT)
                 .build()
-
-        staticDataService = restAdapter.create(StaticDataService::class.java)
-        gson = GsonBuilder().create()
+        service  = restAdapter.create(StaticDataService::class.java)
     }
-
 
 
     @Test
@@ -71,7 +40,7 @@ class RiotServiceTest {
 
         var options : Map<String, String> = hashMapOf("tags" to  "all", "champListData" to "all")
 
-        val champions = staticDataService!!.getChampions(options)
+        val champions = service!!.getChampions(options)
         this.compareJSONWithoutNulls(body, champions)
     }
 
@@ -86,7 +55,7 @@ class RiotServiceTest {
 
         var options : Map<String, String> = hashMapOf("tags" to  "all", "champData" to "all")
 
-        val champion = staticDataService!!.getChampion(fixture.id!!, options)
+        val champion = service!!.getChampion(fixture.id!!, options)
         this.compareJSONWithoutNulls(body, champion)
     }
 
@@ -101,7 +70,7 @@ class RiotServiceTest {
 
         var options : Map<String, String> = hashMapOf("tags" to  "all", "itemListData" to "all")
 
-        val items = staticDataService!!.getItems(options)
+        val items = service!!.getItems(options)
         this.compareJSONWithoutNulls(body, items)
     }
 
@@ -116,7 +85,7 @@ class RiotServiceTest {
 
         var options : Map<String, String> = hashMapOf("tags" to  "all", "itemData" to "all")
 
-        val item = staticDataService!!.getItem(fixture.id!!, options)
+        val item = service!!.getItem(fixture.id!!, options)
         this.compareJSONWithoutNulls(body, item)
     }
 
@@ -129,7 +98,7 @@ class RiotServiceTest {
         val response = TestUtils.getResponseFromModel(fixture, LanguageStrings::class.java)
         `when`(mockClient!!.execute(isA(Request::class.java))).thenReturn(response)
 
-        val languageStrings = staticDataService!!.getLanguageString()
+        val languageStrings = service!!.getLanguageString()
         this.compareJSONWithoutNulls(body, languageStrings)
     }
 
@@ -142,7 +111,7 @@ class RiotServiceTest {
         val response = TestUtils.getResponseFromModel(fixture, List::class.java)
         `when`(mockClient!!.execute(isA(Request::class.java))).thenReturn(response)
 
-        val languages = staticDataService!!.getLanguages()
+        val languages = service!!.getLanguages()
         this.compareJSONWithoutNulls(body, languages)
     }
 
@@ -155,7 +124,7 @@ class RiotServiceTest {
         val response = TestUtils.getResponseFromModel(fixture, Maps::class.java)
         `when`(mockClient!!.execute(isA(Request::class.java))).thenReturn(response)
 
-        val maps = staticDataService!!.getMaps()
+        val maps = service!!.getMaps()
         this.compareJSONWithoutNulls(body, maps)
     }
 
@@ -169,7 +138,7 @@ class RiotServiceTest {
         `when`(mockClient!!.execute(isA(Request::class.java))).thenReturn(response)
 
         var options: Map<String, String> = hashMapOf("tags" to "all", "masteryListData" to "all")
-        val masteries = staticDataService!!.getMasteries(options)
+        val masteries = service!!.getMasteries(options)
         this.compareJSONWithoutNulls(body, masteries)
     }
 
@@ -183,7 +152,7 @@ class RiotServiceTest {
         `when`(mockClient!!.execute(argThat(MatchesId(fixture.id!!)))).thenReturn(response)
 
         var options: Map<String, String> = hashMapOf("tags" to "all", "masteryData" to "all")
-        val mastery = staticDataService!!.getMastery(fixture.id!!, options)
+        val mastery = service!!.getMastery(fixture.id!!, options)
         this.compareJSONWithoutNulls(body, mastery)
     }
 
@@ -196,7 +165,7 @@ class RiotServiceTest {
         val response = TestUtils.getResponseFromModel(fixture, ProfileIconData::class.java)
         `when`(mockClient!!.execute(isA(Request::class.java))).thenReturn(response)
 
-        val profileIconData = staticDataService!!.getProfileIcons()
+        val profileIconData = service!!.getProfileIcons()
         this.compareJSONWithoutNulls(body, profileIconData)
     }
 
@@ -209,7 +178,7 @@ class RiotServiceTest {
         val response = TestUtils.getResponseFromModel(fixture, Realm::class.java)
         `when`(mockClient!!.execute(isA(Request::class.java))).thenReturn(response)
 
-        val realm = staticDataService!!.getRealms()
+        val realm = service!!.getRealms()
         this.compareJSONWithoutNulls(body, realm)
     }
 
@@ -222,7 +191,7 @@ class RiotServiceTest {
         val response = TestUtils.getResponseFromModel(fixture, List::class.java)
         `when`(mockClient!!.execute(isA(Request::class.java))).thenReturn(response)
 
-        val reforgedRunePaths = staticDataService!!.getReforgedRunePaths()
+        val reforgedRunePaths = service!!.getReforgedRunePaths()
         this.compareJSONWithoutNulls(body, reforgedRunePaths)
     }
 
@@ -235,7 +204,7 @@ class RiotServiceTest {
         val response = TestUtils.getResponseFromModel(fixture, ReforgedRunePath::class.java)
         `when`(mockClient!!.execute(argThat(MatchesId(fixture.id!!)))).thenReturn(response)
 
-        val reforgedRunePath = staticDataService!!.getReforgedRunePath(fixture.id!!)
+        val reforgedRunePath = service!!.getReforgedRunePath(fixture.id!!)
         this.compareJSONWithoutNulls(body, reforgedRunePath)
     }
 
@@ -248,7 +217,7 @@ class RiotServiceTest {
         val response = TestUtils.getResponseFromModel(fixture, List::class.java)
         `when`(mockClient!!.execute(isA(Request::class.java))).thenReturn(response)
 
-        val reforgedRunes = staticDataService!!.getReforgedRunes()
+        val reforgedRunes = service!!.getReforgedRunes()
         this.compareJSONWithoutNulls(body, reforgedRunes)
     }
 
@@ -261,7 +230,7 @@ class RiotServiceTest {
         val response = TestUtils.getResponseFromModel(fixture, ReforgedRune::class.java)
         `when`(mockClient!!.execute(argThat(MatchesId(fixture.id!!)))).thenReturn(response)
 
-        val reforgedRune = staticDataService!!.getReforgedRune(fixture.id!!)
+        val reforgedRune = service!!.getReforgedRune(fixture.id!!)
         this.compareJSONWithoutNulls(body, reforgedRune)
     }
 
@@ -276,7 +245,7 @@ class RiotServiceTest {
 
         var options: Map<String, String> = hashMapOf("tags" to "all", "runeListData" to "all")
 
-        val runes = staticDataService!!.getRunes(options)
+        val runes = service!!.getRunes(options)
         this.compareJSONWithoutNulls(body, runes)
     }
 
@@ -291,7 +260,7 @@ class RiotServiceTest {
 
         var options: Map<String, String> = hashMapOf("tags" to "all", "runeData" to "all")
 
-        val rune = staticDataService!!.getRune(fixture.id!!, options)
+        val rune = service!!.getRune(fixture.id!!, options)
         this.compareJSONWithoutNulls(body, rune)
     }
 
@@ -306,7 +275,7 @@ class RiotServiceTest {
 
         var options: Map<String, String> = hashMapOf("tags" to "all", "spellListData" to "all")
 
-        val runes = staticDataService!!.getSummonerSpells(options)
+        val runes = service!!.getSummonerSpells(options)
         this.compareJSONWithoutNulls(body, runes)
     }
 
@@ -321,49 +290,33 @@ class RiotServiceTest {
 
         var options: Map<String, String> = hashMapOf("tags" to "all", "spellData" to "all")
 
-        val rune = staticDataService!!.getSummonerSpell(fixture.id!!, options)
+        val rune = service!!.getSummonerSpell(fixture.id!!, options)
         this.compareJSONWithoutNulls(body, rune)
     }
 
+    @Test
+    @Throws(IOException::class)
+    fun shouldGetTabarballLinksData() {
+        val body = TestUtils.readTestData("tarball-links.json")
+        val fixture = gson!!.fromJson(body, String::class.java)
 
-    /**
-     * Compares the mapping fixture <-> object, ignoring NULL fields
-     * This is useful to prevent issues with entities such as "Image" in
-     * which width and height are not always present, and they result in
-     * null values in the Image object
-     *
-     * @param fixture The JSON to test against
-     * @param model   The object to be serialized
-     */
-    private fun <T> compareJSONWithoutNulls(fixture: String, model: T?) {
-        val parser = JsonParser()
+        val response = TestUtils.getResponseFromModel(fixture, String::class.java)
+        `when`(mockClient!!.execute(isA(Request::class.java))).thenReturn(response)
 
-        // Parsing fixture twice gets rid of nulls
-        var fixtureJsonElement = parser.parse(fixture)
-        val fixtureWithoutNulls = gson!!.toJson(fixtureJsonElement)
-        fixtureJsonElement = parser.parse(fixtureWithoutNulls)
-
-        val modelJsonElement = gson!!.toJsonTree(model)
-
-        // We compare JsonElements from fixture
-        // with the one created from model. If they're different
-        // it means the model is wrong
-        Assert.assertEquals(fixtureJsonElement, modelJsonElement)
+        val tarballLinks = service!!.getTarballLinks()
+        this.compareJSONWithoutNulls(body, tarballLinks)
     }
 
-    /**
-     * Compares two JSON strings if they contain the same data even if the order
-     * of the keys differs.
-     *
-     * @param expected The JSON to test against
-     * @param actual   The tested JSON
-     * @return true if JSONs contain the same data, false otherwise.
-     */
-    private fun JSONsContainSameData(expected: String, actual: String): Boolean {
-        val parser = JsonParser()
-        val expectedJsonElement = parser.parse(expected)
-        val actualJsonElement = parser.parse(actual)
+    @Test
+    @Throws(IOException::class)
+    fun shouldGetVersionsData() {
+        val body = TestUtils.readTestData("versions.json")
+        val fixture = gson!!.fromJson(body, List::class.java)
 
-        return expectedJsonElement == actualJsonElement
+        val response = TestUtils.getResponseFromModel(fixture, List::class.java)
+        `when`(mockClient!!.execute(isA(Request::class.java))).thenReturn(response)
+
+        val tarballLinks = service!!.getVersions()
+        this.compareJSONWithoutNulls(body, tarballLinks)
     }
 }

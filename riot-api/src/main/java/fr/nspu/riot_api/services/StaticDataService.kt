@@ -296,4 +296,33 @@ interface StaticDataService {
     @GET(RiotUri.URI_STATIC_DATA_SUMMONER_SPELL)
     fun getSummonerSpell(@Path(RiotUri.ID) summonerSpellId: Int,@QueryMap options: Map<String, String>, callback: Callback<SummonerSpell>)
 
+    /**
+     * Tarball links
+     */
+    @GET(RiotUri.URI_STATIC_DATA_TARBALL_LINKS)
+    fun getTarballLinks(): String?
+
+    @GET(RiotUri.URI_STATIC_DATA_TARBALL_LINKS)
+    fun getTarballLinks(@QueryMap options: Map<String, String>): String?
+
+    @GET(RiotUri.URI_STATIC_DATA_TARBALL_LINKS)
+    fun getTarballLinks(callback: Callback<String>)
+
+    @GET(RiotUri.URI_STATIC_DATA_TARBALL_LINKS)
+    fun getTarballLinks(@QueryMap options: Map<String, String>, callback: Callback<String>)
+
+    /**
+     * Versions
+     */
+    @GET(RiotUri.URI_STATIC_DATA_VERSIONS)
+    fun getVersions(): List<String>?
+
+    @GET(RiotUri.URI_STATIC_DATA_VERSIONS)
+    fun getVersions(@QueryMap options: Map<String, String>): List<String>?
+
+    @GET(RiotUri.URI_STATIC_DATA_VERSIONS)
+    fun getVersions(callback: Callback<List<String>>)
+
+    @GET(RiotUri.URI_STATIC_DATA_VERSIONS)
+    fun getVersions(@QueryMap options: Map<String, String>, callback: Callback<List<String>>)
 }
