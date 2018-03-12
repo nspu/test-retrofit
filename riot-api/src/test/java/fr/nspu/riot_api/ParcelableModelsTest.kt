@@ -59,7 +59,8 @@ class ParcelableModelsTest {
                 RuneStats::class.java,
                 SummonerSpell::class.java,
                 SummonerSpellList::class.java,
-                SpellVars::class.java
+                SpellVars::class.java,
+                ChampionMastery::class.java
         )
 
     @Test

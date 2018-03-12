@@ -4,6 +4,7 @@ package fr.nspu.riot_api
  * Created by nspu on 09/03/18.
  */
 
+import fr.nspu.riot_api.services.ChampionMasteryService
 import fr.nspu.riot_api.services.StaticDataService
 import retrofit.RequestInterceptor
 import retrofit.RestAdapter
@@ -25,6 +26,7 @@ import java.util.concurrent.Executors
 class RiotApi(httpExecutor: Executor, callbackExecutor: Executor, private var accessToken: String) {
 
     val staticDataService: StaticDataService
+    val championMasteryService: ChampionMasteryService
 
     init {
         val restAdapter = RestAdapter.Builder()
@@ -34,6 +36,7 @@ class RiotApi(httpExecutor: Executor, callbackExecutor: Executor, private var ac
                 .setRequestInterceptor(ApiAuthenticator())
                 .build()
         staticDataService = restAdapter.create(StaticDataService::class.java)
+        championMasteryService = restAdapter.create(ChampionMasteryService::class.java)
     }
 
     /**

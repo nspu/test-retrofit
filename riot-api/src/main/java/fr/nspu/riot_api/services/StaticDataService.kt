@@ -29,16 +29,16 @@ interface StaticDataService {
      * Champion
      */
     @GET(RiotUri.URI_STATIC_DATA_CHAMPION)
-    fun getChampion(@Path(RiotUri.ID) championId: Int): Champion?
+    fun getChampion(@Path("id") championId: Int): Champion?
 
     @GET(RiotUri.URI_STATIC_DATA_CHAMPION)
-    fun getChampion(@Path(RiotUri.ID) championId: Int, @QueryMap options: Map<String, String>): Champion?
+    fun getChampion(@Path("id") championId: Int, @QueryMap options: Map<String, String>): Champion?
 
     @GET(RiotUri.URI_STATIC_DATA_CHAMPION)
-    fun getChampion(@Path(RiotUri.ID) championId: Int, callback: Callback<Champion>)
+    fun getChampion(@Path("id") championId: Int, callback: Callback<Champion>)
 
     @GET(RiotUri.URI_STATIC_DATA_CHAMPION)
-    fun getChampion(@Path(RiotUri.ID) championId: Int, @QueryMap options: Map<String, String>, callback: Callback<Champion>)
+    fun getChampion(@Path("id") championId: Int, @QueryMap options: Map<String, String>, callback: Callback<Champion>)
 
     /**
      * Items
@@ -59,16 +59,16 @@ interface StaticDataService {
      * Item
      */
     @GET(RiotUri.URI_STATIC_DATA_ITEM)
-    fun getItem(@Path(RiotUri.ID) itemId: Int): Item?
+    fun getItem(@Path("id") itemId: Int): Item?
 
     @GET(RiotUri.URI_STATIC_DATA_CHAMPION)
-    fun getItem(@Path(RiotUri.ID) itemId: Int, @QueryMap options: Map<String, String>): Item?
+    fun getItem(@Path("id") itemId: Int, @QueryMap options: Map<String, String>): Item?
 
     @GET(RiotUri.URI_STATIC_DATA_CHAMPION)
-    fun getItem(@Path(RiotUri.ID) itemId: Int, callback: Callback<Item>)
+    fun getItem(@Path("id") itemId: Int, callback: Callback<Item>)
 
     @GET(RiotUri.URI_STATIC_DATA_CHAMPION)
-    fun getItem(@Path(RiotUri.ID) itemId: Int, @QueryMap options: Map<String, String>, callback: Callback<Item>)
+    fun getItem(@Path("id") itemId: Int, @QueryMap options: Map<String, String>, callback: Callback<Item>)
 
 
     /**
@@ -135,16 +135,16 @@ interface StaticDataService {
      * Mastery
      */
     @GET(RiotUri.URI_STATIC_DATA_MASTERY)
-    fun getMastery(@Path(RiotUri.ID) masteryId: Int): Mastery?
+    fun getMastery(@Path("id") masteryId: Int): Mastery?
 
     @GET(RiotUri.URI_STATIC_DATA_MASTERY)
-    fun getMastery(@Path(RiotUri.ID) masteryId: Int,@QueryMap options: Map<String, String>): Mastery?
+    fun getMastery(@Path("id") masteryId: Int,@QueryMap options: Map<String, String>): Mastery?
 
     @GET(RiotUri.URI_STATIC_DATA_MASTERY)
-    fun getMastery(@Path(RiotUri.ID) itemId: Int,callback: Callback<Mastery>)
+    fun getMastery(@Path("id") itemId: Int,callback: Callback<Mastery>)
 
     @GET(RiotUri.URI_STATIC_DATA_MASTERY)
-    fun getMastery(@Path(RiotUri.ID) masteryId: Int,@QueryMap options: Map<String, String>, callback: Callback<Mastery>)
+    fun getMastery(@Path("id") masteryId: Int,@QueryMap options: Map<String, String>, callback: Callback<Mastery>)
 
     /**
      * Profile Icons
@@ -195,16 +195,16 @@ interface StaticDataService {
      * Reforged Rune Path
      */
     @GET(RiotUri.URI_STATIC_DATA_REFORGED_RUNE_PATH)
-    fun getReforgedRunePath(@Path(RiotUri.ID) reforgedRunePathId: Int): ReforgedRunePath?
+    fun getReforgedRunePath(@Path("id") reforgedRunePathId: Int): ReforgedRunePath?
 
     @GET(RiotUri.URI_STATIC_DATA_REFORGED_RUNE_PATH)
-    fun getReforgedRunePath(@Path(RiotUri.ID) reforgedRunePathId: Int,@QueryMap options: Map<String, String>): ReforgedRunePath?
+    fun getReforgedRunePath(@Path("id") reforgedRunePathId: Int,@QueryMap options: Map<String, String>): ReforgedRunePath?
 
     @GET(RiotUri.URI_STATIC_DATA_REFORGED_RUNE_PATH)
-    fun getReforgedRunePath(@Path(RiotUri.ID) reforgedRunePathId: Int,callback: Callback<ReforgedRunePath>)
+    fun getReforgedRunePath(@Path("id") reforgedRunePathId: Int,callback: Callback<ReforgedRunePath>)
 
     @GET(RiotUri.URI_STATIC_DATA_REFORGED_RUNE_PATH)
-    fun getReforgedRunePath(@Path(RiotUri.ID) reforgedRunePathId: Int,@QueryMap options: Map<String, String>, callback: Callback<ReforgedRunePath>)
+    fun getReforgedRunePath(@Path("id") reforgedRunePathId: Int,@QueryMap options: Map<String, String>, callback: Callback<ReforgedRunePath>)
 
     /**
      * Reforged Runes
@@ -225,16 +225,16 @@ interface StaticDataService {
      * Reforged Rune Path
      */
     @GET(RiotUri.URI_STATIC_DATA_REFORGED_RUNE)
-    fun getReforgedRune(@Path(RiotUri.ID) reforgedRuneId: Int): ReforgedRune?
+    fun getReforgedRune(@Path("id") reforgedRuneId: Int): ReforgedRune?
 
     @GET(RiotUri.URI_STATIC_DATA_REFORGED_RUNE)
-    fun getReforgedRune(@Path(RiotUri.ID) reforgedRuneId: Int,@QueryMap options: Map<String, String>): ReforgedRune?
+    fun getReforgedRune(@Path("id") reforgedRuneId: Int,@QueryMap options: Map<String, String>): ReforgedRune?
 
     @GET(RiotUri.URI_STATIC_DATA_REFORGED_RUNE)
-    fun getReforgedRune(@Path(RiotUri.ID) reforgedRuneId: Int,callback: Callback<ReforgedRune>)
+    fun getReforgedRune(@Path("id") reforgedRuneId: Int,callback: Callback<ReforgedRune>)
 
     @GET(RiotUri.URI_STATIC_DATA_REFORGED_RUNE)
-    fun getReforgedRune(@Path(RiotUri.ID) reforgedRuneId: Int,@QueryMap options: Map<String, String>, callback: Callback<ReforgedRune>)
+    fun getReforgedRune(@Path("id") reforgedRuneId: Int,@QueryMap options: Map<String, String>, callback: Callback<ReforgedRune>)
 
     /**
      * Runes
@@ -255,16 +255,16 @@ interface StaticDataService {
      * Rune
      */
     @GET(RiotUri.URI_STATIC_DATA_RUNE)
-    fun getRune(@Path(RiotUri.ID) RuneId: Int): Rune?
+    fun getRune(@Path("id") RuneId: Int): Rune?
 
     @GET(RiotUri.URI_STATIC_DATA_RUNE)
-    fun getRune(@Path(RiotUri.ID) RuneId: Int,@QueryMap options: Map<String, String>): Rune?
+    fun getRune(@Path("id") RuneId: Int,@QueryMap options: Map<String, String>): Rune?
 
     @GET(RiotUri.URI_STATIC_DATA_RUNE)
-    fun getRune(@Path(RiotUri.ID) RuneId: Int,callback: Callback<Rune>)
+    fun getRune(@Path("id") RuneId: Int,callback: Callback<Rune>)
 
     @GET(RiotUri.URI_STATIC_DATA_RUNE)
-    fun getRune(@Path(RiotUri.ID) RuneId: Int,@QueryMap options: Map<String, String>, callback: Callback<Rune>)
+    fun getRune(@Path("id") RuneId: Int,@QueryMap options: Map<String, String>, callback: Callback<Rune>)
 
     /**
      * SummonerSpells
@@ -285,16 +285,16 @@ interface StaticDataService {
      * Rune
      */
     @GET(RiotUri.URI_STATIC_DATA_SUMMONER_SPELL)
-    fun getSummonerSpell(@Path(RiotUri.ID) summonerSpellId: Int): SummonerSpell?
+    fun getSummonerSpell(@Path("id") summonerSpellId: Int): SummonerSpell?
 
     @GET(RiotUri.URI_STATIC_DATA_SUMMONER_SPELL)
-    fun getSummonerSpell(@Path(RiotUri.ID) summonerSpellId: Int,@QueryMap options: Map<String, String>): SummonerSpell?
+    fun getSummonerSpell(@Path("id") summonerSpellId: Int,@QueryMap options: Map<String, String>): SummonerSpell?
 
     @GET(RiotUri.URI_STATIC_DATA_SUMMONER_SPELL)
-    fun getSummonerSpell(@Path(RiotUri.ID) summonerSpellId: Int,callback: Callback<SummonerSpell>)
+    fun getSummonerSpell(@Path("id") summonerSpellId: Int,callback: Callback<SummonerSpell>)
 
     @GET(RiotUri.URI_STATIC_DATA_SUMMONER_SPELL)
-    fun getSummonerSpell(@Path(RiotUri.ID) summonerSpellId: Int,@QueryMap options: Map<String, String>, callback: Callback<SummonerSpell>)
+    fun getSummonerSpell(@Path("id") summonerSpellId: Int,@QueryMap options: Map<String, String>, callback: Callback<SummonerSpell>)
 
     /**
      * Tarball links
@@ -325,4 +325,6 @@ interface StaticDataService {
 
     @GET(RiotUri.URI_STATIC_DATA_VERSIONS)
     fun getVersions(@QueryMap options: Map<String, String>, callback: Callback<List<String>>)
+
+
 }

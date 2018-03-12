@@ -11,10 +11,8 @@ import org.junit.Test
 import org.mockito.ArgumentMatcher
 import org.mockito.Matchers
 import org.mockito.Mockito
-import retrofit.RestAdapter
 import retrofit.client.Client
 import retrofit.client.Request
-import java.io.IOException
 import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
 
@@ -26,11 +24,11 @@ abstract class ServiceTest {
     protected var mockClient: Client? = null
     protected var gson: Gson? = null
 
-    protected inner class MatchesId internal constructor(private val mId: Int) : ArgumentMatcher<Request>() {
+    protected inner class MatchesId internal constructor(private val mId: Any) : ArgumentMatcher<Request>() {
 
         override fun matches(request: Any): Boolean {
             try {
-                return (request as Request).url.contains(URLEncoder.encode(Integer.toString(mId), "UTF-8"))
+                return (request as Request).url.contains(URLEncoder.encode(mId.toString(), "UTF-8"))
             } catch (e: UnsupportedEncodingException) {
                 return false
             }
