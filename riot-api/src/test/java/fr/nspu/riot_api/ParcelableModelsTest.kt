@@ -41,7 +41,12 @@ class ParcelableModelsTest {
                 ItemTree::class.java,
                 LanguageStrings::class.java,
                 MapDetails::class.java,
-                Maps::class.java
+                Maps::class.java,
+                Mastery::class.java,
+                MasteryList::class.java,
+                MasteryTree::class.java,
+                MasteryTreeItem::class.java,
+                MasteryTreeList::class.java
         )
 
     @Test

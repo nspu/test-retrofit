@@ -158,6 +158,20 @@ class RiotServiceTest {
         this.compareJSONWithoutNulls(body, maps)
     }
 
+    @Test
+    @Throws(IOException::class)
+    fun shouldGetMasteriesData() {
+        val body = TestUtils.readTestData("masteries.json")
+        val fixture = gson!!.fromJson(body, MasteryList::class.java)
+
+        val response = TestUtils.getResponseFromModel(fixture, MasteryList::class.java)
+        `when`(mockClient!!.execute(isA(Request::class.java))).thenReturn(response)
+
+        var options: Map<String, String> = hashMapOf("tags" to "all", "masteryListData" to "all")
+        val masteries = staticDataService!!.getMasteries(options)
+        this.compareJSONWithoutNulls(body, masteries)
+    }
+
 
     /**
      * Compares the mapping fixture <-> object, ignoring NULL fields
