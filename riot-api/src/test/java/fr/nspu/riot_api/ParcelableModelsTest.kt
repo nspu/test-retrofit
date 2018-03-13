@@ -66,7 +66,21 @@ class ParcelableModelsTest {
                 LeagueItem::class.java,
                 LeagueList::class.java,
                 LeaguePosition::class.java,
-                MiniSeries::class.java
+                MiniSeries::class.java,
+                Message::class.java,
+                Service::class.java,
+                ShardStatus::class.java,
+                Translation::class.java,
+                Match::class.java,
+                MatchMastery::class.java,
+                MatchParticipant::class.java,
+                MatchParticipantIdentity::class.java,
+                MatchParticipantStats::class.java,
+                MatchParticipantTimeline::class.java,
+                MatchPlayer::class.java,
+                MatchRune::class.java,
+                MatchTeamBans::class.java,
+                MatchTeamStats::class.java
         )
 
     @Test
