@@ -80,7 +80,14 @@ class ParcelableModelsTest {
                 MatchPlayer::class.java,
                 MatchRune::class.java,
                 MatchTeamBans::class.java,
-                MatchTeamStats::class.java
+                MatchTeamStats::class.java,
+                MatchList::class.java,
+                MatchReference::class.java,
+                MatchEvent::class.java,
+                MatchFrame::class.java,
+                MatchParticipantFrame::class.java,
+                MatchPosition::class.java,
+                MatchTimeline::class.java
         )
 
     @Test

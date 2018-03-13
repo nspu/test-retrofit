@@ -2,6 +2,8 @@ package fr.nspu.riot_api.services
 
 import fr.nspu.riot_api.models.ChampionInfo
 import fr.nspu.riot_api.models.Match
+import fr.nspu.riot_api.models.MatchList
+import fr.nspu.riot_api.models.MatchTimeline
 import retrofit.Callback
 import retrofit.http.GET
 import retrofit.http.Path
@@ -25,5 +27,50 @@ interface MatchService {
 
     @GET(RiotUri.URI_MATCH_BY_ID)
     fun getMatchById(@Path("matchId") matchId: Long , @QueryMap options: Map<String, String>, callback: Callback<Match>)
+
+    /**
+     * Matches by accountId
+     */
+    @GET(RiotUri.URI_MATCH_LIST_BY_ACCOUNT)
+    fun getMatchListByAccountId(@Path("accountId") accountId: Long ): MatchList?
+
+    @GET(RiotUri.URI_MATCH_LIST_BY_ACCOUNT)
+    fun getMatchListByAccountId(@Path("accountId") accountId: Long , @QueryMap options: Map<String, String>): MatchList?
+
+    @GET(RiotUri.URI_MATCH_LIST_BY_ACCOUNT)
+    fun getMatchListByAccountId(@Path("accountId") accountId: Long , callback: Callback<MatchList>)
+
+    @GET(RiotUri.URI_MATCH_LIST_BY_ACCOUNT)
+    fun getMatchListByAccountId(@Path("accountId") accountId: Long , @QueryMap options: Map<String, String>, callback: Callback<MatchList>)
+
+    /**
+     * Recent Matches by accountId
+     */
+    @GET(RiotUri.URI_MATCH_LIST_BY_ACCOUNT_RECENT)
+    fun getRecentMatchListByAccountId(@Path("accountId") accountId: Long ): MatchList?
+
+    @GET(RiotUri.URI_MATCH_LIST_BY_ACCOUNT_RECENT)
+    fun getRecentMatchListByAccountId(@Path("accountId") accountId: Long , @QueryMap options: Map<String, String>): MatchList?
+
+    @GET(RiotUri.URI_MATCH_LIST_BY_ACCOUNT_RECENT)
+    fun getRecentMatchListByAccountId(@Path("accountId") accountId: Long , callback: Callback<MatchList>)
+
+    @GET(RiotUri.URI_MATCH_LIST_BY_ACCOUNT_RECENT)
+    fun getRecentMatchListByAccountId(@Path("accountId") accountId: Long , @QueryMap options: Map<String, String>, callback: Callback<MatchList>)
+
+    /**
+     * Timeline by match
+     */
+    @GET(RiotUri.URI_MATCH_TIMELINE_BY_ID)
+    fun getTimelineByMatchId(@Path("matchId") matchId: Long ): MatchTimeline?
+
+    @GET(RiotUri.URI_MATCH_TIMELINE_BY_ID)
+    fun getTimelineByMatchId(@Path("matchId") matchId: Long, @QueryMap options: Map<String, String>): MatchTimeline?
+
+    @GET(RiotUri.URI_MATCH_TIMELINE_BY_ID)
+    fun getTimelineByMatchId(@Path("matchId") matchId: Long, callback: Callback<MatchTimeline>)
+
+    @GET(RiotUri.URI_MATCH_TIMELINE_BY_ID)
+    fun getTimelineByMatchId(@Path("matchId") matchId: Long, @QueryMap options: Map<String, String>, callback: Callback<MatchTimeline>)
 
 }
