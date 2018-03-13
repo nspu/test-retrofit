@@ -94,7 +94,8 @@ class ParcelableModelsTest {
                 SpectatorGameInfo::class.java,
                 SpectatorObserver::class.java,
                 SpectatorPerks::class.java,
-                SpectatorFeaturedGames::class.java
+                SpectatorFeaturedGames::class.java,
+                Summoner::class.java
         )
 
     @Test

@@ -39,20 +39,31 @@ object RiotUri {
 
     const val URI_LEAGUE = "/lol/league/${VERSION}/"
     const val URI_LEAGUE_CHALLENGER_BY_QUEUE = URI_LEAGUE + "challengerleagues/by-queue/{queue}" //Get the challenger league for given queue.
-    const val URI_LEAGUE_BY_ID =URI_LEAGUE +  "leagues/{leagueId}" //Get league with given ID, including inactive entries.
+    const val URI_LEAGUE_BY_ID = URI_LEAGUE + "leagues/{leagueId}" //Get league with given ID, including inactive entries.
     const val URI_LEAGUE_MASTER_BY_QUEUE = URI_LEAGUE + "masterleagues/by-queue/{queue}" //Get the master league for given queue.
-    const val URI_LEAGUE_POSITION_BY_SUMMONER =URI_LEAGUE +  "positions/by-summoner/{summonerId}" //Get league positions in all queues for a given summoner ID
+    const val URI_LEAGUE_POSITION_BY_SUMMONER = URI_LEAGUE + "positions/by-summoner/{summonerId}" //Get league positions in all queues for a given summoner ID
 
     const val URI_LOL_STATUS = "/lol/status/${VERSION}/shard-data"
 
-   const val URI_MATCH_BY_ID = "/lol/match/${VERSION}/matches/{matchId}" //Get match by match ID.
-   const val URI_MATCH_LIST_BY_ACCOUNT = "/lol/match/${VERSION}/matchlists/by-account/{accountId}"//Get matchlist for games played on given account ID and platform ID and filtered using given filter parameters, if any.
-   const val URI_MATCH_LIST_BY_ACCOUNT_RECENT = "/lol/match/${VERSION}/matchlists/by-account/{accountId}/recent"//Get matchlist for last 20 matches played on given account ID and platform ID.
-   const val URI_MATCH_TIMELINE_BY_ID = "/lol/match/${VERSION}/timelines/by-match/{matchId}"//Get match timelineMatch by match ID.
-   const val URI_IDS_MATCH_LIST_BY_TOURNAMENT = "/lol/match/${VERSION}/matches/by-tournament-code/{tournamentCode}/ids"// Get match IDs by tournament code.
-   const val URI_MATCH_BY_ID_BY_TOUNRAMENT = "/lol/match/${VERSION}/matches/{matchId}/by-tournament-code/{tournamentCode}"//Get match by match ID and tournament code
+    const val URI_MATCH_BY_ID = "/lol/match/${VERSION}/matches/{matchId}" //Get match by match ID.
+    const val URI_MATCH_LIST_BY_ACCOUNT = "/lol/match/${VERSION}/matchlists/by-account/{accountId}"//Get matchlist for games played on given account ID and platform ID and filtered using given filter parameters, if any.
+    const val URI_MATCH_LIST_BY_ACCOUNT_RECENT = "/lol/match/${VERSION}/matchlists/by-account/{accountId}/recent"//Get matchlist for last 20 matches played on given account ID and platform ID.
+    const val URI_MATCH_TIMELINE_BY_ID = "/lol/match/${VERSION}/timelines/by-match/{matchId}"//Get match timelineMatch by match ID.
+    const val URI_IDS_MATCH_LIST_BY_TOURNAMENT = "/lol/match/${VERSION}/matches/by-tournament-code/{tournamentCode}/ids"// Get match IDs by tournament code.
+    const val URI_MATCH_BY_ID_BY_TOUNRAMENT = "/lol/match/${VERSION}/matches/{matchId}/by-tournament-code/{tournamentCode}"//Get match by match ID and tournament code
 
     const val URI_SPECTATOR = "/lol/spectator/${VERSION}/"
-    const val URI_SPECTATOR_ACTIVE_GAMES_BY_SUMMONER_ID =  URI_SPECTATOR + "active-games/by-summoner/{summonerId}" //Get current game information for the given summoner ID.
+    const val URI_SPECTATOR_ACTIVE_GAMES_BY_SUMMONER_ID = URI_SPECTATOR + "active-games/by-summoner/{summonerId}" //Get current game information for the given summoner ID.
     const val URI_SPECTATOR_FEATURED_GAME = URI_SPECTATOR + "featured-games"//Get list of featured games
+
+
+    const val URI_SUMMONER = "/lol/summoner/${VERSION}/summoners/"
+    const val URI_SUMMOMER_BY_ACCOUNT_ID = URI_SUMMONER + "by-account/{accountId}" //Get a summoner by account ID.
+    const val URI_SUMMONER_BY_NAME = URI_SUMMONER + "by-name/{summonerName}"// Get a summoner by summoner name.
+    const val URI_SUMMONER_BY_SUMMONER_ID = URI_SUMMONER + "{summonerId}" //Get a summoner by summoner ID.
+
+    const val URI_THIRD_PARTY_CODE_BY_SUMMONER_ID =  "/lol/platform/${VERSION}/third-party-code/by-summoner/{summonerId}" //Get third party code for a given summoner ID.
+
+
+
 }

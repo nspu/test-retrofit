@@ -4,10 +4,7 @@ package fr.nspu.riot_api
  * Created by nspu on 09/03/18.
  */
 
-import fr.nspu.riot_api.services.ChampionMasteryService
-import fr.nspu.riot_api.services.ChampionService
-import fr.nspu.riot_api.services.LoLStatusService
-import fr.nspu.riot_api.services.StaticDataService
+import fr.nspu.riot_api.services.*
 import retrofit.RequestInterceptor
 import retrofit.RestAdapter
 import retrofit.android.MainThreadExecutor
@@ -30,7 +27,12 @@ class RiotApi(httpExecutor: Executor, callbackExecutor: Executor, private var ac
     val staticDataService: StaticDataService
     val championMasteryService: ChampionMasteryService
     val championService : ChampionService
+    val leagueService: LeagueService
     val lolStatusService : LoLStatusService
+    val matchService: MatchService
+    val spectatorService: SpectatorService
+    val summonerService: SummonerService
+    val thirdPartyCodeService: ThirdPartyCodeService
 
     init {
         val restAdapter = RestAdapter.Builder()
@@ -42,7 +44,12 @@ class RiotApi(httpExecutor: Executor, callbackExecutor: Executor, private var ac
         staticDataService = restAdapter.create(StaticDataService::class.java)
         championMasteryService = restAdapter.create(ChampionMasteryService::class.java)
         championService = restAdapter.create(ChampionService::class.java)
+        leagueService = restAdapter.create(LeagueService::class.java)
         lolStatusService = restAdapter.create(LoLStatusService::class.java)
+        matchService = restAdapter.create(MatchService::class.java)
+        spectatorService = restAdapter.create(SpectatorService::class.java)
+        summonerService = restAdapter.create(SummonerService::class.java)
+        thirdPartyCodeService = restAdapter.create(ThirdPartyCodeService::class.java)
     }
 
     /**
