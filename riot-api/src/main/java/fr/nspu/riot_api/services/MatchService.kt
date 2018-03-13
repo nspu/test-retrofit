@@ -1,6 +1,5 @@
 package fr.nspu.riot_api.services
 
-import fr.nspu.riot_api.models.ChampionInfo
 import fr.nspu.riot_api.models.Match
 import fr.nspu.riot_api.models.MatchList
 import fr.nspu.riot_api.models.MatchTimeline
@@ -72,5 +71,38 @@ interface MatchService {
 
     @GET(RiotUri.URI_MATCH_TIMELINE_BY_ID)
     fun getTimelineByMatchId(@Path("matchId") matchId: Long, @QueryMap options: Map<String, String>, callback: Callback<MatchTimeline>)
+
+
+    /**
+     * Tournament code
+     * TODO not testing (need tournament code)
+     */
+    @GET(RiotUri.URI_IDS_MATCH_LIST_BY_TOURNAMENT)
+    fun getIdsMatchListByTounrament(@Path("tournamentCode") tournamentCode: String ): List<Long>?
+
+    @GET(RiotUri.URI_IDS_MATCH_LIST_BY_TOURNAMENT)
+    fun getIdsMatchListByTounrament(@Path("tournamentCode") tournamentCode: Long, @QueryMap options: Map<String, String>): List<Long>?
+
+    @GET(RiotUri.URI_IDS_MATCH_LIST_BY_TOURNAMENT)
+    fun getIdsMatchListByTounrament(@Path("tournamentCode") tournamentCode: Long, callback: Callback<List<Long>>)
+
+    @GET(RiotUri.URI_IDS_MATCH_LIST_BY_TOURNAMENT)
+    fun getIdsMatchListByTounrament(@Path("tournamentCode") tournamentCode: Long, @QueryMap options: Map<String, String>, callback: Callback<List<Long>>)
+
+    /**
+     * Match by matchid and Tournament code
+     * TODO not testing (need tournament code)
+     */
+    @GET(RiotUri.URI_MATCH_BY_ID_BY_TOUNRAMENT)
+    fun getMatchByMatchIdAndByTounrament(@Path("matchId") matchId: Long,@Path("tournamentCode") tournamentCode: String ): Match?
+
+    @GET(RiotUri.URI_MATCH_BY_ID_BY_TOUNRAMENT)
+    fun getMatchByMatchIdAndByTounrament(@Path("matchId") matchId: Long,@Path("tournamentCode") tournamentCode: Long, @QueryMap options: Map<String, String>): Match?
+
+    @GET(RiotUri.URI_MATCH_BY_ID_BY_TOUNRAMENT)
+    fun getMatchByMatchIdAndByTounrament(@Path("matchId") matchId: Long,@Path("tournamentCode") tournamentCode: Long, callback: Callback<Match>)
+
+    @GET(RiotUri.URI_MATCH_BY_ID_BY_TOUNRAMENT)
+    fun getMatchByMatchIdAndByTounrament(@Path("matchId") matchId: Long,@Path("tournamentCode") tournamentCode: Long, @QueryMap options: Map<String, String>, callback: Callback<Match>)
 
 }

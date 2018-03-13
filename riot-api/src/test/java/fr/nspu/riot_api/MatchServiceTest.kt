@@ -74,4 +74,17 @@ class MatchServiceTest:ServiceTest() {
         val matchListByAccount = service!!.getTimelineByMatchId(211234522)
         this.compareJSONWithoutNulls(body, matchListByAccount)
     }
+
+    @Test
+    @Throws(IOException::class)
+    fun shouldGetTournamentByCodeData() {
+        val body = TestUtils.readTestData("timeline-by-match-id.json")
+        val fixture = gson!!.fromJson(body, MatchTimeline::class.java)
+
+        val response = TestUtils.getResponseFromModel(fixture, MatchTimeline::class.java)
+        Mockito.`when`(mockClient!!.execute(Matchers.argThat(MatchesId(211234522)))).thenReturn(response)
+
+        val matchListByAccount = service!!.getTimelineByMatchId(211234522)
+        this.compareJSONWithoutNulls(body, matchListByAccount)
+    }
 }

@@ -49,7 +49,7 @@ object RiotUri {
    const val URI_MATCH_LIST_BY_ACCOUNT = "/lol/match/${VERSION}/matchlists/by-account/{accountId}"//Get matchlist for games played on given account ID and platform ID and filtered using given filter parameters, if any.
    const val URI_MATCH_LIST_BY_ACCOUNT_RECENT = "/lol/match/${VERSION}/matchlists/by-account/{accountId}/recent"//Get matchlist for last 20 matches played on given account ID and platform ID.
    const val URI_MATCH_TIMELINE_BY_ID = "/lol/match/${VERSION}/timelines/by-match/{matchId}"//Get match timelineMatch by match ID.
-   const val URI_MATCH_LIST_BY_TOURNAMENT = "/lol/match/${VERSION}/matches/by-tournament-code/{tournamentCode}/ids"// Get match IDs by tournament code.
+   const val URI_IDS_MATCH_LIST_BY_TOURNAMENT = "/lol/match/${VERSION}/matches/by-tournament-code/{tournamentCode}/ids"// Get match IDs by tournament code.
    const val URI_MATCH_BY_ID_BY_TOUNRAMENT = "/lol/match/${VERSION}/matches/{matchId}/by-tournament-code/{tournamentCode}"//Get match by match ID and tournament code
 
 }
