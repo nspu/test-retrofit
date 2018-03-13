@@ -62,7 +62,11 @@ class ParcelableModelsTest {
                 SpellVars::class.java,
                 ChampionMastery::class.java,
                 ChampionInfo::class.java,
-                ChampionListInfo::class.java
+                ChampionListInfo::class.java,
+                LeagueItem::class.java,
+                LeagueList::class.java,
+                LeaguePosition::class.java,
+                MiniSeries::class.java
         )
 
     @Test

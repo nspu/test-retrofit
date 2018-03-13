@@ -29,13 +29,17 @@ object RiotUri {
     const val URI_STATIC_DATA_TARBALL_LINKS = URI_SUFFIX_STATIC_DATA + "tarball-links" // Retrieves full tarball link
     const val URI_STATIC_DATA_VERSIONS = URI_SUFFIX_STATIC_DATA + "versions" // Retrives version data
 
-
-    const val URI_CHAMPION_MASTERY ="/lol/champion-mastery/${VERSION}/"
+    const val URI_CHAMPION_MASTERY = "/lol/champion-mastery/${VERSION}/"
     const val URI_CHAMPION_MASTERIES_BY_SUMMONER = URI_CHAMPION_MASTERY + "champion-masteries/by-summoner/{summonerId}"//Get all champion mastery entries sorted by number of champion points descending,
     const val URI_CHAMPION_MASTERIES_BY_SUMMONER_BY_CHAMPION = URI_CHAMPION_MASTERY + "champion-masteries/by-summoner/{summonerId}/by-champion/{championId}" //Get a champion mastery by player ID and champion ID.
     const val URI_CHAMPION_MASTERY_SCORES_BY_SUMMONER = URI_CHAMPION_MASTERY + "scores/by-summoner/{summonerId}" //Get a player's total champion mastery score, which is the sum of individual champion mastery levels
 
-
     const val URI_CHAMPIONS = "/lol/platform/${VERSION}/champions" //Retrieve all championData.
     const val URI_CHAMPION = "/lol/platform/${VERSION}/champions/{id}" //Retrieve champion by ID.
+
+    const val URI_LEAGUE = "/lol/league/${VERSION}/"
+    const val URI_LEAGUE_CHALLENGER_BY_QUEUE = URI_LEAGUE + "challengerleagues/by-queue/{queue}" //Get the challenger league for given queue.
+    const val URI_LEAGUE_BY_ID =URI_LEAGUE +  "leagues/{leagueId}" //Get league with given ID, including inactive entries.
+    const val URI_LEAGUE_MASTER_BY_QUEUE = URI_LEAGUE + "masterleagues/by-queue/{queue}" //Get the master league for given queue.
+    const val URI_LEAGUE_POSITION_BY_SUMMONER =URI_LEAGUE +  "positions/by-summoner/{summonerId}" //Get league positions in all queues for a given summoner ID
 }
