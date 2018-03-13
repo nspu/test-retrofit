@@ -33,9 +33,9 @@ class StaticDataServiceTest : ServiceTest(){
     @Throws(IOException::class)
     fun shouldGetChampionsData() {
         val body = TestUtils.readTestData("champions.json")
-        val fixture = gson!!.fromJson(body, ChampionList::class.java)
+        val fixture = gson!!.fromJson(body, ChampionListData::class.java)
 
-        val response = TestUtils.getResponseFromModel(fixture, ChampionList::class.java)
+        val response = TestUtils.getResponseFromModel(fixture, ChampionListData::class.java)
         `when`(mockClient!!.execute(isA(Request::class.java))).thenReturn(response)
 
         var options : Map<String, String> = hashMapOf("tags" to  "all", "champListData" to "all")
@@ -47,10 +47,10 @@ class StaticDataServiceTest : ServiceTest(){
     @Test
     @Throws(IOException::class)
     fun shouldGetChampionData() {
-        val body = TestUtils.readTestData("championWukong.json")
-        val fixture = gson!!.fromJson(body, Champion::class.java)
+        val body = TestUtils.readTestData("champion-wukong.json")
+        val fixture = gson!!.fromJson(body, ChampionData::class.java)
 
-        val response = TestUtils.getResponseFromModel(fixture, Champion::class.java)
+        val response = TestUtils.getResponseFromModel(fixture, ChampionData::class.java)
         `when`(mockClient!!.execute(argThat(MatchesId(fixture.id!!)))).thenReturn(response)
 
         var options : Map<String, String> = hashMapOf("tags" to  "all", "champData" to "all")
@@ -77,7 +77,7 @@ class StaticDataServiceTest : ServiceTest(){
     @Test
     @Throws(IOException::class)
     fun shouldGetItemData() {
-        val body = TestUtils.readTestData("itemWardensMail.json")
+        val body = TestUtils.readTestData("item-wardens-mail.json")
         val fixture = gson!!.fromJson(body, Item::class.java)
 
         val response = TestUtils.getResponseFromModel(fixture, Item::class.java)

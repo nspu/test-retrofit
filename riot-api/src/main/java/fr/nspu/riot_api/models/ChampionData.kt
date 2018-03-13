@@ -6,8 +6,8 @@ import android.os.Parcelable
 /**
  * Created by nspu on 09/03/18.
  */
-data class Champion(
-        var info: ChampionInfos? = null,
+data class ChampionData(
+        var info: ChampionDataInfo? = null,
         var enemytips: List<String>? = null,
         var stats: ChampionStats? = null,
         var name: String? = null,
@@ -25,7 +25,7 @@ data class Champion(
         var blurb: String? = null,
         var spells: List<ChampionSpell>? = null) : Parcelable {
     constructor(source: Parcel) : this(
-            source.readParcelable<ChampionInfos>(ChampionInfos::class.java.classLoader),
+            source.readParcelable<ChampionDataInfo>(ChampionDataInfo::class.java.classLoader),
             source.createStringArrayList(),
             source.readParcelable<ChampionStats>(ChampionStats::class.java.classLoader),
             source.readString(),
@@ -68,9 +68,9 @@ data class Champion(
 
     companion object {
         @JvmField
-        val CREATOR: Parcelable.Creator<Champion> = object : Parcelable.Creator<Champion> {
-            override fun createFromParcel(source: Parcel): Champion = Champion(source)
-            override fun newArray(size: Int): Array<Champion?> = arrayOfNulls(size)
+        val CREATOR: Parcelable.Creator<ChampionData> = object : Parcelable.Creator<ChampionData> {
+            override fun createFromParcel(source: Parcel): ChampionData = ChampionData(source)
+            override fun newArray(size: Int): Array<ChampionData?> = arrayOfNulls(size)
         }
     }
 }

@@ -1,10 +1,7 @@
 package fr.nspu.riot_api
 
-import fr.nspu.riot_api.models.ChampionList
 import fr.nspu.riot_api.models.ChampionMastery
 import fr.nspu.riot_api.services.ChampionMasteryService
-import fr.nspu.riot_api.services.StaticDataService
-import org.junit.Assert
 import org.junit.Test
 import org.mockito.ArgumentMatcher
 import org.mockito.Matchers
@@ -13,7 +10,6 @@ import org.mockito.Mockito.`when`
 import retrofit.RestAdapter
 import retrofit.client.Request
 import retrofit.client.Response
-import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
@@ -21,7 +17,7 @@ import java.net.URLEncoder
 /**
  * Created by nspu on 12/03/18.
  */
-class ChampionMasteryServiceTest : ServiceTest() {
+class ChampionDataMasteryServiceTest : ServiceTest() {
     val SUMMONER_ID = 48509080L
 
     var service: ChampionMasteryService? = null

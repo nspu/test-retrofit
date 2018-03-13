@@ -5,6 +5,7 @@ package fr.nspu.riot_api
  */
 
 import fr.nspu.riot_api.services.ChampionMasteryService
+import fr.nspu.riot_api.services.ChampionService
 import fr.nspu.riot_api.services.StaticDataService
 import retrofit.RequestInterceptor
 import retrofit.RestAdapter
@@ -27,6 +28,7 @@ class RiotApi(httpExecutor: Executor, callbackExecutor: Executor, private var ac
 
     val staticDataService: StaticDataService
     val championMasteryService: ChampionMasteryService
+    val championService : ChampionService
 
     init {
         val restAdapter = RestAdapter.Builder()
@@ -37,6 +39,7 @@ class RiotApi(httpExecutor: Executor, callbackExecutor: Executor, private var ac
                 .build()
         staticDataService = restAdapter.create(StaticDataService::class.java)
         championMasteryService = restAdapter.create(ChampionMasteryService::class.java)
+        championService = restAdapter.create(ChampionService::class.java)
     }
 
     /**

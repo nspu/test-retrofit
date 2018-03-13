@@ -11,7 +11,7 @@ import retrofit.http.QueryMap
  */
 interface ChampionMasteryService{
     /**
-     * Champion masteries by summoner
+     * ChampionData masteries by summoner
      */
     @GET(RiotUri.URI_CHAMPION_MASTERIES_BY_SUMMONER)
     fun getChampionMasteriesBySummoner(@Path("summonerId") summonerId: Long): List<ChampionMastery>?
@@ -26,7 +26,7 @@ interface ChampionMasteryService{
     fun getChampionMasteriesBySummoner(@Path("summonerId") summonerId: Long, @QueryMap options: Map<String, String>, callback: Callback<List<ChampionMastery>>)
 
     /**
-     * Champion masteries by summoner by champion
+     * ChampionData masteries by summoner by champion
      */
     @GET(RiotUri.URI_CHAMPION_MASTERIES_BY_SUMMONER_BY_CHAMPION)
     fun getChampionMasteriesBySummonerByChampion(@Path("summonerId") summonerId: Long, @Path("championId") championId: Long): ChampionMastery?

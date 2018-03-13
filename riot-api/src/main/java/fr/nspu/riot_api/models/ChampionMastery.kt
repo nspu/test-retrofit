@@ -8,9 +8,9 @@ import android.os.Parcelable
  */
 class ChampionMastery(
         var chestGranted: Boolean? = null,    //Is chest granted for this champion or not in current season.
-        var championLevel: Int? = null,    //Champion level for specified player and champion combination.
+        var championLevel: Int? = null,    //ChampionData level for specified player and champion combination.
         var championPoints: Int? = null, //	Total number of champion points for this player and champion combination - they are used to determine championLevel.
-        var championId: Long? = null, //	Champion ID for this entry.
+        var championId: Long? = null, //	ChampionData ID for this entry.
         var playerId: Long? = null, //	Player ID for this entry.
         var championPointsUntilNextLevel: Int? = null, //	long 	Number of po:Int? = null,s needed to achieve next level. Zero if player reached maximum champion level for this champion.
         var tokensEarned: Int? = null,// 	The token earned for this champion to levelup.

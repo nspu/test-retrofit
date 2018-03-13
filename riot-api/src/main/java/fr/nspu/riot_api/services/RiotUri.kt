@@ -7,8 +7,8 @@ object RiotUri {
     const val VERSION = "v3"
 
     const val URI_SUFFIX_STATIC_DATA = "/lol/static-data/${VERSION}/"
-    const val URI_STATIC_DATA_CHAMPIONS = URI_SUFFIX_STATIC_DATA + "champions" //Retrieves champion list
-    const val URI_STATIC_DATA_CHAMPION = URI_SUFFIX_STATIC_DATA + "champions/{id}" //Retrieves champion by ID
+    const val URI_STATIC_DATA_CHAMPIONS = URI_SUFFIX_STATIC_DATA + "championData" //Retrieves champion list
+    const val URI_STATIC_DATA_CHAMPION = URI_SUFFIX_STATIC_DATA + "championData/{id}" //Retrieves champion by ID
     const val URI_STATIC_DATA_ITEMS = URI_SUFFIX_STATIC_DATA + "items" //Retrieves item list
     const val URI_STATIC_DATA_ITEM = URI_SUFFIX_STATIC_DATA + "items/{id}" //Retrieves item by ID
     const val URI_STATIC_DATA_LANGUAGE_STRING = URI_SUFFIX_STATIC_DATA + "language-strings" //Retrieve language strings data
@@ -30,9 +30,12 @@ object RiotUri {
     const val URI_STATIC_DATA_VERSIONS = URI_SUFFIX_STATIC_DATA + "versions" // Retrives version data
 
 
-
     const val URI_CHAMPION_MASTERY ="/lol/champion-mastery/${VERSION}/"
     const val URI_CHAMPION_MASTERIES_BY_SUMMONER = URI_CHAMPION_MASTERY + "champion-masteries/by-summoner/{summonerId}"//Get all champion mastery entries sorted by number of champion points descending,
     const val URI_CHAMPION_MASTERIES_BY_SUMMONER_BY_CHAMPION = URI_CHAMPION_MASTERY + "champion-masteries/by-summoner/{summonerId}/by-champion/{championId}" //Get a champion mastery by player ID and champion ID.
     const val URI_CHAMPION_MASTERY_SCORES_BY_SUMMONER = URI_CHAMPION_MASTERY + "scores/by-summoner/{summonerId}" //Get a player's total champion mastery score, which is the sum of individual champion mastery levels
+
+
+    const val URI_CHAMPIONS = "/lol/platform/${VERSION}/champions" //Retrieve all championData.
+    const val URI_CHAMPION = "/lol/platform/${VERSION}/champions/{id}" //Retrieve champion by ID.
 }

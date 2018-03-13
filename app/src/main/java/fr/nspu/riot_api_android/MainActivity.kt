@@ -3,7 +3,6 @@ package fr.nspu.riot_api_android
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import fr.nspu.riot_api.RiotApi
-import fr.nspu.riot_api.models.Champion
 import fr.nspu.riot_api.models.ChampionMastery
 
 

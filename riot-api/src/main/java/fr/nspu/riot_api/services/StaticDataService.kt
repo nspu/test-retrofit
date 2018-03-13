@@ -14,31 +14,31 @@ interface StaticDataService {
      * Champions
      */
     @GET(RiotUri.URI_STATIC_DATA_CHAMPIONS)
-    fun getChampions(): ChampionList?
+    fun getChampions(): ChampionListData?
 
     @GET(RiotUri.URI_STATIC_DATA_CHAMPIONS)
-    fun getChampions(@QueryMap options: Map<String, String>): ChampionList?
+    fun getChampions(@QueryMap options: Map<String, String>): ChampionListData?
 
     @GET(RiotUri.URI_STATIC_DATA_CHAMPIONS)
-    fun getChampions(callback: Callback<ChampionList>)
+    fun getChampions(callback: Callback<ChampionListData>)
 
     @GET(RiotUri.URI_STATIC_DATA_CHAMPIONS)
-    fun getChampions(@QueryMap options: Map<String, String>, callback: Callback<ChampionList>)
+    fun getChampions(@QueryMap options: Map<String, String>, callback: Callback<ChampionListData>)
 
     /**
-     * Champion
+     * ChampionData
      */
     @GET(RiotUri.URI_STATIC_DATA_CHAMPION)
-    fun getChampion(@Path("id") championId: Int): Champion?
+    fun getChampion(@Path("id") championId: Int): ChampionData?
 
     @GET(RiotUri.URI_STATIC_DATA_CHAMPION)
-    fun getChampion(@Path("id") championId: Int, @QueryMap options: Map<String, String>): Champion?
+    fun getChampion(@Path("id") championId: Int, @QueryMap options: Map<String, String>): ChampionData?
 
     @GET(RiotUri.URI_STATIC_DATA_CHAMPION)
-    fun getChampion(@Path("id") championId: Int, callback: Callback<Champion>)
+    fun getChampion(@Path("id") championId: Int, callback: Callback<ChampionData>)
 
     @GET(RiotUri.URI_STATIC_DATA_CHAMPION)
-    fun getChampion(@Path("id") championId: Int, @QueryMap options: Map<String, String>, callback: Callback<Champion>)
+    fun getChampion(@Path("id") championId: Int, @QueryMap options: Map<String, String>, callback: Callback<ChampionData>)
 
     /**
      * Items
@@ -325,6 +325,8 @@ interface StaticDataService {
 
     @GET(RiotUri.URI_STATIC_DATA_VERSIONS)
     fun getVersions(@QueryMap options: Map<String, String>, callback: Callback<List<String>>)
+
+
 
 
 }

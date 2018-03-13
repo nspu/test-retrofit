@@ -22,9 +22,9 @@ class ParcelableModelsTest {
     internal val modelClasses: ArrayList<Class<out Parcelable>>
         get() = Lists.newArrayList(
                 Image::class.java,
-                ChampionList::class.java,
+                ChampionListData::class.java,
                 ChampionSpellVar::class.java,
-                ChampionInfos::class.java,
+                ChampionDataInfo::class.java,
                 LevelTip::class.java,
                 ChampionPassive::class.java,
                 ChampionRecommandedBlockItem::class.java,
@@ -32,7 +32,7 @@ class ParcelableModelsTest {
                 ChampionSkin::class.java,
                 ChampionSpell::class.java,
                 ChampionStats::class.java,
-                Champion::class.java,
+                ChampionData::class.java,
                 Item::class.java,
                 ItemGold::class.java,
                 ItemGroup::class.java,
@@ -60,7 +60,9 @@ class ParcelableModelsTest {
                 SummonerSpell::class.java,
                 SummonerSpellList::class.java,
                 SpellVars::class.java,
-                ChampionMastery::class.java
+                ChampionMastery::class.java,
+                ChampionInfo::class.java,
+                ChampionListInfo::class.java
         )
 
     @Test
@@ -106,8 +108,8 @@ class ParcelableModelsTest {
 
     @Test
     fun championAreGoodParcelableCitizen() {
-        val body = TestUtils.readTestData("championWukong.json")
-        val fixture = GsonBuilder().create().fromJson(body, Champion::class.java)
+        val body = TestUtils.readTestData("champion-wukong.json")
+        val fixture = GsonBuilder().create().fromJson(body, ChampionData::class.java)
         testSingleParcelable(fixture)
     }
 

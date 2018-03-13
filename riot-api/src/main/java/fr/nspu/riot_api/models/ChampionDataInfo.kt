@@ -6,7 +6,7 @@ import android.os.Parcelable
 /**
  * Created by nspu on 09/03/18.
  */
-data class ChampionInfos(
+data class ChampionDataInfo(
          var difficulty: Int? = null,
         var attack: Int? = null,
         var defense: Int? = null,
@@ -30,12 +30,12 @@ data class ChampionInfos(
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<ChampionInfos> {
-        override fun createFromParcel(parcel: Parcel): ChampionInfos {
-            return ChampionInfos(parcel)
+    companion object CREATOR : Parcelable.Creator<ChampionDataInfo> {
+        override fun createFromParcel(parcel: Parcel): ChampionDataInfo {
+            return ChampionDataInfo(parcel)
         }
 
-        override fun newArray(size: Int): Array<ChampionInfos?> {
+        override fun newArray(size: Int): Array<ChampionDataInfo?> {
             return arrayOfNulls(size)
         }
     }
