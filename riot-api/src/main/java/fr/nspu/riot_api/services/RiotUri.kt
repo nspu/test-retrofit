@@ -52,4 +52,7 @@ object RiotUri {
    const val URI_IDS_MATCH_LIST_BY_TOURNAMENT = "/lol/match/${VERSION}/matches/by-tournament-code/{tournamentCode}/ids"// Get match IDs by tournament code.
    const val URI_MATCH_BY_ID_BY_TOUNRAMENT = "/lol/match/${VERSION}/matches/{matchId}/by-tournament-code/{tournamentCode}"//Get match by match ID and tournament code
 
+    const val URI_SPECTATOR = "/lol/spectator/${VERSION}/"
+    const val URI_SPECTATOR_ACTIVE_GAMES_BY_SUMMONER_ID =  URI_SPECTATOR + "active-games/by-summoner/{summonerId}" //Get current game information for the given summoner ID.
+    const val URI_SPECTATOR_FEATURED_GAME = URI_SPECTATOR + "featured-games"//Get list of featured games
 }

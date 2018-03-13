@@ -87,7 +87,14 @@ class ParcelableModelsTest {
                 MatchFrame::class.java,
                 MatchParticipantFrame::class.java,
                 MatchPosition::class.java,
-                MatchTimeline::class.java
+                MatchTimeline::class.java,
+                SpectatorBannedChampion::class.java,
+                SpectatorCurrentGameParticipant::class.java,
+                SpectatorGameCustomization::class.java,
+                SpectatorGameInfo::class.java,
+                SpectatorObserver::class.java,
+                SpectatorPerks::class.java,
+                SpectatorFeaturedGames::class.java
         )
 
     @Test
