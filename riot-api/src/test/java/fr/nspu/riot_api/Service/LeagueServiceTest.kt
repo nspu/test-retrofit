@@ -5,7 +5,7 @@ import fr.nspu.riot_api.RiotApi
 import fr.nspu.riot_api.ServiceTest
 import fr.nspu.riot_api.TestUtils
 import fr.nspu.riot_api.models.LeagueList
-import fr.nspu.riot_api.services.LeagueService
+import fr.nspu.riot_api.riot_services.LeagueService
 import org.junit.Test
 import org.mockito.Matchers
 import org.mockito.Mockito
@@ -20,7 +20,7 @@ class LeagueServiceTest: ServiceTest() {
     override fun implementService() {
         val restAdapter = RestAdapter.Builder()
                 .setClient(mockClient!!)
-                .setEndpoint(RiotApi.RIOT_API_ENDPOINT)
+                .setEndpoint("https://na1.api.riotgames.com")
                 .build()
         service= restAdapter.create(LeagueService::class.java)
     }

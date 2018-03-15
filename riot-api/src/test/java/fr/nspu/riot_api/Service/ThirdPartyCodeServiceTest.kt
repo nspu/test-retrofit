@@ -3,7 +3,7 @@ package fr.nspu.riot_api.Service
 import fr.nspu.riot_api.RiotApi
 import fr.nspu.riot_api.ServiceTest
 import fr.nspu.riot_api.TestUtils
-import fr.nspu.riot_api.services.ThirdPartyCodeService
+import fr.nspu.riot_api.riot_services.ThirdPartyCodeService
 import org.junit.Test
 import org.mockito.Matchers
 import org.mockito.Mockito
@@ -19,7 +19,7 @@ class ThirdPartyCodeServiceTest: ServiceTest() {
     override fun implementService() {
         val restAdapter = RestAdapter.Builder()
                 .setClient(mockClient!!)
-                .setEndpoint(RiotApi.RIOT_API_ENDPOINT)
+                .setEndpoint("https://na1.api.riotgames.com")
                 .build()
         service  = restAdapter.create(ThirdPartyCodeService::class.java)
     }

@@ -1,4 +1,4 @@
-package fr.nspu.riot_api.services
+package fr.nspu.riot_api.riot_services
 
 /**
  * Created by nspu on 11/03/18.

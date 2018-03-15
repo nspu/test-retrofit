@@ -1,16 +1,17 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 version=VERSION
 android {
 
 
-    compileSdkVersion 26
+    compileSdkVersion 27
 
 
 
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
 
@@ -36,11 +37,17 @@ dependencies {
 
     compile('com.squareup.retrofit:retrofit:1.9.0')
 
-    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:appcompat-v7:27.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    //database
+    compile "android.arch.persistence.room:runtime:$ARCH_ROOM_VERSION"
+    annotationProcessor "android.arch.persistence.room:compiler:$ARCH_ROOM_VERSION"
+    kapt "android.arch.persistence.room:compiler:$ARCH_ROOM_VERSION"
+    implementation "android.arch.persistence.room:runtime:$ARCH_ROOM_VERSION"
 
     //test
     testCompile("org.robolectric:robolectric:${ROBOLECTRIC_VERSION}") {

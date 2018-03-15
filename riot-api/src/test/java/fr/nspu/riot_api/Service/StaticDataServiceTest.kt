@@ -4,7 +4,7 @@ import fr.nspu.riot_api.RiotApi
 import fr.nspu.riot_api.ServiceTest
 import fr.nspu.riot_api.TestUtils
 import fr.nspu.riot_api.models.*
-import fr.nspu.riot_api.services.StaticDataService
+import fr.nspu.riot_api.riot_services.StaticDataService
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Matchers.argThat
@@ -26,7 +26,7 @@ class StaticDataServiceTest : ServiceTest(){
     override fun implementService() {
                 val restAdapter = RestAdapter.Builder()
                 .setClient(mockClient!!)
-                .setEndpoint(RiotApi.RIOT_API_ENDPOINT)
+                .setEndpoint("https://na1.api.riotgames.com")
                 .build()
         service  = restAdapter.create(StaticDataService::class.java)
     }
@@ -278,8 +278,8 @@ class StaticDataServiceTest : ServiceTest(){
 
         var options: Map<String, String> = hashMapOf("tags" to "all", "spellListData" to "all")
 
-        val runes = service!!.getSummonerSpells(options)
-        this.compareJSONWithoutNulls(body, runes)
+        val summonerSpells = service!!.getSummonerSpells(options)
+        this.compareJSONWithoutNulls(body, summonerSpells)
     }
 
     @Test
@@ -319,7 +319,7 @@ class StaticDataServiceTest : ServiceTest(){
         val response = TestUtils.getResponseFromModel(fixture, List::class.java)
         `when`(mockClient!!.execute(isA(Request::class.java))).thenReturn(response)
 
-        val tarballLinks = service!!.getVersions()
-        this.compareJSONWithoutNulls(body, tarballLinks)
+        val versions = service!!.getVersions()
+        this.compareJSONWithoutNulls(body, versions)
     }
 }

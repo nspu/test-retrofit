@@ -1,4 +1,4 @@
-package fr.nspu.riot_api.services
+package fr.nspu.riot_api.riot_services
 
 import fr.nspu.riot_api.models.*
 import retrofit.Callback

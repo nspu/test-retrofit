@@ -5,7 +5,7 @@ import fr.nspu.riot_api.ServiceTest
 import fr.nspu.riot_api.TestUtils
 import fr.nspu.riot_api.models.ChampionInfo
 import fr.nspu.riot_api.models.ChampionListInfo
-import fr.nspu.riot_api.services.ChampionService
+import fr.nspu.riot_api.riot_services.ChampionService
 import org.junit.Test
 import org.mockito.Matchers
 import org.mockito.Mockito
@@ -21,7 +21,7 @@ class ChampionServiceTest : ServiceTest()  {
     override fun implementService() {
         val restAdapter = RestAdapter.Builder()
                 .setClient(mockClient!!)
-                .setEndpoint(RiotApi.RIOT_API_ENDPOINT)
+                .setEndpoint("https://na1.api.riotgames.com")
                 .build()
         service= restAdapter.create(ChampionService::class.java)
     }

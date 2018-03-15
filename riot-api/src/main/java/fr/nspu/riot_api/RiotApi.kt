@@ -4,7 +4,7 @@ package fr.nspu.riot_api
  * Created by nspu on 09/03/18.
  */
 
-import fr.nspu.riot_api.services.*
+import fr.nspu.riot_api.riot_services.*
 import retrofit.RequestInterceptor
 import retrofit.RestAdapter
 import retrofit.android.MainThreadExecutor
@@ -22,7 +22,12 @@ import java.util.concurrent.Executors
  *   @param callbackExecutor executor for callbacks. If null is passed than the same
  * thread that created the instance is used.
  */
-class RiotApi(httpExecutor: Executor, callbackExecutor: Executor, private var accessToken: String) {
+class RiotApi(
+        httpExecutor: Executor,
+        callbackExecutor: Executor,
+        var endPoint:String,
+        private var accessToken: String
+) {
 
     val staticDataService: StaticDataService
     val championMasteryService: ChampionMasteryService
@@ -38,7 +43,7 @@ class RiotApi(httpExecutor: Executor, callbackExecutor: Executor, private var ac
         val restAdapter = RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.BASIC)
                 .setExecutors(httpExecutor, callbackExecutor)
-                .setEndpoint(RIOT_API_ENDPOINT)
+                .setEndpoint(endPoint)
                 .setRequestInterceptor(ApiAuthenticator())
                 .build()
         staticDataService = restAdapter.create(StaticDataService::class.java)
@@ -56,7 +61,12 @@ class RiotApi(httpExecutor: Executor, callbackExecutor: Executor, private var ac
      *  New instance of RiotApi,
      *  with single thread executor both for http and callbacks.
      */
-    constructor(accessToken: String) : this(Executors.newSingleThreadExecutor(), MainThreadExecutor(), accessToken)
+    constructor(endPoint:String, accessToken: String) : this(
+            Executors.newSingleThreadExecutor(),
+            MainThreadExecutor(),
+            endPoint,
+            accessToken
+    )
 
     /**
      * The request interceptor that will add the header with OAuth
@@ -67,14 +77,5 @@ class RiotApi(httpExecutor: Executor, callbackExecutor: Executor, private var ac
             request.addHeader("X-Riot-Token", accessToken)
         }
 
-    }
-
-    companion object {
-
-        /**
-         * Main Riot API endpoint
-         * Refer back to https://developer.riotgames.com/regional-endpoints.html to find your endpoint-country
-         */
-        const val RIOT_API_ENDPOINT = "https://na1.api.riotgames.com"
     }
 }
