@@ -1,12 +1,10 @@
 package fr.nspu.riot_api.Service
 
 import fr.nspu.riot_api.DataDragonApi
-import fr.nspu.riot_api.ModeQueue
 import fr.nspu.riot_api.ServiceTest
 import fr.nspu.riot_api.TestUtils
 import fr.nspu.riot_api.data_dragon_services.DataDragonService
 import fr.nspu.riot_api.models.*
-import fr.nspu.riot_api.riot_services.LeagueService
 import org.junit.Test
 import org.mockito.Matchers
 import org.mockito.Mockito

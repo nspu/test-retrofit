@@ -38,16 +38,10 @@ dependencies {
     compile('com.squareup.retrofit:retrofit:1.9.0')
 
     implementation 'com.android.support:appcompat-v7:27.1.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    //database
-    compile "android.arch.persistence.room:runtime:$ARCH_ROOM_VERSION"
-    annotationProcessor "android.arch.persistence.room:compiler:$ARCH_ROOM_VERSION"
-    kapt "android.arch.persistence.room:compiler:$ARCH_ROOM_VERSION"
-    implementation "android.arch.persistence.room:runtime:$ARCH_ROOM_VERSION"
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    compile 'com.jakewharton.retrofit:retrofit1-okhttp3-client:1.0.2'
 
     //test
     testCompile("org.robolectric:robolectric:${ROBOLECTRIC_VERSION}") {
@@ -59,9 +53,10 @@ dependencies {
     testCompile "junit:junit:${JUNIT_VERSION}"
     testCompile "org.easytesting:fest-assert-core:${FEST_ASSERT_CORE_VERSION}"
     testCompile "org.mockito:mockito-core:${MOCKITO_CORE_VERSION}"
-
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     androidTestCompile 'com.android.support.test:runner:0.2'
-    androidTestCompile 'com.squareup.okhttp:okhttp:2.2.0'
 }
 repositories {
     mavenCentral()
