@@ -3,13 +3,9 @@ package fr.nspu.riot_api
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonParser
-import fr.nspu.riot_api.models.*
-import fr.nspu.riot_api.services.StaticDataService
 import org.junit.Assert
 import org.junit.Before
-import org.junit.Test
 import org.mockito.ArgumentMatcher
-import org.mockito.Matchers
 import org.mockito.Mockito
 import retrofit.client.Client
 import retrofit.client.Request

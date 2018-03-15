@@ -7,10 +7,10 @@ import android.os.Parcelable
  * Created by nspu on 13/03/18.
  */
 data class Summoner(
-        var profileIconId: Int? = null,// 	ID of the summoner icon associated with the summoner.
+        private var profileIconId: Int? = null,// 	ID of the summoner icon associated with the summoner.
         var name: String? = null,// 	Summoner name.
-        var summonerLevel: Long? = null,// 	Summoner level associated with the summoner.
-        var revisionDate: Long? = null,// 	Date summoner was last modified specified as epoch milliseconds. The following events will update this timestamp: profile icon change, playing the tutorial or advanced tutorial, finishing a game, summoner name change
+        private var summonerLevel: Long? = null,// 	Summoner level associated with the summoner.
+        private var revisionDate: Long? = null,// 	Date summoner was last modified specified as epoch milliseconds. The following events will update this timestamp: profile icon change, playing the tutorial or advanced tutorial, finishing a game, summoner name change
         var id: Long? = null,// 	Summoner ID.
         var accountId: Long? = null// 	Account ID.
 ) : Parcelable {

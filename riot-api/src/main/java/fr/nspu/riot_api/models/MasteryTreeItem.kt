@@ -7,8 +7,8 @@ import android.os.Parcelable
  * Created by nspu on 11/03/18.
  */
 data class MasteryTreeItem(
-        var masteryId: Int? = null,
-        var prereq: String? = null
+        private var masteryId: Int? = null,
+        private var prereq: String? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(
             source.readValue(Int::class.java.classLoader) as Int?,

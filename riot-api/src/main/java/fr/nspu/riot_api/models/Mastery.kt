@@ -7,10 +7,10 @@ import android.os.Parcelable
  * Created by nspu on 11/03/18.
  */
 data class Mastery(
-        var prereq: String? = null,
-        var masteryTree: String? = null,    //(Legal values: Cunning, Ferocity, Resolve, Defense, Offense, Utility)
+        private var prereq: String? = null,
+        private var masteryTree: String? = null,    //(Legal values: Cunning, Ferocity, Resolve, Defense, Offense, Utility)
         var name: String? = null,
-        var ranks: Int? = null,
+        private var ranks: Int? = null,
         var image: Image? = null,
         var sanitizedDescription: List<String>? = null,
         var id: Int? = null,

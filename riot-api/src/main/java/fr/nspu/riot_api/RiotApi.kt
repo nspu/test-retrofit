@@ -64,7 +64,7 @@ class RiotApi(httpExecutor: Executor, callbackExecutor: Executor, private var ac
      */
     private inner class ApiAuthenticator : RequestInterceptor {
         override fun intercept(request: RequestInterceptor.RequestFacade){
-            request.addHeader("X-Riot-Token", accessToken!!)
+            request.addHeader("X-Riot-Token", accessToken)
         }
 
     }

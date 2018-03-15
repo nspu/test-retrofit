@@ -7,14 +7,14 @@ import android.os.Parcelable
  * Created by nspu on 13/03/18.
  */
 data class MatchPlayer(
-        var currentPlatformId: String? = null,
-        var summonerName: String? = null,
-        var matchHistoryUri: String? = null,
-        var platformId: String? = null,
-        var currentAccountId: Long? = null,
-        var profileIcon: Int? = null,
+        private var currentPlatformId: String? = null,
+        private var summonerName: String? = null,
+        private var matchHistoryUri: String? = null,
+        private var platformId: String? = null,
+        private var currentAccountId: Long? = null,
+        private var profileIcon: Int? = null,
         var summonerId: Long? = null,
-        var accountId: Long? = null
+        private var accountId: Long? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(
             source.readString(),

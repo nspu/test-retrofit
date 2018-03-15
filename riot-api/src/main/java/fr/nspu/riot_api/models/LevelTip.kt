@@ -8,7 +8,7 @@ import android.os.Parcelable
  */
 
 data class LevelTip(var effect: List<String>? = null,
-                    var label: List<String>? = null) : Parcelable {
+                    private var label: List<String>? = null) : Parcelable {
     constructor(source: Parcel) : this(
             source.createStringArrayList(),
             source.createStringArrayList()

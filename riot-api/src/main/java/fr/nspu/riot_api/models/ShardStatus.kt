@@ -8,11 +8,11 @@ import android.os.Parcelable
  */
 data class ShardStatus(
         var name: String? = null,
-        var region_tag: String? = null,
-        var hostname: String? = null,
+        private var region_tag: String? = null,
+        private var hostname: String? = null,
         var services: List<Service>? = null,
-        var slug: String? = null,
-        var locales: List<String>? = null
+        private var slug: String? = null,
+        private var locales: List<String>? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(
             source.readString(),

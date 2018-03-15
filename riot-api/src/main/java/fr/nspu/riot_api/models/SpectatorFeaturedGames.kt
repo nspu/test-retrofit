@@ -7,8 +7,8 @@ import android.os.Parcelable
  * Created by nspu on 13/03/18.
  */
 data class SpectatorFeaturedGames(
-        var clientRefreshInterval: Long? = null,    //The suggested interval to wait before requesting FeaturedGames again
-        var gameList: List<SpectatorGameInfo>? = null    //The list of featured games
+        private var clientRefreshInterval: Long? = null,    //The suggested interval to wait before requesting FeaturedGames again
+        private var gameList: List<SpectatorGameInfo>? = null    //The list of featured games
 ) : Parcelable {
     constructor(source: Parcel) : this(
             source.readValue(Long::class.java.classLoader) as Long?,

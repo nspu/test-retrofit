@@ -7,8 +7,8 @@ import android.os.Parcelable
  * Created by nspu on 13/03/18.
  */
 data class MatchTimeline(
-        var frames: List<MatchFrame>? = null,
-        var frameInterval: Long? = null
+        private var frames: List<MatchFrame>? = null,
+        private var frameInterval: Long? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(
             source.createTypedArrayList(MatchFrame.CREATOR),

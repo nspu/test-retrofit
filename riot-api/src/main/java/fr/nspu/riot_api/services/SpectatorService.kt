@@ -2,8 +2,6 @@ package fr.nspu.riot_api.services
 
 import fr.nspu.riot_api.models.SpectatorFeaturedGames
 import fr.nspu.riot_api.models.SpectatorGameInfo
-import fr.nspu.riot_api.models.SummonerSpell
-import fr.nspu.riot_api.models.SummonerSpellList
 import retrofit.Callback
 import retrofit.http.GET
 import retrofit.http.Path

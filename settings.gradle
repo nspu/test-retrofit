@@ -1,1 +1,1 @@
-include ':app', ':riot-api'
+include ':sample', ':riot-api'

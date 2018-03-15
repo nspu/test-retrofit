@@ -6,8 +6,8 @@ import android.os.Parcelable
 /**
  * Created by nspu on 09/03/18.
  */
-data class ChampionRecommandedBlockItem(var count: Int? = null,
-                                   var id: Int? = null) : Parcelable {
+data class ChampionRecommandedBlockItem(private var count: Int? = null,
+                                        var id: Int? = null) : Parcelable {
     constructor(source: Parcel) : this(
             source.readValue(Int::class.java.classLoader) as Int?,
             source.readValue(Int::class.java.classLoader) as Int?

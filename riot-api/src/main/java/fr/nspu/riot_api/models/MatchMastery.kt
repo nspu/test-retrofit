@@ -7,7 +7,7 @@ import android.os.Parcelable
  * Created by nspu on 13/03/18.
  */
 data class MatchMastery(
-        var masteryId: Int? = null,
+        private var masteryId: Int? = null,
         var rank: Int? = null
         ) : Parcelable {
     constructor(source: Parcel) : this(

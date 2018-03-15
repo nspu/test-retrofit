@@ -7,17 +7,16 @@ import android.os.Parcelable
  * Created by nspu on 09/03/18.
  */
 data class ChampionDataInfo(
-         var difficulty: Int? = null,
+        private var difficulty: Int? = null,
         var attack: Int? = null,
-        var defense: Int? = null,
+        private var defense: Int? = null,
         var magic: Int? = null
         ) : Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readValue(Int::class.java.classLoader) as? Int,
             parcel.readValue(Int::class.java.classLoader) as? Int,
             parcel.readValue(Int::class.java.classLoader) as? Int,
-            parcel.readValue(Int::class.java.classLoader) as? Int) {
-    }
+            parcel.readValue(Int::class.java.classLoader) as? Int)
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeValue(difficulty)

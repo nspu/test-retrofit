@@ -7,7 +7,7 @@ import android.os.Parcelable
  * Created by nspu on 09/03/18.
  */
 data class ChampionSkin(
-        var num: Int? = null,
+        private var num: Int? = null,
         var name: String? = null,
         var id: Int? = null
 ) : Parcelable {

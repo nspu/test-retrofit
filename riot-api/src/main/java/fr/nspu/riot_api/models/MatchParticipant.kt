@@ -8,14 +8,14 @@ import android.os.Parcelable
  */
 data class MatchParticipant(
         var stats: MatchParticipantStats? = null,
-        var participantId: Int? = null,
+        private var participantId: Int? = null,
         var runes: List<MatchRune>? = null,
-        var timeline: MatchParticipantTimeline? = null,
-        var teamId: Int? = null,
-        var spell2Id: Int? = null,
-        var masteries: List<MatchMastery>? = null,
-        var highestAchievedSeasonTier: String? = null,
-        var spell1Id: Int? = null,
+        private var timeline: MatchParticipantTimeline? = null,
+        private var teamId: Int? = null,
+        private var spell2Id: Int? = null,
+        private var masteries: List<MatchMastery>? = null,
+        private var highestAchievedSeasonTier: String? = null,
+        private var spell1Id: Int? = null,
         var championId: Int? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(

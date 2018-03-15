@@ -7,7 +7,7 @@ import android.os.Parcelable
  * Created by nspu on 11/03/18.
  */
 data class MasteryTreeList(
-        var masteryTreeItems: List<MasteryTreeItem>? = null
+        private var masteryTreeItems: List<MasteryTreeItem>? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(
             source.createTypedArrayList(MasteryTreeItem.CREATOR)

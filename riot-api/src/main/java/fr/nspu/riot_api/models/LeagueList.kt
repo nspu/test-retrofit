@@ -8,8 +8,8 @@ import android.os.Parcelable
  */
 data class LeagueList(
         var leagueId: String? = null,
-        var tier: String? = null,
-        var entries: List<LeagueItem>? = null,
+        private var tier: String? = null,
+        private var entries: List<LeagueItem>? = null,
         var queue: String? = null,
         var name: String? = null
 ) : Parcelable {

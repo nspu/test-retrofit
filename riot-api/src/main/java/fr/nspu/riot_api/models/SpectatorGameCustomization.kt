@@ -7,8 +7,8 @@ import android.os.Parcelable
  * Created by nspu on 13/03/18.
  */
 data class SpectatorGameCustomization(
-        var category: String? = null,// 	Category identifier for Game Customization
-        var content: String? = null// 	Game Customization content
+        private var category: String? = null,// 	Category identifier for Game Customization
+        private var content: String? = null// 	Game Customization content
 ) : Parcelable {
     constructor(source: Parcel) : this(
             source.readString(),

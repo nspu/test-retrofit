@@ -9,8 +9,8 @@ import android.os.Parcelable
 data class ItemList(
         var data: Map<String, Item>? = null,
         var version: String? = null,
-        var tree: List<ItemTree>? = null,
-        var groups: List<ItemGroup>? = null,
+        private var tree: List<ItemTree>? = null,
+        private var groups: List<ItemGroup>? = null,
         var type: String? = null) : Parcelable {
     constructor(source: Parcel) : this(
             hashMapOf<String, Item>().apply { source.readMap(this, Map::class.java.classLoader) },

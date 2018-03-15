@@ -53,12 +53,12 @@ class ModelAssert protected constructor(actual: Parcelable, selfType: Class<*>) 
 
     private fun compareFields(fieldName: String, expected: Any?, actual: Any?): AbstractAssert<*,*> {
         if (actual is Parcelable) {
-            return ModelAssert.assertThat(actual as Parcelable)
+            return ModelAssert.assertThat(actual)
                     .isEqualByComparingFields(expected as Parcelable)
         }
 
         // Be nice and show which field in which class is failing
-        val fieldPath = this.actual.javaClass.getSimpleName() + "#" + fieldName
+        val fieldPath = this.actual.javaClass.simpleName + "#" + fieldName
 
         return Assertions.assertThat(actual)
                 .overridingErrorMessage(ERROR_MESSAGE, expected, actual, fieldPath)

@@ -7,26 +7,26 @@ import android.os.Parcelable
  * Created by nspu on 09/03/18.
  */
 data class ChampionSpell(
-        var cooldownBurn: String? = null,
+        private var cooldownBurn: String? = null,
         var resource: String? = null,
-        var leveltip: LevelTip? = null,
-        var vars: List<ChampionSpellVar>? = null,
-        var costType: String? = null,
+        private var leveltip: LevelTip? = null,
+        private var vars: List<ChampionSpellVar>? = null,
+        private var costType: String? = null,
         var image: Image? = null,
         var sanitizedDescription: String? = null,
-        var sanitizedTooltip: String? = null,
+        private var sanitizedTooltip: String? = null,
         var effect: List<List<Double>>? = null,
         var tooltip: String? = null,
-        var maxrank: Int? = null,
-        var costBurn: String? = null,
-        var rangeBurn: String? = null,
+        private var maxrank: Int? = null,
+        private var costBurn: String? = null,
+        private var rangeBurn: String? = null,
         var range: List<Int>? = null,   //This field is either a List of Integer or the String 'self' for spells that target one's own StaticDataService.
         var cooldown: List<Double>? = null,
         var cost: List<Int>? = null,
         var key: String? = null,
         var description: String? = null,
-        var effectBurn: List<String>? = null,
-        var altimages: List<Image>? = null,
+        private var effectBurn: List<String>? = null,
+        private var altimages: List<Image>? = null,
         var name: String? = null) : Parcelable {
     constructor(source: Parcel) : this(
             source.readString(),

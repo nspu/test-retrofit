@@ -7,11 +7,11 @@ import android.os.Parcelable
  * Created by nspu on 09/03/18.
  */
 
-data class ChampionSpellVar(var ranksWith: String? = null,
-                       var dyn: String? = null,
-                       var link: String? = null,
-                       var coeff: List<Double>? = null,
-                       var key: String? = null) : Parcelable {
+data class ChampionSpellVar(private var ranksWith: String? = null,
+                            private var dyn: String? = null,
+                            var link: String? = null,
+                            private var coeff: List<Double>? = null,
+                            var key: String? = null) : Parcelable {
     constructor(source: Parcel) : this(
             source.readString(),
             source.readString(),

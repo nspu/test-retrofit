@@ -7,9 +7,9 @@ import android.os.Parcelable
  * Created by nspu on 13/03/18.
  */
 data class MatchFrame(
-        var timestamp: Long? = null,
-        var participantFrames: Map<Int, MatchParticipantFrame>? = null,
-        var events: List<MatchEvent>? = null
+        private var timestamp: Long? = null,
+        private var participantFrames: Map<Int, MatchParticipantFrame>? = null,
+        private var events: List<MatchEvent>? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(
             source.readValue(Long::class.java.classLoader) as Long?,

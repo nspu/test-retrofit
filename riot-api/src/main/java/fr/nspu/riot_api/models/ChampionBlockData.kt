@@ -8,8 +8,8 @@ import android.os.Parcelable
  */
 
 data class ChampionBlockData(var items: List<ChampionRecommandedBlockItem>? = null,
-                        var recMath: Boolean? = null,
-                        var type: String? = null) : Parcelable {
+                             private var recMath: Boolean? = null,
+                             var type: String? = null) : Parcelable {
 
     constructor(source: Parcel) : this(
             source.createTypedArrayList(ChampionRecommandedBlockItem.CREATOR),

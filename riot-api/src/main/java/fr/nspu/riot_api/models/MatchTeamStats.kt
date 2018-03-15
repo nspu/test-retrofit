@@ -7,22 +7,22 @@ import android.os.Parcelable
  * Created by nspu on 13/03/18.
  */
 data class MatchTeamStats(
-        var firstDragon: Boolean? = null,
-        var firstInhibitor: Boolean? = null,
-        var bans: List<MatchTeamBans>? = null,
-        var baronKills: Int? = null,
-        var firstRiftHerald: Boolean? = null,
-        var firstBaron: Boolean? = null,
-        var riftHeraldKills: Int? = null,
-        var firstBlood: Boolean? = null,
-        var teamId: Int? = null,
-        var firstTower: Boolean? = null,
-        var vilemawKills: Int? = null,
-        var inhibitorKills: Int? = null,
-        var towerKills: Int? = null,
-        var dominionVictoryScore: Int? = null,
-        var win: String? = null,
-        var dragonKills: Int? = null
+        private var firstDragon: Boolean? = null,
+        private var firstInhibitor: Boolean? = null,
+        private var bans: List<MatchTeamBans>? = null,
+        private var baronKills: Int? = null,
+        private var firstRiftHerald: Boolean? = null,
+        private var firstBaron: Boolean? = null,
+        private var riftHeraldKills: Int? = null,
+        private var firstBlood: Boolean? = null,
+        private var teamId: Int? = null,
+        private var firstTower: Boolean? = null,
+        private var vilemawKills: Int? = null,
+        private var inhibitorKills: Int? = null,
+        private var towerKills: Int? = null,
+        private var dominionVictoryScore: Int? = null,
+        private var win: String? = null,
+        private var dragonKills: Int? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(
             source.readValue(Boolean::class.java.classLoader) as Boolean?,

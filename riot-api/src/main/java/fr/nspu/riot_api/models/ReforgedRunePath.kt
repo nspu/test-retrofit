@@ -7,7 +7,7 @@ import android.os.Parcelable
  * Created by nspu on 12/03/18.
  */
 data class ReforgedRunePath(
-        var slots: List<ReforgedRuneSlot>? = null,
+        private var slots: List<ReforgedRuneSlot>? = null,
         var icon: String? = null,
         var id: Int? = null,
         var key: String? = null,

@@ -7,10 +7,10 @@ import android.os.Parcelable
  * Created by nspu on 13/03/18.
  */
 data class Service(
-        var status: String? = null,
-        var incidents: List<Incident>? = null,
+        private var status: String? = null,
+        private var incidents: List<Incident>? = null,
         var name: String? = null,
-        var slug: String? = null
+        private var slug: String? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(
             source.readString(),

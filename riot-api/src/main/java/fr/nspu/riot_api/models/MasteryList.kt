@@ -8,7 +8,7 @@ import android.os.Parcelable
  */
 data class MasteryList(var data: Map<String, Mastery>? = null,
                        var version: String? = null,
-                       var tree: MasteryTree? = null,
+                       private var tree: MasteryTree? = null,
                        var type: String? = null) : Parcelable {
     constructor(source: Parcel) : this(
             emptyMap<String, Mastery>().apply {  source.readMap(this, Map::class.java.classLoader)},

@@ -1,6 +1,5 @@
 package fr.nspu.riot_api.services
 
-import fr.nspu.riot_api.models.ChampionMastery
 import fr.nspu.riot_api.models.Summoner
 import retrofit.Callback
 import retrofit.http.GET
