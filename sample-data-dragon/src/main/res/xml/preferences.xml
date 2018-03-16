@@ -1,0 +1,10 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:key="language"
+        android:title="Language" />
+    <ListPreference
+        android:key="version"
+        android:title="Version" />
+²
+</PreferenceScreen>

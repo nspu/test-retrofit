@@ -8,7 +8,7 @@ object DataDragonUri {
 
     const val URI_PROFILE_ICON = PREFIX + "profileicon.json"
     const val URI_CHAMPIONS = PREFIX + "champion.json"
-    const val URI_CHAMPION = PREFIX + "{championName}.json"
+    const val URI_CHAMPION = PREFIX + "champion/{championName}.json"
     const val URI_ITEMS = PREFIX + "item.json"
     const val URI_MASTERIES  = PREFIX + "mastery.json"
     const val URI_RUNES = PREFIX + "rune.json"

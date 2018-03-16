@@ -54,11 +54,11 @@ class StaticDataServiceTest : ServiceTest(){
         val fixture = gson!!.fromJson(body, ChampionData::class.java)
 
         val response = TestUtils.getResponseFromModel(fixture, ChampionData::class.java)
-        `when`(mockClient!!.execute(argThat(MatchesId(fixture.id!!)))).thenReturn(response)
+        `when`(mockClient!!.execute(isA(Request::class.java))).thenReturn(response)
 
         var options : Map<String, String> = hashMapOf("tags" to  "all", "champData" to "all")
 
-        val champion = service!!.getChampion(fixture.id!!, options)
+        val champion = service!!.getChampion(0, options)
         this.compareJSONWithoutNulls(body, champion)
     }
 

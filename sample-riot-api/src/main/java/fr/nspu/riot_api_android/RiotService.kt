@@ -7,7 +7,7 @@ import fr.nspu.riot_api.RiotApi
  */
 
 internal class RiotService private constructor(private val apiKey: String) {
-    val riotApi: RiotApi = RiotApi(apiKey)
+    val riotApi: RiotApi = RiotApi(apiKey, "")
 
     companion object {
         var instance: RiotService? = null

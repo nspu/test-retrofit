@@ -6,24 +6,37 @@ import android.os.Parcelable
 /**
  * Created by nspu on 09/03/18.
  */
-data class ChampionData(
+class ChampionData(
         var info: ChampionDataInfo? = null,
-        private var enemytips: List<String>? = null,
+        var enemytips: List<String>? = null,
         var stats: ChampionStats? = null,
         var name: String? = null,
         var title: String? = null,
         var image: Image? = null,
         var tags: List<String>? = null,
-        private var partype: String? = null,
-        private var skins: List<ChampionSkin>? = null,
-        private var passive: ChampionPassive? = null,
-        private var recommended: List<ChampionRecommandedData>? = null,
-        private var allytips: List<String>? = null,
+        var partype: String? = null,
+        var skins: List<ChampionSkin>? = null,
+        var passive: ChampionPassive? = null,
+        var recommended: List<ChampionRecommandedData>? = null,
+        var allytips: List<String>? = null,
         var key: String? = null,
-        private var lore: String? = null,
-        var id: Int? = null,
-        private var blurb: String? = null,
+        var lore: String? = null,
+        var id: Any? = null,
+        var blurb: String? = null,
         var spells: List<ChampionSpell>? = null) : Parcelable {
+
+
+    var championId: Int? = null
+        private set
+        get() {
+            if (id != null && id is Int) {
+                return id as Int
+            } else if (key != null) {
+                return key!!.toIntOrNull()
+            }
+            return null
+        }
+
     constructor(source: Parcel) : this(
             source.readParcelable<ChampionDataInfo>(ChampionDataInfo::class.java.classLoader),
             source.createStringArrayList(),
@@ -39,10 +52,10 @@ data class ChampionData(
             source.createStringArrayList(),
             source.readString(),
             source.readString(),
-            source.readValue(Int::class.java.classLoader) as Int?,
+            source.readValue(Any::class.java.classLoader),
             source.readString(),
-            source.createTypedArrayList(ChampionSpell.CREATOR)
-    )
+            source.createTypedArrayList(ChampionSpell.CREATOR)) {
+    }
 
     override fun describeContents() = 0
 
@@ -69,8 +82,15 @@ data class ChampionData(
     companion object {
         @JvmField
         val CREATOR: Parcelable.Creator<ChampionData> = object : Parcelable.Creator<ChampionData> {
-            override fun createFromParcel(source: Parcel): ChampionData = ChampionData(source)
-            override fun newArray(size: Int): Array<ChampionData?> = arrayOfNulls(size)
+            override fun createFromParcel(source: Parcel): ChampionData {
+                return ChampionData(source)
+            }
+
+            override fun newArray(size: Int): Array<ChampionData?> {
+                return arrayOfNulls(size)
+            }
         }
     }
+
+
 }

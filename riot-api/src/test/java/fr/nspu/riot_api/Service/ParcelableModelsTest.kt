@@ -142,11 +142,4 @@ class ParcelableModelsTest {
         assertThat(fromParcel[1]).isEqualsToByComparingFields(underTest)
     }
 
-    @Test
-    fun championAreGoodParcelableCitizen() {
-        val body = TestUtils.readTestData("champion-wukong.json")
-        val fixture = GsonBuilder().create().fromJson(body, ChampionData::class.java)
-        testSingleParcelable(fixture)
-    }
-
 }

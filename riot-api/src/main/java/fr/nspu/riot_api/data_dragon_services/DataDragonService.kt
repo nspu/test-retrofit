@@ -33,10 +33,10 @@ interface DataDragonService {
      * Champion
      */
     @GET(DataDragonUri.URI_CHAMPION)
-    fun getChampion(@Path("championName") championName:String,@Path("version") version:String, @Path("language") language: String): ChampionData?
+    fun getChampion(@Path("championName") championName:String,@Path("version") version:String, @Path("language") language: String): ChampionListData?
 
     @GET(DataDragonUri.URI_CHAMPION)
-    fun getChampion(@Path("championName") championName:String,@Path("version") version:String, @Path("language") language: String,callback: Callback<ChampionData>)
+    fun getChampion(@Path("championName") championName:String,@Path("version") version:String, @Path("language") language: String,callback: Callback<ChampionListData>)
 
     /**
      * Items

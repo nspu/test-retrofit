@@ -1,13 +1,9 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-version=VERSION
+version = VERSION
 android {
-
-
     compileSdkVersion 27
-
-
 
     defaultConfig {
         minSdkVersion 19
@@ -26,8 +22,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-
 
 
 }

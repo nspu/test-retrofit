@@ -10,6 +10,8 @@ import retrofit.RestAdapter
 import java.io.IOException
 import java.util.concurrent.Executor
 import retrofit.RequestInterceptor
+import retrofit.android.MainThreadExecutor
+import java.util.concurrent.Executors
 
 /**
  * Created by nspu on 15/03/18.
@@ -35,20 +37,26 @@ class DataDragonApi(httpExecutor: Executor, callbackExecutor: Executor, var cont
         dataDragonService = restAdapter.create(DataDragonService::class.java)
     }
 
+    constructor(context: Context?) : this(
+            Executors.newSingleThreadExecutor(),
+            MainThreadExecutor(), context
+
+    )
+
     private fun useCache(buildRestAdapter: RestAdapter.Builder) {
         var okHttpClient: OkHttpClient? = null
 
         try {
             var cacheSize: Long = 10 * 1024 * 1024  // 10 MiB
             var cache = Cache(context!!.externalCacheDir, cacheSize);
-            okHttpClient = okHttpClient!!.newBuilder().cache(cache).build()
+            okHttpClient = OkHttpClient.Builder().cache(cache).build()
 
         } catch (e: IOException) {
             Log.e(TAG, "Could not set cache", e);
         }
 
         // Forces cache. Used for cache connection
-        val cacheInterceptor = RequestInterceptor { request -> request.addHeader("Cache-Control", "only-if-cached, max-stale=" + Integer.MAX_VALUE) }
+        val cacheInterceptor = RequestInterceptor { request -> request.addHeader("Cache-Control", "max-stale=" + Integer.MAX_VALUE) }
 
         buildRestAdapter.setClient(Ok3Client(okHttpClient))
                 .setRequestInterceptor(cacheInterceptor)

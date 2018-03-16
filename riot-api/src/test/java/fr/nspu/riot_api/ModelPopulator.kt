@@ -84,7 +84,7 @@ class ModelPopulator(vararg excludeFields: String) {
 
             val list = ArrayList<Any>()
             for (i in 0 until DEFAULT_COLLECTION_SIZE) {
-                list.add(getRandomValueOfType(elementClass))
+                list.add(getRandomValueOfType(elementClass)!!)
             }
             return list
         }
@@ -124,7 +124,7 @@ class ModelPopulator(vararg excludeFields: String) {
         throw UnsupportedOperationException("Unsupported collection field type! $type")
     }
 
-    private fun getRandomValueOfType(type: Class<*>): Any {
+    private fun getRandomValueOfType(type: Class<*>): Any? {
 
         /* Another model */
         if (Parcelable::class.java.isAssignableFrom(type)) {
@@ -163,6 +163,10 @@ class ModelPopulator(vararg excludeFields: String) {
         /* Boolean */
         if (type == java.lang.Boolean.TYPE || type == Boolean::class.javaObjectType) {
             return RANDOM.nextBoolean()
+        }
+
+        if(type == Any::class.javaObjectType){
+            return null
         }
 
         throw UnsupportedOperationException("Unsupported field type! $type")

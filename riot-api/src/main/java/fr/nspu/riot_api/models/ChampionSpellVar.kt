@@ -7,17 +7,27 @@ import android.os.Parcelable
  * Created by nspu on 09/03/18.
  */
 
-data class ChampionSpellVar(private var ranksWith: String? = null,
-                            private var dyn: String? = null,
+data class ChampionSpellVar(var ranksWith: String? = null,
+                            var dyn: String? = null,
                             var link: String? = null,
-                            private var coeff: List<Double>? = null,
-                            var key: String? = null) : Parcelable {
+                            private var coeff: Any? = null,
+                            var key: String? = null,
+                            var coefficient: List<Double>? = null) : Parcelable {
+    init {
+        if (coeff is List<*>) {
+            coefficient = coeff as List<Double>
+        } else if (coeff is Double) {
+            if (coeff != null) coefficient= arrayListOf(coeff as Double)
+        }
+    }
+
     constructor(source: Parcel) : this(
             source.readString(),
             source.readString(),
             source.readString(),
-            ArrayList<Double>().apply { source.readList(this, Double::class.java.classLoader) },
-            source.readString()
+            source.readValue(Any::class.java.classLoader),
+            source.readString(),
+            ArrayList<Double>().apply { source.readList(this, Double::class.java.classLoader) }
     )
 
     override fun describeContents() = 0
@@ -26,8 +36,9 @@ data class ChampionSpellVar(private var ranksWith: String? = null,
         writeString(ranksWith)
         writeString(dyn)
         writeString(link)
-        writeList(coeff)
+        writeValue(coeff)
         writeString(key)
+        writeList(coefficient)
     }
 
     companion object {
