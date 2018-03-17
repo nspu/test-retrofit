@@ -14,23 +14,13 @@ import android.view.ViewGroup
 import fr.nspu.riot_api.DataDragonApi
 import fr.nspu.riot_api.models.ChampionData
 import fr.nspu.riot_api.models.ChampionListData
-import retrofit.Callback
-import retrofit.RetrofitError
-import retrofit.client.Response
 
 /**
  * A fragment representing a list of Items.
- *
- *
  * Activities containing this fragment MUST implement the [OnListFragmentInteractionListener]
  * interface.
  */
-/**
- * Mandatory empty constructor for the fragment manager to instantiate the
- * fragment (e.g. upon screen orientation changes).
- */
 class ChampionsFragment : Fragment() {
-    // TODO: Customize parameters
     private var mColumnCount = 4
     private var mListener: OnListFragmentInteractionListener? = null
 
@@ -65,13 +55,13 @@ class ChampionsFragment : Fragment() {
             val sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
             val language = sharedPref.getString(SettingsActivity.PREF_LANGUAGE, "")
             val version = sharedPref.getString(SettingsActivity.PREF_VERSION, "")
-            return  DataDragonApi(context).dataDragonService.getChampions(version, language)!!
+            return  DataDragonApi(version,language, context).dataDragonService.getChampions()!!
 
         }
 
         override fun onPostExecute(result: ChampionListData?) {
             super.onPostExecute(result)
-            view.adapter = ChampionRecyclerViewAdapter(result!!.data!!.values.toList(), mListener)
+            view.adapter = ChampionRecyclerViewAdapter(result!!.data!!.values.toList(),context!!, mListener)
         }
     }
 
@@ -95,21 +85,15 @@ class ChampionsFragment : Fragment() {
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     *
-     *
-     * See the Android Training lesson [Communicating with Other Fragments](http://developer.android.com/training/basics/fragments/communicating.html) for more information.
      */
     interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
         fun onListFragmentInteraction(item: ChampionData)
     }
 
     companion object {
 
-        // TODO: Customize parameter argument names
         private val ARG_COLUMN_COUNT = "column-count"
 
-        // TODO: Customize parameter initialization
         fun newInstance(columnCount: Int): ChampionsFragment {
             val fragment = ChampionsFragment()
             val args = Bundle()

@@ -14,68 +14,67 @@ interface DataDragonService {
      * Profile Icons:
      */
     @GET(DataDragonUri.URI_PROFILE_ICON)
-    fun getProfileIcon(@Path("version") version:String, @Path("language") language: String): ProfileIconData?
+    fun getProfileIcon(): ProfileIconData?
 
     @GET(DataDragonUri.URI_PROFILE_ICON)
-    fun getProfileIcon(@Path("version") version:String, @Path("language") language: String, callback: Callback<ProfileIconData>)
+    fun getProfileIcon(callback: Callback<ProfileIconData>)
 
     /**
      * Champions
      */
     @GET(DataDragonUri.URI_CHAMPIONS)
-    fun getChampions(@Path("version") version:String, @Path("language") language: String): ChampionListData?
+    fun getChampions(): ChampionListData?
 
     @GET(DataDragonUri.URI_CHAMPIONS)
-    fun getChampions(@Path("version") version:String, @Path("language") language: String,callback: Callback<ChampionListData>)
+    fun getChampions(callback: Callback<ChampionListData>)
 
 
     /**
      * Champion
      */
     @GET(DataDragonUri.URI_CHAMPION)
-    fun getChampion(@Path("championName") championName:String,@Path("version") version:String, @Path("language") language: String): ChampionListData?
+    fun getChampion(@Path("championName") championName: String): ChampionListData?
 
     @GET(DataDragonUri.URI_CHAMPION)
-    fun getChampion(@Path("championName") championName:String,@Path("version") version:String, @Path("language") language: String,callback: Callback<ChampionListData>)
+    fun getChampion(@Path("championName") championName: String, callback: Callback<ChampionListData>)
 
     /**
      * Items
      */
     @GET(DataDragonUri.URI_ITEMS)
-    fun getItems(@Path("version") version:String, @Path("language") language: String): ItemList?
+    fun getItems(): ItemList?
 
     @GET(DataDragonUri.URI_ITEMS)
-    fun getItems(@Path("version") version:String, @Path("language") language: String,callback: Callback<ItemList>)
+    fun getItems(callback: Callback<ItemList>)
 
     /**
      * Masteries
      */
     @GET(DataDragonUri.URI_MASTERIES)
-    fun getMasteries(@Path("version") version:String, @Path("language") language: String): MasteryList?
+    fun getMasteries(): MasteryList?
 
     @GET("/masteries_{version}_{language}.json")
-    fun getMasteries(@Path("version") version:String, @Path("language") language: String,callback: Callback<MasteryList>)
+    fun getMasteries(callback: Callback<MasteryList>)
 
 
     /**
      * Runes
      */
     @GET(DataDragonUri.URI_RUNES)
-    fun getRunes(@Path("version") version:String, @Path("language") language: String): RuneList?
+    fun getRunes(): RuneList?
 
     @GET(DataDragonUri.URI_RUNES)
-    fun getRunes(@Path("version") version:String, @Path("language") language: String,callback: Callback<RuneList>)
-
+    fun getRunes(callback: Callback<RuneList>)
 
 
     /**
      * Summoner Spells
      */
     @GET(DataDragonUri.URI_SUMMONER_SPELLS)
-    fun getSummonerSpells(@Path("version") version:String, @Path("language") language: String): SummonerSpellList?
+    fun getSummonerSpells(): SummonerSpellList?
 
     @GET(DataDragonUri.URI_SUMMONER_SPELLS)
-    fun getSummonerSpells(@Path("version") version:String, @Path("language") language: String,callback: Callback<SummonerSpellList>)
+    fun getSummonerSpells(callback: Callback<SummonerSpellList>)
 
 
     /**
@@ -100,9 +99,9 @@ interface DataDragonService {
      * Language Strings
      */
     @GET(DataDragonUri.URI_LANGUAGE_STRINGS)
-    fun getLanguageString(@Path("version") version:String, @Path("language") language: String): LanguageStrings
+    fun getLanguageString(): LanguageStrings
 
     @GET(DataDragonUri.URI_LANGUAGE_STRINGS)
-    fun getLanguageString(@Path("version") version:String, @Path("language") language: String, callback: Callback<LanguageStrings>)
+    fun getLanguageString(callback: Callback<LanguageStrings>)
 
 }

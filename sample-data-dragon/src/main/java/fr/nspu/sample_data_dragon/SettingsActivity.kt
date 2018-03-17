@@ -103,7 +103,7 @@ class SettingsActivity : AppCompatPreferenceActivity() {
             }
 
             override fun doInBackground(vararg params: Unit?): List<String>? {
-                var languages = DataDragonApi(activity).dataDragonService.getLanguages()
+                var languages = DataDragonApi("","",activity).dataDragonService.getLanguages()
                 return languages
             }
 
@@ -131,7 +131,7 @@ class SettingsActivity : AppCompatPreferenceActivity() {
             }
 
             override fun doInBackground(vararg params: Unit?): List<String>? {
-                var languages = DataDragonApi(activity).dataDragonService.getVersions()
+                var languages = DataDragonApi("", "",activity).dataDragonService.getVersions()
                 return languages
             }
 

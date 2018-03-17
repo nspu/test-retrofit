@@ -26,32 +26,5 @@ class MainActivityFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
-        val language = sharedPref.getString(SettingsActivity.PREF_LANGUAGE, "")
-        val version = sharedPref.getString(SettingsActivity.PREF_VERSION, "")
-
-        var callback = object:Callback<ChampionListData>{
-            override fun success(t: ChampionListData?, response: Response?) {
-
-                var callbackChampion=object:Callback<ChampionListData>{
-                    override fun success(t: ChampionListData?, response: Response?) {
-
-                        }
-
-                    override fun failure(error: RetrofitError?) {
-
-                    }
-
-                }
-
-                DataDragonApi(context).dataDragonService.getChampion(t!!.data!!.values.toTypedArray().get(0).name!!,version, language, callbackChampion)
-            }
-
-            override fun failure(error: RetrofitError?) {
-            }
-
-        }
-
-        DataDragonApi(context).dataDragonService.getChampions(version, language, callback)
     }
 }
