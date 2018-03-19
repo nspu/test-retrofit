@@ -1,4 +1,4 @@
-package fr.nspu.sample_data_dragon
+package fr.nspu.sample_data_dragon.view
 
 import android.content.res.Configuration
 import android.os.Bundle

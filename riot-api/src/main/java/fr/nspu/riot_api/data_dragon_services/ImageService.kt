@@ -233,6 +233,8 @@ class ImageService(var uri: String, var version: String) {
     }
 
     private fun config(options: Map<String, Any>?, requestCreator: RequestCreator) {
+        if(options == null) return
+
         if (options!!.containsKey("resize")) {
             resize(options["resite"], requestCreator)
         }

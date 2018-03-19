@@ -36,6 +36,16 @@ class ChampionData(
             }
             return null
         }
+    var nameKey: String? = null
+        private set
+        get() {
+            if (id != null && !(id is Int)) {
+                return id as String
+            } else if (key != null) {
+                return key!!
+            }
+            return null
+        }
 
     constructor(source: Parcel) : this(
             source.readParcelable<ChampionDataInfo>(ChampionDataInfo::class.java.classLoader),

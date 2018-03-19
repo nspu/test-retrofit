@@ -1,4 +1,4 @@
-package fr.nspu.sample_data_dragon
+package fr.nspu.sample_data_dragon.view.champion
 
 import android.content.Context
 import android.os.AsyncTask
@@ -14,6 +14,8 @@ import android.view.ViewGroup
 import fr.nspu.riot_api.DataDragonApi
 import fr.nspu.riot_api.models.ChampionData
 import fr.nspu.riot_api.models.ChampionListData
+import fr.nspu.sample_data_dragon.R
+import fr.nspu.sample_data_dragon.view.SettingsActivity
 
 /**
  * A fragment representing a list of Items.
@@ -61,7 +63,7 @@ class ChampionsFragment : Fragment() {
 
         override fun onPostExecute(result: ChampionListData?) {
             super.onPostExecute(result)
-            view.adapter = ChampionRecyclerViewAdapter(result!!.data!!.values.toList(),context!!, mListener)
+            view.adapter = ChampionRecyclerViewAdapter(result!!.data!!.values.toList(), context!!, mListener)
         }
     }
 

@@ -5,8 +5,6 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 27
 
-
-
     defaultConfig {
         applicationId "fr.nspu.sample_data_dragon"
         minSdkVersion 19
@@ -28,6 +26,11 @@ android {
     dataBinding {
         enabled = true
     }
+
+    kapt {
+        generateStubs = true
+    }
+
 }
 
 ext {

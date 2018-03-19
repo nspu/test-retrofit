@@ -1,18 +1,18 @@
-package fr.nspu.sample_data_dragon
+package fr.nspu.sample_data_dragon.view.champion
 
 import android.content.Context
 import android.databinding.DataBindingUtil
-import android.os.AsyncTask
 import android.preference.PreferenceManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import fr.nspu.riot_api.DataDragonApi
 import fr.nspu.riot_api.models.ChampionData
+import fr.nspu.sample_data_dragon.R
 
-import fr.nspu.sample_data_dragon.ChampionsFragment.OnListFragmentInteractionListener
+import fr.nspu.sample_data_dragon.view.champion.ChampionsFragment.OnListFragmentInteractionListener
 import fr.nspu.sample_data_dragon.databinding.FragmentChampionBinding
+import fr.nspu.sample_data_dragon.view.SettingsActivity
 
 /**
  * [RecyclerView.Adapter] that can display a [ChampionData] and makes a call to the

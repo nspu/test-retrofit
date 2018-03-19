@@ -1,4 +1,4 @@
-package fr.nspu.sample_data_dragon
+package fr.nspu.sample_data_dragon.view
 
 import android.annotation.TargetApi
 import android.app.ProgressDialog
@@ -19,6 +19,7 @@ import android.preference.RingtonePreference
 import android.text.TextUtils
 import android.view.MenuItem
 import fr.nspu.riot_api.DataDragonApi
+import fr.nspu.sample_data_dragon.R
 
 /**
  * A [PreferenceActivity] that presents a set of application settings. On
