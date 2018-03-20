@@ -8,6 +8,5 @@ enum class ChampionSubEnum {
     Skins,
     AlliTips,
     EnemyTips,
-    Recommanded,
     Lore
 }

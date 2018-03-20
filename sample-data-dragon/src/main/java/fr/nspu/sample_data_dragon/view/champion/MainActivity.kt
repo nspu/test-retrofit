@@ -52,10 +52,13 @@ class MainActivity : AppCompatActivity(),
     }
 
 
-    override fun onListFragmentInteraction(item: ChampionData, sub: ChampionSubEnum) {
+    override fun onListFragmentInteraction(championData: ChampionData, sub: ChampionSubEnum) {
         when (sub) {
-            ChampionSubEnum.Abilities -> openAbilitiesFragment(item)
-            ChampionSubEnum.Skins-> openChampionSkinsFragment(item)
+            ChampionSubEnum.Abilities -> openAbilitiesFragment(championData)
+            ChampionSubEnum.Skins-> openChampionSkinsFragment(championData)
+            ChampionSubEnum.AlliTips -> openAllyEnnemyTipsFragment(championData.allytips!!, "Ally Tips")
+            ChampionSubEnum.EnemyTips -> openAllyEnnemyTipsFragment(championData.enemytips!!, "Ennemy Tips")
+            ChampionSubEnum.Lore->openLoreFragment(championData.lore!!, championData.name!!)
         }
     }
 
@@ -81,7 +84,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     fun openAbilitiesFragment(championData: ChampionData) {
-        val fragment = AbilitiesFragment.newInstance(championData.spells!!, championData.passive!!)
+        val fragment = ChampionAbilitiesFragment.newInstance(championData.spells!!, championData.passive!!)
         supportFragmentManager
                 .beginTransaction()
                 .setCustomAnimations(
@@ -96,6 +99,34 @@ class MainActivity : AppCompatActivity(),
 
     fun openChampionSkinsFragment(championData: ChampionData) {
         val fragment = ChampionSkinsFragment.newInstance(championData.skins!!, championData.nameKey!!)
+        supportFragmentManager
+                .beginTransaction()
+                .setCustomAnimations(
+                        R.animator.card_flip_left_in,
+                        R.animator.card_flip_left_out,
+                        R.animator.card_flip_right_in,
+                        R.animator.card_flip_right_out)
+                .replace(R.id.fl_container, fragment, ChampionDetailsFragment.TAG)
+                .addToBackStack(ChampionDetailsFragment.TAG)
+                .commit()
+    }
+
+    fun openAllyEnnemyTipsFragment(tips: List<String>, typeTips: String) {
+        val fragment = ChampionTipsFragment.newInstance(tips, typeTips)
+        supportFragmentManager
+                .beginTransaction()
+                .setCustomAnimations(
+                        R.animator.card_flip_left_in,
+                        R.animator.card_flip_left_out,
+                        R.animator.card_flip_right_in,
+                        R.animator.card_flip_right_out)
+                .replace(R.id.fl_container, fragment, ChampionDetailsFragment.TAG)
+                .addToBackStack(ChampionDetailsFragment.TAG)
+                .commit()
+    }
+
+    fun openLoreFragment(lore:String, name:String){
+        val fragment = ChampionLoreFragment.newInstance(lore, name)
         supportFragmentManager
                 .beginTransaction()
                 .setCustomAnimations(

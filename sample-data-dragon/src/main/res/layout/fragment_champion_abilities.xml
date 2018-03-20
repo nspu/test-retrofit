@@ -48,19 +48,19 @@
 
         <include
             android:id="@+id/inc_q"
-            layout="@layout/container_ability" />
+            layout="@layout/container_champion_ability" />
 
         <include
             android:id="@+id/inc_w"
-            layout="@layout/container_ability" />
+            layout="@layout/container_champion_ability" />
 
         <include
             android:id="@+id/inc_e"
-            layout="@layout/container_ability" />
+            layout="@layout/container_champion_ability" />
 
         <include
             android:id="@+id/inc_r"
-            layout="@layout/container_ability" />
+            layout="@layout/container_champion_ability" />
 
     </LinearLayout>
 </layout>

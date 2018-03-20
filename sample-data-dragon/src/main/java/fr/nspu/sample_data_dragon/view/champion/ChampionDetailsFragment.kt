@@ -33,7 +33,6 @@ class ChampionDetailsFragment : Fragment(), View.OnClickListener {
             binding.btnSkins!!.id -> mListener?.onListFragmentInteraction(champion!!, ChampionSubEnum.Skins)
             binding.btnAllytips!!.id -> mListener?.onListFragmentInteraction(champion!!, ChampionSubEnum.AlliTips)
             binding.btnEnnemytips!!.id -> mListener?.onListFragmentInteraction(champion!!, ChampionSubEnum.EnemyTips)
-            binding.btnRecommanded!!.id -> mListener?.onListFragmentInteraction(champion!!, ChampionSubEnum.Recommanded)
             binding.btnLore!!.id -> mListener?.onListFragmentInteraction(champion!!, ChampionSubEnum.Lore)
         }
     }
@@ -74,7 +73,6 @@ class ChampionDetailsFragment : Fragment(), View.OnClickListener {
                 binding.btnSkins!!.setOnClickListener(this@ChampionDetailsFragment)
                 binding.btnAllytips!!.setOnClickListener(this@ChampionDetailsFragment)
                 binding.btnEnnemytips!!.setOnClickListener(this@ChampionDetailsFragment)
-                binding.btnRecommanded!!.setOnClickListener(this@ChampionDetailsFragment)
                 binding.btnLore!!.setOnClickListener(this@ChampionDetailsFragment)
                 progressDialog.cancel()
             }
@@ -120,7 +118,6 @@ class ChampionDetailsFragment : Fragment(), View.OnClickListener {
          * @param param1 Parameter 1.
          * @return A new instance of fragment ChampionDetailsFragment.
          */
-        // TODO: Rename and change types and number of parameters
         fun newInstance(nameChampion: String): ChampionDetailsFragment {
             val fragment = ChampionDetailsFragment()
             val args = Bundle()
