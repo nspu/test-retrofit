@@ -10,15 +10,15 @@ import fr.nspu.riot_api.DataDragonApi
 import fr.nspu.riot_api.models.ChampionData
 import fr.nspu.sample_data_dragon.R
 
-import fr.nspu.sample_data_dragon.view.champion.ChampionsFragment.OnListFragmentInteractionListener
+import fr.nspu.sample_data_dragon.view.champion.ChampionsFragment.OnChampionsFragmentInteractionListener
 import fr.nspu.sample_data_dragon.databinding.FragmentChampionBinding
 import fr.nspu.sample_data_dragon.view.SettingsActivity
 
 /**
  * [RecyclerView.Adapter] that can display a [ChampionData] and makes a call to the
- * specified [OnListFragmentInteractionListener].
+ * specified [OnChampionsFragmentInteractionListener].
  */
-class ChampionRecyclerViewAdapter(private val mValues: List<ChampionData>,private var context: Context, private val mListener: OnListFragmentInteractionListener?) : RecyclerView.Adapter<ChampionRecyclerViewAdapter.ViewHolder>() {
+class ChampionRecyclerViewAdapter(private val mValues: List<ChampionData>,private var context: Context, private val mListener: OnChampionsFragmentInteractionListener?) : RecyclerView.Adapter<ChampionRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding: FragmentChampionBinding = DataBindingUtil
@@ -33,7 +33,7 @@ class ChampionRecyclerViewAdapter(private val mValues: List<ChampionData>,privat
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.champion = mValues.get(position)
         holder.itemView.setOnClickListener {
-            mListener?.onListFragmentInteraction(holder.binding.champion!!)
+            mListener?.onChampionsFragmentInteraction(holder.binding.champion!!)
         }
         val sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
         val language = sharedPref.getString(SettingsActivity.PREF_LANGUAGE, "")

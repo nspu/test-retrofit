@@ -11,17 +11,13 @@ import fr.nspu.sample_data_dragon.R
 import fr.nspu.sample_data_dragon.view.SettingsActivity
 
 
-class MainActivity : AppCompatActivity(), ChampionsFragment.OnListFragmentInteractionListener, ChampionDetailsFragment.OnListFragmentInteractionListener {
-    override fun onListFragmentInteraction(item: ChampionData, sub: ChampionSubEnum) {
-        when(sub){
-            ChampionSubEnum.Abilities-> openAbilitiesFragment(item)
-        }
-    }
+class MainActivity : AppCompatActivity(),
+        ChampionsFragment.OnChampionsFragmentInteractionListener,
+        ChampionDetailsFragment.OnListFragmentInteractionListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         initChamptionsFragment()
     }
 
@@ -55,14 +51,15 @@ class MainActivity : AppCompatActivity(), ChampionsFragment.OnListFragmentIntera
         }
     }
 
-    fun initChamptionsFragment() {
-        val fragment = ChampionsFragment.newInstance(4)
-        supportFragmentManager.beginTransaction()
-                .add(R.id.fl_container, fragment, ChampionsFragment.TAG)
-                .commit()
+
+    override fun onListFragmentInteraction(item: ChampionData, sub: ChampionSubEnum) {
+        when (sub) {
+            ChampionSubEnum.Abilities -> openAbilitiesFragment(item)
+            ChampionSubEnum.Skins-> openChampionSkinsFragment(item)
+        }
     }
 
-    override fun onListFragmentInteraction(item: ChampionData) {
+    override fun onChampionsFragmentInteraction(item: ChampionData) {
         val fragment = ChampionDetailsFragment.newInstance(item.nameKey!!)
         supportFragmentManager
                 .beginTransaction()
@@ -76,8 +73,29 @@ class MainActivity : AppCompatActivity(), ChampionsFragment.OnListFragmentIntera
                 .commit()
     }
 
-    fun openAbilitiesFragment(item: ChampionData) {
-        val fragment = AbilitiesFragment.newInstance(item.spells!!, item.passive!!)
+    fun initChamptionsFragment() {
+        val fragment = ChampionsFragment.newInstance(4)
+        supportFragmentManager.beginTransaction()
+                .add(R.id.fl_container, fragment, ChampionsFragment.TAG)
+                .commit()
+    }
+
+    fun openAbilitiesFragment(championData: ChampionData) {
+        val fragment = AbilitiesFragment.newInstance(championData.spells!!, championData.passive!!)
+        supportFragmentManager
+                .beginTransaction()
+                .setCustomAnimations(
+                        R.animator.card_flip_left_in,
+                        R.animator.card_flip_left_out,
+                        R.animator.card_flip_right_in,
+                        R.animator.card_flip_right_out)
+                .replace(R.id.fl_container, fragment, ChampionDetailsFragment.TAG)
+                .addToBackStack(ChampionDetailsFragment.TAG)
+                .commit()
+    }
+
+    fun openChampionSkinsFragment(championData: ChampionData) {
+        val fragment = ChampionSkinsFragment.newInstance(championData.skins!!, championData.nameKey!!)
         supportFragmentManager
                 .beginTransaction()
                 .setCustomAnimations(

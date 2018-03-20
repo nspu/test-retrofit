@@ -19,12 +19,12 @@ import fr.nspu.sample_data_dragon.view.SettingsActivity
 
 /**
  * A fragment representing a list of Items.
- * Activities containing this fragment MUST implement the [OnListFragmentInteractionListener]
+ * Activities containing this fragment MUST implement the [OnChampionsFragmentInteractionListener]
  * interface.
  */
 class ChampionsFragment : Fragment() {
     private var mColumnCount = 4
-    private var mListener: OnListFragmentInteractionListener? = null
+    private var mListener: OnChampionsFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,10 +70,10 @@ class ChampionsFragment : Fragment() {
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        if (context is OnListFragmentInteractionListener) {
+        if (context is OnChampionsFragmentInteractionListener) {
             mListener = context
         } else {
-            throw RuntimeException(context!!.toString() + " must implement OnListFragmentInteractionListener")
+            throw RuntimeException(context!!.toString() + " must implement OnChampionSkinsFragmentInteractionListener")
         }
     }
 
@@ -88,8 +88,8 @@ class ChampionsFragment : Fragment() {
      * to the activity and potentially other fragments contained in that
      * activity.
      */
-    interface OnListFragmentInteractionListener {
-        fun onListFragmentInteraction(item: ChampionData)
+    interface OnChampionsFragmentInteractionListener {
+        fun onChampionsFragmentInteraction(item: ChampionData)
     }
 
     companion object {

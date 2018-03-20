@@ -91,7 +91,7 @@ class ChampionDetailsFragment : Fragment(), View.OnClickListener {
         if (context is ChampionDetailsFragment.OnListFragmentInteractionListener) {
             mListener = context
         } else {
-            throw RuntimeException(context!!.toString() + " must implement OnListFragmentInteractionListener")
+            throw RuntimeException(context!!.toString() + " must implement OnChampionSkinsFragmentInteractionListener")
         }
     }
 
