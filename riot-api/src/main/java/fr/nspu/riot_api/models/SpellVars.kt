@@ -7,10 +7,10 @@ import android.os.Parcelable
  * Created by nspu on 12/03/18.
  */
 data class SpellVars(
-        private var ranksWith: String? = null,
-        private var dyn: String? = null,
+        var ranksWith: String? = null,
+        var dyn: String? = null,
         var link: String? = null,
-        private var coeff: List<Double>? = null,
+        var coeff: List<Double>? = null,
         var key: String? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(

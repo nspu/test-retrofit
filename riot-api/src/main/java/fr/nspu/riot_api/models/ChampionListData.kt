@@ -7,11 +7,11 @@ import android.os.Parcelable
  * Created by nspu on 11/03/18.
  */
 data class ChampionListData(
-        private var keys: Map<String, String>? = null,
+        var keys: Map<String, String>? = null,
         var data: Map<String, ChampionData>? = null,
         var version: String? = null,
         var type: String? = null,
-        private var format: String? = null) : Parcelable {
+        var format: String? = null) : Parcelable {
 
 
     constructor(parcel: Parcel) : this(

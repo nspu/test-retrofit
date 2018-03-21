@@ -7,12 +7,12 @@ import android.os.Parcelable
  * Created by nspu on 11/03/18.
  */
 data class MasteryTree(
-        private var Resolve: List<MasteryTreeList>? = null,
-        private var Defense: List<MasteryTreeList>? = null,
-        private var Utility: List<MasteryTreeList>? = null,
-        private var Offense: List<MasteryTreeList>? = null,
-        private var Ferocity: List<MasteryTreeList>? = null,
-        private var Cunning: List<MasteryTreeList>? = null
+        var Resolve: List<MasteryTreeList>? = null,
+        var Defense: List<MasteryTreeList>? = null,
+        var Utility: List<MasteryTreeList>? = null,
+        var Offense: List<MasteryTreeList>? = null,
+        var Ferocity: List<MasteryTreeList>? = null,
+        var Cunning: List<MasteryTreeList>? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(
             source.createTypedArrayList(MasteryTreeList.CREATOR),

@@ -8,36 +8,46 @@ import retrofit.http.Path
 import retrofit.http.QueryMap
 
 /**
- * Created by nspu on 12/03/18.
+ * champion
  */
 interface ChampionService {
     /**
-     * Champions
+     * Retrieve all champions.
+     *
+     * @param options Optional parameters. Nullable
+     * @return Requested all champion
+     * @see <a href="https://developer.riotgames.com/api-methods/#champion-v3/GET_getChampions">Retrieve all champions</a>
      */
     @GET(RiotUri.URI_CHAMPIONS)
-    fun getChampions(): ChampionListInfo?
-
-    @GET(RiotUri.URI_CHAMPIONS)
-    fun getChampions(@QueryMap options: Map<String, String>): ChampionListInfo?
-
-    @GET(RiotUri.URI_CHAMPIONS)
-    fun getChampions(callback: Callback<ChampionListInfo>)
-
-    @GET(RiotUri.URI_CHAMPIONS)
-    fun getChampions(@QueryMap options: Map<String, String>, callback: Callback<ChampionListInfo>)
+    fun getChampions(@QueryMap options: Map<String, String>? =null): ChampionListInfo?
 
     /**
-     * Champion
+     * Retrieve all champions.
+     *
+     * @param options Optional parameters. Nullable
+     * @param callback Callback method. Success callback will return all champion
+     * @see <a href="https://developer.riotgames.com/api-methods/#champion-v3/GET_getChampions">Retrieve all champions</a>
+     */
+    @GET(RiotUri.URI_CHAMPIONS)
+    fun getChampions(callback: Callback<ChampionListInfo>, @QueryMap options: Map<String, String>? =null)
+
+    /**
+     * Retrieve champion by ID.
+     *
+     * @param options Optional parameters. Nullable
+     * @return Requested all champion
+     * @see <a href="https://developer.riotgames.com/api-methods/#champion-v3/GET_getChampionsById">Retrieve champion by ID</a>
      */
     @GET(RiotUri.URI_CHAMPION)
-    fun getChampion(@Path("id") id: Long ): ChampionInfo?
+    fun getChampion(@Path("id") id: Long,@QueryMap options: Map<String, String>? =null): ChampionInfo?
 
+    /**
+     * Retrieve champion by ID.
+     *
+     * @param options Optional parameters. Nullable
+     * @param callback Callback method. Success callback will return champion
+     * @see <a href="https://developer.riotgames.com/api-methods/#champion-v3/GET_getChampionsById">Retrieve champion by ID</a>
+     */
     @GET(RiotUri.URI_CHAMPION)
-    fun getChampion(@Path("id") id: Long,@QueryMap options: Map<String, String>): ChampionInfo?
-
-    @GET(RiotUri.URI_CHAMPION)
-    fun getChampion(@Path("id") id: Long,callback: Callback<ChampionInfo>)
-
-    @GET(RiotUri.URI_CHAMPION)
-    fun getChampion(@Path("id") id: Long,@QueryMap options: Map<String, String>, callback: Callback<ChampionInfo>)
+    fun getChampion(@Path("id") id: Long, callback: Callback<ChampionInfo> ,@QueryMap options: Map<String, String>? =null)
 }

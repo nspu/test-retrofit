@@ -7,10 +7,10 @@ import android.os.Parcelable
  * Created by nspu on 12/03/18.
  */
 data class MiniSeries(
-        private var wins: Int? = null,
-        private var losses: Int? = null,
+        var wins: Int? = null,
+        var losses: Int? = null,
         var target: Int? = null,
-        private var progress: String? = null
+        var progress: String? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(
             source.readValue(Int::class.java.classLoader) as Int?,

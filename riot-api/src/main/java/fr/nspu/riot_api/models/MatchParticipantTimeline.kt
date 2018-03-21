@@ -8,15 +8,15 @@ import android.os.Parcelable
  */
 data class MatchParticipantTimeline(
         var lane: String? = null,
-        private var participantId: Int? = null,
-        private var csDiffPerMinDeltas: Map<String, Double>? = null,
-        private var goldPerMinDeltas: Map<String, Double>? = null,
-        private var xpDiffPerMinDeltas: Map<String, Double>? = null,
-        private var creepsPerMinDeltas: Map<String, Double>? = null,
-        private var xpPerMinDeltas: Map<String, Double>? = null,
-        private var role: String? = null,
-        private var damageTakenDiffPerMinDeltas: Map<String, Double>? = null,
-        private var damageTakenPerMinDeltas: Map<String, Double>? = null
+        var participantId: Int? = null,
+        var csDiffPerMinDeltas: Map<String, Double>? = null,
+        var goldPerMinDeltas: Map<String, Double>? = null,
+        var xpDiffPerMinDeltas: Map<String, Double>? = null,
+        var creepsPerMinDeltas: Map<String, Double>? = null,
+        var xpPerMinDeltas: Map<String, Double>? = null,
+        var role: String? = null,
+        var damageTakenDiffPerMinDeltas: Map<String, Double>? = null,
+        var damageTakenPerMinDeltas: Map<String, Double>? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(
             source.readString(),

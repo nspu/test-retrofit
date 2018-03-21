@@ -1,7 +1,6 @@
 package fr.nspu.riot_api.Service
 
-import fr.nspu.riot_api.ModeQueue
-import fr.nspu.riot_api.RiotApi
+import fr.nspu.riot_api.RankedType
 import fr.nspu.riot_api.ServiceTest
 import fr.nspu.riot_api.TestUtils
 import fr.nspu.riot_api.models.LeagueList
@@ -34,7 +33,7 @@ class LeagueServiceTest: ServiceTest() {
         val response = TestUtils.getResponseFromModel(fixture, LeagueList::class.java)
         Mockito.`when`(mockClient!!.execute(Matchers.argThat(MatchesId(fixture.queue!!)))).thenReturn(response)
 
-        val challengers = service!!.getChallengersByQueue(ModeQueue.RANKED_SOLO_5x5)
+        val challengers = service!!.getChallengersByQueue(RankedType.RANKED_SOLO_5x5)
         this.compareJSONWithoutNulls(body, challengers)
     }
 
@@ -60,7 +59,7 @@ class LeagueServiceTest: ServiceTest() {
         val response = TestUtils.getResponseFromModel(fixture, LeagueList::class.java)
         Mockito.`when`(mockClient!!.execute(Matchers.argThat(MatchesId(fixture.queue!!)))).thenReturn(response)
 
-        val master = service!!.getLeagueMasterByQueue(ModeQueue.RANKED_SOLO_5x5)
+        val master = service!!.getLeagueMasterByQueue(RankedType.RANKED_SOLO_5x5)
         this.compareJSONWithoutNulls(body, master)
     }
 

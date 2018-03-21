@@ -15,12 +15,24 @@ import java.util.concurrent.Executors
  * Creates and configures a REST adapter for Riot API.
  *
  * Basic usage:
- * RiotApi riotApi = new RiotApi();
+ * RiotApi riotApi = new RiotApi(endPoint, accessToken);
  *
  *  * Create instance of RiotApi with given executors.
- *   @param httpExecutor executor for http request. Cannot be null.
- *   @param callbackExecutor executor for callbacks. If null is passed than the same
- * thread that created the instance is used.
+ *   @property httpExecutor executor for http request. Cannot be null.
+ *   @property callbackExecutor executor for callbacks. If null is passed than the same
+ *   @property endPoint url for the riot endpoint
+ *   @property accessToken settings access token
+ *
+ *   @property staticDataService instance for access to static data
+ *   @property championMasteryService: instance for access to champion mastery
+ *   @property championService : instance for access to champions
+ *   @property leagueService: instance for access to league
+ *   @property lolStatusService : instance for access to lol status
+ *   @property matchService: instance for access to match
+ *   @property spectatorService: instance for access to spectator
+ *   @property summonerService: instance for access to summoner
+ *   @property thirdPartyCodeService: instance for access to third party code
+ *   @constructor thread that created the instances.
  */
 class RiotApi(
         httpExecutor: Executor,
@@ -60,6 +72,8 @@ class RiotApi(
     /**
      *  New instance of RiotApi,
      *  with single thread executor both for http and callbacks.
+     *   @param endPoint url for the riot endpoint
+     *   @param accessToken settings access token
      */
     constructor(endPoint:String, accessToken: String) : this(
             Executors.newSingleThreadExecutor(),

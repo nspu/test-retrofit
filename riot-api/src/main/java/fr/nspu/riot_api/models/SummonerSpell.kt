@@ -7,29 +7,29 @@ import android.os.Parcelable
  * Created by nspu on 12/03/18.
  */
 class SummonerSpell(
-        private var vars: List<SpellVars>? = null,
+        var vars: List<SpellVars>? = null,
         var image: Image? = null,
-        private var costBurn: String? = null,
+        var costBurn: String? = null,
         var cooldown: List<Double>? = null,
-        private var effectBurn: List<String>? = null,
+        var effectBurn: List<String>? = null,
         var id: Int? = null,
-        private var cooldownBurn: String? = null,
+        var cooldownBurn: String? = null,
         var tooltip: String? = null,
-        private var maxrank: Int? = null,
-        private var rangeBurn: String? = null,
+        var maxrank: Int? = null,
+        var rangeBurn: String? = null,
         var description: String? = null,
         var effect: List<List<Double>>? = null,    //This field is a List of List of Double.
         var key: String? = null,
-        private var leveltip: LevelTip? = null,
-        private var modes: List<String>? = null,
+        var leveltip: LevelTip? = null,
+        var modes: List<String>? = null,
         var resource: String? = null,
         var name: String? = null,
-        private var costType: String? = null,
+        var costType: String? = null,
         var sanitizedDescription: String? = null,
-        private var sanitizedTooltip: String? = null,
+        var sanitizedTooltip: String? = null,
         var range: List<Int>? = null,    //This field is either a List of Integer or the String 'self' for spells that target one's own champion.
         var cost: List<Int>? = null,
-        private var summonerLevel: Int? = null
+        var summonerLevel: Int? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(
             source.createTypedArrayList(SpellVars.CREATOR),

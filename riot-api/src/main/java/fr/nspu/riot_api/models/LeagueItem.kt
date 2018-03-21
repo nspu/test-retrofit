@@ -8,16 +8,16 @@ import android.os.Parcelable
  */
 data class LeagueItem(
         var rank: String? = null,
-        private var hotStreak: Boolean? = null,
-        private var miniSeries: MiniSeries? = null,
-        private var wins: Int? = null,
-        private var veteran: Boolean? = null,
-        private var losses: Int? = null,
-        private var freshBlood: Boolean? = null,
-        private var playerOrTeamName: String? = null,
-        private var inactive: Boolean? = null,
-        private var playerOrTeamId: String? = null,
-        private var leaguePoints: Int? = null
+        var hotStreak: Boolean? = null,
+        var miniSeries: MiniSeries? = null,
+        var wins: Int? = null,
+        var veteran: Boolean? = null,
+        var losses: Int? = null,
+        var freshBlood: Boolean? = null,
+        var playerOrTeamName: String? = null,
+        var inactive: Boolean? = null,
+        var playerOrTeamId: String? = null,
+        var leaguePoints: Int? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(
             source.readString(),

@@ -7,12 +7,12 @@ import android.os.Parcelable
  * Created by nspu on 13/03/18.
  */
 data class Message(
-        private var severity: String? = null,
-        private var author: String? = null,
-        private var created_at: String? = null,
-        private var translations: List<Translation>? = null,
-        private var updated_at: String? = null,
-        private var content: String? = null,
+        var severity: String? = null,
+        var author: String? = null,
+        var created_at: String? = null,
+        var translations: List<Translation>? = null,
+        var updated_at: String? = null,
+        var content: String? = null,
         var id: String? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(

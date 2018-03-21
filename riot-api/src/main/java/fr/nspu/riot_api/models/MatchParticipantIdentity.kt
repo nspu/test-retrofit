@@ -7,8 +7,8 @@ import android.os.Parcelable
  * Created by nspu on 13/03/18.
  */
 data class MatchParticipantIdentity(
-        private var player: MatchPlayer? = null,
-        private var participantId: Int? = null
+        var player: MatchPlayer? = null,
+        var participantId: Int? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(
             source.readParcelable<MatchPlayer>(MatchPlayer::class.java.classLoader),

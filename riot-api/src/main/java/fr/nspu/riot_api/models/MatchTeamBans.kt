@@ -7,7 +7,7 @@ import android.os.Parcelable
  * Created by nspu on 13/03/18.
  */
 data class MatchTeamBans(
-        private var pickTurn: Int? = null,
+        var pickTurn: Int? = null,
         var championId: Int? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(

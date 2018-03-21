@@ -7,10 +7,10 @@ import android.os.Parcelable
  * Created by nspu on 11/03/18.
  */
 data class ItemGold(
-        private var sell: Int? = null,
-        private var total: Int? = null,
+        var sell: Int? = null,
+        var total: Int? = null,
         var base: Int? = null,
-        private var purchasable: Boolean? = null
+        var purchasable: Boolean? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(
             source.readValue(Int::class.java.classLoader) as Int?,

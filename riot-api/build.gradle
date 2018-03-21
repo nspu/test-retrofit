@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'org.jetbrains.dokka'
 version = VERSION
 android {
     compileSdkVersion 27
@@ -53,10 +54,16 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     androidTestCompile 'com.android.support.test:runner:0.2'
+
+    compile 'org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.16'
+
+
 }
 repositories {
     mavenCentral()
 }
+
+
 // make proper name for 'aar' file
 android.libraryVariants.all { variant ->
     variant.outputs.each { output ->
@@ -67,3 +74,9 @@ android.libraryVariants.all { variant ->
         }
     }
 }
+
+dokka {
+    outputFormat = 'html'
+    outputDirectory = "$buildDir/javadoc"
+}
+

@@ -10,18 +10,17 @@ import retrofit.http.QueryMap
  */
 interface ThirdPartyCodeService {
     /**
-     * Third party code by Summoner Id
+     * Get third party code for a given summoner ID
+     *
+     * @param summonerId id of the summoner
+     * @param callback Callback method. Success callback will return third party code
+     * @param options Optional parameters. Nullable
+     * @return Requested third party code
+     * @see <a href="https://developer.riotgames.com/api-methods/#third-party-code-v3/GET_getThirdPartyCodeBySummonerId">Get third party code for a given summoner ID</a>
      */
     @GET(RiotUri.URI_THIRD_PARTY_CODE_BY_SUMMONER_ID)
-    fun getThirdPartyCodeBySummonerId(@Path("summonerId") summonerId: Long): String?
+    fun getThirdPartyCodeBySummonerId(@Path("summonerId") summonerId: Long, @QueryMap options: Map<String, String>? =null): String?
 
     @GET(RiotUri.URI_THIRD_PARTY_CODE_BY_SUMMONER_ID)
-    fun getThirdPartyCodeBySummonerId(@Path("summonerId") summonerId: Long, @QueryMap options: Map<String, String>): String?
-
-    @GET(RiotUri.URI_THIRD_PARTY_CODE_BY_SUMMONER_ID)
-    fun getThirdPartyCodeBySummonerId(@Path("summonerId") summonerId: Long, callback: Callback<String>)
-
-    @GET(RiotUri.URI_THIRD_PARTY_CODE_BY_SUMMONER_ID)
-    fun getThirdPartyCodeBySummonerId(@Path("summonerId") summonerId: Long, @QueryMap options: Map<String, String>, callback: Callback<String>)
-
+    fun getThirdPartyCodeBySummonerId(@Path("summonerId") summonerId: Long, callback: Callback<String>, @QueryMap options: Map<String, String>? =null)
 }

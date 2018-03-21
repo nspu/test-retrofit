@@ -10,7 +10,7 @@ import android.os.Parcelable
 data class ChampionSpellVar(var ranksWith: String? = null,
                             var dyn: String? = null,
                             var link: String? = null,
-                            private var coeff: Any? = null,
+                            var coeff: Any? = null,
                             var key: String? = null,
                             var coefficient: List<Double>? = null) : Parcelable {
     init {

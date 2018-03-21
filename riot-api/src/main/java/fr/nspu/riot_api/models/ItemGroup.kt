@@ -7,7 +7,7 @@ import android.os.Parcelable
  * Created by nspu on 11/03/18.
  */
 data class ItemGroup(
-        private var MaxGroupOwnable: String? = null,
+        var MaxGroupOwnable: String? = null,
         var key: String? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(

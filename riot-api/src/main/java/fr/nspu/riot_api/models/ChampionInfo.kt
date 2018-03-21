@@ -7,11 +7,11 @@ import android.os.Parcelable
  * Created by nspu on 12/03/18.
  */
 data class ChampionInfo(
-        private var rankedPlayEnabled: Boolean? = null, // 	Ranked play enabled flag.
-        private var botEnabled: Boolean? = null, // 	Bot enabled flag (for custom games).
-        private var botMmEnabled: Boolean? = null, // 	Bot Match Made enabled flag (for Co-op vs. AI games).
+        var rankedPlayEnabled: Boolean? = null, // 	Ranked play enabled flag.
+        var botEnabled: Boolean? = null, // 	Bot enabled flag (for custom games).
+        var botMmEnabled: Boolean? = null, // 	Bot Match Made enabled flag (for Co-op vs. AI games).
         var active: Boolean? = null, // 	Indicates if the champion is active.
-        private var freeToPlay: Boolean? = null, // 	Indicates if the champion is free to play. Free to play championData are rotated periodically.
+        var freeToPlay: Boolean? = null, // 	Indicates if the champion is free to play. Free to play championData are rotated periodically.
         var id: Long? = null // 	Champion ID. For static information correlating to champion IDs, please refer to the LoL Static Data API.
 ) : Parcelable {
     constructor(source: Parcel) : this(

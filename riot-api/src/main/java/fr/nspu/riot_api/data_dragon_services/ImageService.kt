@@ -11,18 +11,18 @@ import com.squareup.picasso.RequestCreator
  */
 class ImageService(var uri: String, var version: String) {
 
-    fun getProfileIconUri(profileIconId: Int) = "$uri/cdn/$version/img/profileicon/$profileIconId.png"
-    fun getSplashArtUri(nameChampion: String, skinNum: Int) = "$uri/cdn/img/champion/splash/${nameChampion}_$skinNum.jpg"
-    fun getLoadingScreenArtUri(nameChampion: String, skinNum: Int) = "$uri/cdn/img/champion/loading/${nameChampion}_$skinNum.jpg"
-    fun getChampionSquareUri(nameChampion: String) = "$uri/cdn/$version/img/champion/$nameChampion.png"
-    fun getPassiveAbilityUri(nameImage: String) = "$uri/cdn/$version/img/passive/$nameImage"
-    fun getChampionAbilityUri(nameImage: String) = "$uri/cdn/$version/img/spell/$nameImage"
-    fun getSummonerSpellUri(nameImage: String) = "$uri/cdn/$version/img/spell/$nameImage"
-    fun getItemUri(itemId: Int) = "$uri/cdn/$version/img/item/$itemId.png"
-    fun getMasteryUri(masteryId: String) = "$uri/cdn/$version/img/mastery/$masteryId.png"
-    fun getRuneUri(nameImage: String) = "$uri/cdn/$version/img/rune/$nameImage"
-    fun getSpriteUri(imageName: String) = "$uri/cdn/$version/img/sprite/$imageName"
-    fun getMapUri(mapId: Int) = "$uri/cdn/$version/img/map/map$mapId.png"
+    private fun getProfileIconUri(profileIconId: Int) = "$uri/cdn/$version/img/profileicon/$profileIconId.png"
+    private fun getSplashArtUri(nameChampion: String, skinNum: Int) = "$uri/cdn/img/champion/splash/${nameChampion}_$skinNum.jpg"
+    private fun getLoadingScreenArtUri(nameChampion: String, skinNum: Int) = "$uri/cdn/img/champion/loading/${nameChampion}_$skinNum.jpg"
+    private fun getChampionSquareUri(nameChampion: String) = "$uri/cdn/$version/img/champion/$nameChampion.png"
+    private fun getPassiveAbilityUri(nameImage: String) = "$uri/cdn/$version/img/passive/$nameImage"
+    private fun getChampionAbilityUri(nameImage: String) = "$uri/cdn/$version/img/spell/$nameImage"
+    private fun getSummonerSpellUri(nameImage: String) = "$uri/cdn/$version/img/spell/$nameImage"
+    private fun getItemUri(itemId: Int) = "$uri/cdn/$version/img/item/$itemId.png"
+    private fun getMasteryUri(masteryId: String) = "$uri/cdn/$version/img/mastery/$masteryId.png"
+    private fun getRuneUri(nameImage: String) = "$uri/cdn/$version/img/rune/$nameImage"
+    private fun getSpriteUri(imageName: String) = "$uri/cdn/$version/img/sprite/$imageName"
+    private fun getMapUri(mapId: Int) = "$uri/cdn/$version/img/map/map$mapId.png"
 
     /**
      * Profile icon

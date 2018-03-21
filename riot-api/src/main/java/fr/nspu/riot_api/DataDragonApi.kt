@@ -16,9 +16,21 @@ import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 
 /**
- * Created by nspu on 15/03/18.
+ * Creates and configures a REST adapter for DataDragon.
  *
- * If no context, no cache
+ * Basic usage:
+ * DataDragonApi dataDragonApi = new DataDragonApi(endPoint, accessToken);
+ *
+ * Create instance of DataDragonApi with given executors.
+ *   @property httpExecutor executor for http request. Cannot be null.
+ *   @property callbackExecutor executor for callbacks. If null is passed than the same
+ *   @property version version of the data dragon
+ *   @property language language use for get the different informations
+ *   @property context context of application.If context is null, the cache will be not use
+ *
+ *   @property dataDragonService instance for access to data dragon
+ *   @property imageService instance for access to image
+ *   @constructor thread that created the instances.
  */
 class DataDragonApi(
         httpExecutor: Executor,
@@ -31,9 +43,6 @@ class DataDragonApi(
     val imageService: ImageService
 
     init {
-
-
-
         val restAdapterBuilder = RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.BASIC)
                 .setExecutors(httpExecutor, callbackExecutor)
@@ -54,21 +63,33 @@ class DataDragonApi(
         imageService = ImageService(DATA_DRAGON_API_ENDPOINT, version)
     }
 
+
+    /**
+     * The request interceptor that will add the parameters with version
+     * and language to every request made with the wrapper.
+     */
     fun requestAddParameter(request: RequestInterceptor.RequestFacade) {
         request.addPathParam("version", version)
         request.addPathParam("language", language)
     }
 
 
+    /**
+     *   @param version version of the data dragon
+     *   @param language language use for get the different informations
+     *   @param context context of application.If context is null, the cache will be not use
+     *   @constructor thread that created the instances.
+     */
     constructor(version: String, language: String, context: Context?) : this(
             Executors.newSingleThreadExecutor(),
             MainThreadExecutor(),
             version,
             language,
-            context
+            context)
 
-    )
-
+    /**
+     * Set up the cache if the context is not null
+     */
     private fun useCache(buildRestAdapter: RestAdapter.Builder) {
         var okHttpClient: OkHttpClient? = null
 
@@ -92,7 +113,6 @@ class DataDragonApi(
 
 
     companion object {
-
         const val TAG = "DataDragonApi"
 
         /**

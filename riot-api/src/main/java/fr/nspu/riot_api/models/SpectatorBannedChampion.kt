@@ -7,9 +7,9 @@ import android.os.Parcelable
  * Created by nspu on 13/03/18.
  */
 data class SpectatorBannedChampion(
-        private var pickTurn: Int? = null,// 	The turn during which the champion was banned
+        var pickTurn: Int? = null,// 	The turn during which the champion was banned
         var championId: Long? = null,// 	The ID of the banned champion
-        private var teamId: Long? = null// 	The ID of the team that banned the champion
+        var teamId: Long? = null// 	The ID of the team that banned the champion
 ) : Parcelable {
     constructor(source: Parcel) : this(
             source.readValue(Int::class.java.classLoader) as Int?,

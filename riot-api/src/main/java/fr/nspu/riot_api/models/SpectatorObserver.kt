@@ -7,7 +7,7 @@ import android.os.Parcelable
  * Created by nspu on 13/03/18.
  */
 data class SpectatorObserver(
-        private var encryptionKey: String? = null// 	//Key used to decrypt the spectator grid game data for playback
+        var encryptionKey: String? = null// 	//Key used to decrypt the spectator grid game data for playback
 ) : Parcelable {
     constructor(source: Parcel) : this(
             source.readString()

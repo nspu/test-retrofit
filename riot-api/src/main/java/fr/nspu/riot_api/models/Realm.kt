@@ -7,15 +7,15 @@ import android.os.Parcelable
  * Created by nspu on 12/03/18.
  */
 data class Realm(
-        private var lg: String? = null,    //Legacy script mode for IE6 or older.
-        private var dd: String? = null,    //Latest changed version of Dragon Magic.
-        private var l: String? = null,    //Default language for this realm.
-        private var n: Map<String, String>? = null,    //Latest changed version for each data type listed.
-        private var profileiconmax: Int? = null,    //Special behavior number identifying the largest profile icon ID that can be used under 500. Any profile icon that is requested between this number and 500 should be mapped to 0.
-        private var store: String? = null,    //Additional API data drawn from other sources that may be related to Data Dragon functionality.
-        private var v: String? = null,    //Current version of this file for this realm.
-        private var cdn: String? = null,    //The base CDN URL.
-        private var css: String? = null //	Latest changed version of Dragon Magic's CSS file.
+        var lg: String? = null,    //Legacy script mode for IE6 or older.
+        var dd: String? = null,    //Latest changed version of Dragon Magic.
+        var l: String? = null,    //Default language for this realm.
+        var n: Map<String, String>? = null,    //Latest changed version for each data type listed.
+        var profileiconmax: Int? = null,    //Special behavior number identifying the largest profile icon ID that can be used under 500. Any profile icon that is requested between this number and 500 should be mapped to 0.
+        var store: String? = null,    //Additional API data drawn from other sources that may be related to Data Dragon functionality.
+        var v: String? = null,    //Current version of this file for this realm.
+        var cdn: String? = null,    //The base CDN URL.
+        var css: String? = null //	Latest changed version of Dragon Magic's CSS file.
 ) : Parcelable {
     constructor(source: Parcel) : this(
             source.readString(),

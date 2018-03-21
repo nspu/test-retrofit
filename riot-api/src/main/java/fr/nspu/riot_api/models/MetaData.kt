@@ -7,9 +7,9 @@ import android.os.Parcelable
  * Created by nspu on 12/03/18.
  */
 data class MetaData(
-        private var tier: String? = null,
+        var tier: String? = null,
         var type: String? = null,
-        private var isRune: Boolean? = null
+        var isRune: Boolean? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(
             source.readString(),

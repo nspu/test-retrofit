@@ -7,9 +7,9 @@ import android.os.Parcelable
  * Created by nspu on 09/03/18.
  */
 data class ChampionDataInfo(
-        private var difficulty: Int? = null,
+        var difficulty: Int? = null,
         var attack: Int? = null,
-        private var defense: Int? = null,
+        var defense: Int? = null,
         var magic: Int? = null
         ) : Parcelable {
     constructor(parcel: Parcel) : this(

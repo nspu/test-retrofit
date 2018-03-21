@@ -7,7 +7,7 @@ import android.os.Parcelable
  * Created by nspu on 11/03/18.
  */
 data class ItemTree(
-        private var header: String? = null,
+        var header: String? = null,
         var tags: List<String>? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(

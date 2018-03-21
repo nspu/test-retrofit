@@ -8,11 +8,11 @@ import android.os.Parcelable
  */
 data class ChampionRecommandedData(
         var map: String? = null,
-        private var blocks: List<ChampionBlockData>? = null,
+        var blocks: List<ChampionBlockData>? = null,
         var champion: String? = null,
         var title: String? = null,
-        private var priority: Boolean? = null,
-        private var mode: String? = null,
+        var priority: Boolean? = null,
+        var mode: String? = null,
         var type: String? = null) : Parcelable {
 
     constructor(source: Parcel) : this(

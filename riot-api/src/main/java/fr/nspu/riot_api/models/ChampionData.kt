@@ -27,7 +27,7 @@ class ChampionData(
 
 
     var championId: Int? = null
-        private set
+        set
         get() {
             if (id != null && id is Int) {
                 return id as Int
@@ -37,7 +37,7 @@ class ChampionData(
             return null
         }
     var nameKey: String? = null
-        private set
+        set
         get() {
             if (id != null && !(id is Int)) {
                 return id as String

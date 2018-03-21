@@ -7,9 +7,9 @@ import android.os.Parcelable
  * Created by nspu on 13/03/18.
  */
 data class SpectatorPerks(
-        private var perkStyle: Long? = null, //	Primary runes path
-        private var perkIds: List<Long>? = null,    //IDs of the perks/runes assigned.
-        private var perkSubStyle: Long? = null//Secondary runes path
+        var perkStyle: Long? = null, //	Primary runes path
+        var perkIds: List<Long>? = null,    //IDs of the perks/runes assigned.
+        var perkSubStyle: Long? = null//Secondary runes path
 ) : Parcelable {
     constructor(source: Parcel) : this(
             source.readValue(Long::class.java.classLoader) as Long?,

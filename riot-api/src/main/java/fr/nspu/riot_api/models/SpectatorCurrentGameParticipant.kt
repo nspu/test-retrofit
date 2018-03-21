@@ -7,15 +7,15 @@ import android.os.Parcelable
  * Created by nspu on 13/03/18.
  */
 data class SpectatorCurrentGameParticipant(
-        private var profileIconId: Long? = null,// 	The ID of the profile icon used by this participant
+        var profileIconId: Long? = null,// 	The ID of the profile icon used by this participant
         var championId: Long? = null,// 	The ID of the champion played by this participant
-        private var summonerName: String? = null,// 	The summoner name of this participant
-        private var gameCustomizationObjects: List<SpectatorGameCustomization>? = null,// 	List of Game Customizations
-        private var bot: Boolean? = null,// 	Flag indicating whether or not this participant is a bot
-        private var perks: SpectatorPerks? = null,// 	Perks/Runes Reforged Information
-        private var spell2Id: Long? = null,// 	The ID of the second summoner spell used by this participant
-        private var teamId: Long? = null,// 	The team ID of this participant, indicating the participant's team
-        private var spell1Id: Long? = null,// 	The ID of the first summoner spell used by this participant
+        var summonerName: String? = null,// 	The summoner name of this participant
+        var gameCustomizationObjects: List<SpectatorGameCustomization>? = null,// 	List of Game Customizations
+        var bot: Boolean? = null,// 	Flag indicating whether or not this participant is a bot
+        var perks: SpectatorPerks? = null,// 	Perks/Runes Reforged Information
+        var spell2Id: Long? = null,// 	The ID of the second summoner spell used by this participant
+        var teamId: Long? = null,// 	The team ID of this participant, indicating the participant's team
+        var spell1Id: Long? = null,// 	The ID of the first summoner spell used by this participant
         var summonerId: Long? = null// 	The summoner ID of this participant
 ) : Parcelable {
     constructor(source: Parcel) : this(

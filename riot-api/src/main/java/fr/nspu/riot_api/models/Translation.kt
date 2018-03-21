@@ -7,9 +7,9 @@ import android.os.Parcelable
  * Created by nspu on 13/03/18.
  */
 data class Translation(
-        private var locale: String? = null,
-        private var content: String? = null,
-        private var updated_at: String? = null
+        var locale: String? = null,
+        var content: String? = null,
+        var updated_at: String? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(
             source.readString(),

@@ -7,7 +7,7 @@ import android.os.Parcelable
  * Created by nspu on 13/03/18.
  */
 data class MatchRune(
-        private var runeId: Int? = null,
+        var runeId: Int? = null,
         var rank: Int? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(

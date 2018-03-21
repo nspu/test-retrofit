@@ -7,10 +7,10 @@ import android.os.Parcelable
  * Created by nspu on 11/03/18.
  */
 data class MapDetails(
-        private var mapName: String? = null,
+        var mapName: String? = null,
         var image: Image? = null,
-        private var mapId: Long? = null,
-        private var unpurchasableItemList: List<Long>? = null
+        var mapId: Long? = null,
+        var unpurchasableItemList: List<Long>? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(
             source.readString(),

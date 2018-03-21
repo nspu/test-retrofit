@@ -7,13 +7,13 @@ import android.os.Parcelable
  * Created by nspu on 12/03/18.
  */
 data class ReforgedRune(
-        private var runePathName: String? = null,
-        private var runePathId: Int? = null,
+        var runePathName: String? = null,
+        var runePathId: Int? = null,
         var name: String? = null,
         var id: Int? = null,
         var key: String? = null,
-        private var shortDesc: String? = null,
-        private var longDesc: String? = null,
+        var shortDesc: String? = null,
+        var longDesc: String? = null,
         var icon: String? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(
