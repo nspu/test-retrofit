@@ -1,0 +1,32 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>LeagueService.getChallengersByQueue - riot-api</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">riot-api</a>&nbsp;/&nbsp;<a href="../index.html">fr.nspu.riot_api.riot_services</a>&nbsp;/&nbsp;<a href="index.html">LeagueService</a>&nbsp;/&nbsp;<a href="./get-challengers-by-queue.html">getChallengersByQueue</a><br/>
+<br/>
+<h1>getChallengersByQueue</h1>
+<a name="fr.nspu.riot_api.riot_services.LeagueService$getChallengersByQueue(fr.nspu.riot_api.RankedType, kotlin.collections.Map((kotlin.String, )))"></a>
+<code><span class="identifier">@GET</span><span class="symbol">(</span>"/lol/league/v3/challengerleagues/by-queue/{queue}"<span class="symbol">)</span> <span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getChallengersByQueue</span><span class="symbol">(</span><span class="identifier">@Path</span><span class="symbol">(</span>"queue"<span class="symbol">)</span> <span class="identifier" id="fr.nspu.riot_api.riot_services.LeagueService$getChallengersByQueue(fr.nspu.riot_api.RankedType, kotlin.collections.Map((kotlin.String, )))/queue">queue</span><span class="symbol">:</span>&nbsp;<a href="../../fr.nspu.riot_api/-ranked-type/index.html"><span class="identifier">RankedType</span></a><span class="symbol">, </span><span class="identifier">@QueryMap</span> <span class="identifier" id="fr.nspu.riot_api.riot_services.LeagueService$getChallengersByQueue(fr.nspu.riot_api.RankedType, kotlin.collections.Map((kotlin.String, )))/options">options</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html"><span class="identifier">Map</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="../../fr.nspu.riot_api.models/-league-list/index.html"><span class="identifier">LeagueList</span></a><span class="symbol">?</span></code>
+<p>Get the challenger league for given queue.</p>
+<h3>Parameters</h3>
+<p><a name="queue"></a>
+<code>queue</code> - type of the queue <a href="../../fr.nspu.riot_api/-ranked-type/index.html">RankedType</a></p>
+<p><a name="options"></a>
+<code>options</code> - Optional parameters. Nullable</p>
+<p><strong>Return</strong><br/>
+Requested challenger league</p>
+<a name="fr.nspu.riot_api.riot_services.LeagueService$getChallengersByQueue(fr.nspu.riot_api.RankedType, retrofit.Callback((fr.nspu.riot_api.models.LeagueList)), kotlin.collections.Map((kotlin.String, )))"></a>
+<code><span class="identifier">@GET</span><span class="symbol">(</span>"/lol/league/v3/challengerleagues/by-queue/{queue}"<span class="symbol">)</span> <span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getChallengersByQueue</span><span class="symbol">(</span><span class="identifier">@Path</span><span class="symbol">(</span>"queue"<span class="symbol">)</span> <span class="identifier" id="fr.nspu.riot_api.riot_services.LeagueService$getChallengersByQueue(fr.nspu.riot_api.RankedType, retrofit.Callback((fr.nspu.riot_api.models.LeagueList)), kotlin.collections.Map((kotlin.String, )))/queue">queue</span><span class="symbol">:</span>&nbsp;<a href="../../fr.nspu.riot_api/-ranked-type/index.html"><span class="identifier">RankedType</span></a><span class="symbol">, </span><span class="identifier" id="fr.nspu.riot_api.riot_services.LeagueService$getChallengersByQueue(fr.nspu.riot_api.RankedType, retrofit.Callback((fr.nspu.riot_api.models.LeagueList)), kotlin.collections.Map((kotlin.String, )))/callback">callback</span><span class="symbol">:</span>&nbsp;<span class="identifier">Callback</span><span class="symbol">&lt;</span><a href="../../fr.nspu.riot_api.models/-league-list/index.html"><span class="identifier">LeagueList</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">@QueryMap</span> <span class="identifier" id="fr.nspu.riot_api.riot_services.LeagueService$getChallengersByQueue(fr.nspu.riot_api.RankedType, retrofit.Callback((fr.nspu.riot_api.models.LeagueList)), kotlin.collections.Map((kotlin.String, )))/options">options</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html"><span class="identifier">Map</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Get the challenger league for given queue.</p>
+<h3>Parameters</h3>
+<p><a name="queue"></a>
+<code>queue</code> - type of the queue <a href="../../fr.nspu.riot_api/-ranked-type/index.html">RankedType</a></p>
+<p><a name="callback"></a>
+<code>callback</code> - Callback method. Success callback will return challenger league</p>
+<p><a name="options"></a>
+<code>options</code> - Optional parameters. Nullable</p>
+</BODY>
+</HTML>

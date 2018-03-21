@@ -1,0 +1,134 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MatchParticipant - riot-api</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">riot-api</a>&nbsp;/&nbsp;<a href="../index.html">fr.nspu.riot_api.models</a>&nbsp;/&nbsp;<a href="./index.html">MatchParticipant</a><br/>
+<br/>
+<h1>MatchParticipant</h1>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">MatchParticipant</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Parcelable</span></code>
+<p>Created by nspu on 13/03/18.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">MatchParticipant</span><span class="symbol">(</span><span class="identifier" id="fr.nspu.riot_api.models.MatchParticipant$<init>(android.os.Parcel)/source">source</span><span class="symbol">:</span>&nbsp;<span class="identifier">Parcel</span><span class="symbol">)</span></code><code><span class="identifier">MatchParticipant</span><span class="symbol">(</span><span class="identifier" id="fr.nspu.riot_api.models.MatchParticipant$<init>(fr.nspu.riot_api.models.MatchParticipantStats, kotlin.Int, kotlin.collections.List((fr.nspu.riot_api.models.MatchRune)), fr.nspu.riot_api.models.MatchParticipantTimeline, kotlin.Int, kotlin.Int, kotlin.collections.List((fr.nspu.riot_api.models.MatchMastery)), kotlin.String, kotlin.Int, kotlin.Int)/stats">stats</span><span class="symbol">:</span>&nbsp;<a href="../-match-participant-stats/index.html"><span class="identifier">MatchParticipantStats</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="fr.nspu.riot_api.models.MatchParticipant$<init>(fr.nspu.riot_api.models.MatchParticipantStats, kotlin.Int, kotlin.collections.List((fr.nspu.riot_api.models.MatchRune)), fr.nspu.riot_api.models.MatchParticipantTimeline, kotlin.Int, kotlin.Int, kotlin.collections.List((fr.nspu.riot_api.models.MatchMastery)), kotlin.String, kotlin.Int, kotlin.Int)/participantId">participantId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="fr.nspu.riot_api.models.MatchParticipant$<init>(fr.nspu.riot_api.models.MatchParticipantStats, kotlin.Int, kotlin.collections.List((fr.nspu.riot_api.models.MatchRune)), fr.nspu.riot_api.models.MatchParticipantTimeline, kotlin.Int, kotlin.Int, kotlin.collections.List((fr.nspu.riot_api.models.MatchMastery)), kotlin.String, kotlin.Int, kotlin.Int)/runes">runes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="../-match-rune/index.html"><span class="identifier">MatchRune</span></a><span class="symbol">&gt;</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="fr.nspu.riot_api.models.MatchParticipant$<init>(fr.nspu.riot_api.models.MatchParticipantStats, kotlin.Int, kotlin.collections.List((fr.nspu.riot_api.models.MatchRune)), fr.nspu.riot_api.models.MatchParticipantTimeline, kotlin.Int, kotlin.Int, kotlin.collections.List((fr.nspu.riot_api.models.MatchMastery)), kotlin.String, kotlin.Int, kotlin.Int)/timeline">timeline</span><span class="symbol">:</span>&nbsp;<a href="../-match-participant-timeline/index.html"><span class="identifier">MatchParticipantTimeline</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="fr.nspu.riot_api.models.MatchParticipant$<init>(fr.nspu.riot_api.models.MatchParticipantStats, kotlin.Int, kotlin.collections.List((fr.nspu.riot_api.models.MatchRune)), fr.nspu.riot_api.models.MatchParticipantTimeline, kotlin.Int, kotlin.Int, kotlin.collections.List((fr.nspu.riot_api.models.MatchMastery)), kotlin.String, kotlin.Int, kotlin.Int)/teamId">teamId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="fr.nspu.riot_api.models.MatchParticipant$<init>(fr.nspu.riot_api.models.MatchParticipantStats, kotlin.Int, kotlin.collections.List((fr.nspu.riot_api.models.MatchRune)), fr.nspu.riot_api.models.MatchParticipantTimeline, kotlin.Int, kotlin.Int, kotlin.collections.List((fr.nspu.riot_api.models.MatchMastery)), kotlin.String, kotlin.Int, kotlin.Int)/spell2Id">spell2Id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="fr.nspu.riot_api.models.MatchParticipant$<init>(fr.nspu.riot_api.models.MatchParticipantStats, kotlin.Int, kotlin.collections.List((fr.nspu.riot_api.models.MatchRune)), fr.nspu.riot_api.models.MatchParticipantTimeline, kotlin.Int, kotlin.Int, kotlin.collections.List((fr.nspu.riot_api.models.MatchMastery)), kotlin.String, kotlin.Int, kotlin.Int)/masteries">masteries</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="../-match-mastery/index.html"><span class="identifier">MatchMastery</span></a><span class="symbol">&gt;</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="fr.nspu.riot_api.models.MatchParticipant$<init>(fr.nspu.riot_api.models.MatchParticipantStats, kotlin.Int, kotlin.collections.List((fr.nspu.riot_api.models.MatchRune)), fr.nspu.riot_api.models.MatchParticipantTimeline, kotlin.Int, kotlin.Int, kotlin.collections.List((fr.nspu.riot_api.models.MatchMastery)), kotlin.String, kotlin.Int, kotlin.Int)/highestAchievedSeasonTier">highestAchievedSeasonTier</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="fr.nspu.riot_api.models.MatchParticipant$<init>(fr.nspu.riot_api.models.MatchParticipantStats, kotlin.Int, kotlin.collections.List((fr.nspu.riot_api.models.MatchRune)), fr.nspu.riot_api.models.MatchParticipantTimeline, kotlin.Int, kotlin.Int, kotlin.collections.List((fr.nspu.riot_api.models.MatchMastery)), kotlin.String, kotlin.Int, kotlin.Int)/spell1Id">spell1Id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="fr.nspu.riot_api.models.MatchParticipant$<init>(fr.nspu.riot_api.models.MatchParticipantStats, kotlin.Int, kotlin.collections.List((fr.nspu.riot_api.models.MatchRune)), fr.nspu.riot_api.models.MatchParticipantTimeline, kotlin.Int, kotlin.Int, kotlin.collections.List((fr.nspu.riot_api.models.MatchMastery)), kotlin.String, kotlin.Int, kotlin.Int)/championId">championId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span></code>
+<p>Created by nspu on 13/03/18.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="champion-id.html">championId</a></p>
+</td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">championId</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">?</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="highest-achieved-season-tier.html">highestAchievedSeasonTier</a></p>
+</td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">highestAchievedSeasonTier</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">?</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="masteries.html">masteries</a></p>
+</td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">masteries</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="../-match-mastery/index.html"><span class="identifier">MatchMastery</span></a><span class="symbol">&gt;</span><span class="symbol">?</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="participant-id.html">participantId</a></p>
+</td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">participantId</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">?</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="runes.html">runes</a></p>
+</td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">runes</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="../-match-rune/index.html"><span class="identifier">MatchRune</span></a><span class="symbol">&gt;</span><span class="symbol">?</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="spell1-id.html">spell1Id</a></p>
+</td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">spell1Id</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">?</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="spell2-id.html">spell2Id</a></p>
+</td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">spell2Id</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">?</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="stats.html">stats</a></p>
+</td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">stats</span><span class="symbol">: </span><a href="../-match-participant-stats/index.html"><span class="identifier">MatchParticipantStats</span></a><span class="symbol">?</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="team-id.html">teamId</a></p>
+</td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">teamId</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">?</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="timeline.html">timeline</a></p>
+</td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">timeline</span><span class="symbol">: </span><a href="../-match-participant-timeline/index.html"><span class="identifier">MatchParticipantTimeline</span></a><span class="symbol">?</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="describe-contents.html">describeContents</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">describeContents</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="write-to-parcel.html">writeToParcel</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">writeToParcel</span><span class="symbol">(</span><span class="identifier" id="fr.nspu.riot_api.models.MatchParticipant$writeToParcel(android.os.Parcel, kotlin.Int)/dest">dest</span><span class="symbol">:</span>&nbsp;<span class="identifier">Parcel</span><span class="symbol">, </span><span class="identifier" id="fr.nspu.riot_api.models.MatchParticipant$writeToParcel(android.os.Parcel, kotlin.Int)/flags">flags</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Companion Object Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-c-r-e-a-t-o-r.html">CREATOR</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">CREATOR</span><span class="symbol">: </span><span class="identifier">Creator</span><span class="symbol">&lt;</span><a href="./index.html"><span class="identifier">MatchParticipant</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -100,6 +100,7 @@ interface StaticDataService {
      *
      * @param callback Callback method. Success callback will return language strings
      * @param options Optional parameters. Nullable
+     * @return Requested language strings
      * @see <a href="https://developer.riotgames.com/api-methods/#lol-static-data-v3/GET_getLanguageStrings">Retrieve language strings</a>
      */
     @GET(RiotUri.URI_STATIC_DATA_LANGUAGE_STRING)
@@ -108,8 +109,8 @@ interface StaticDataService {
     /**
      * Retrieve language strings data
      *
+     * @param callback Callback method. Success callback will return language strings
      * @param options Optional parameters. Nullable
-     * @return Requested language strings
      * @see <a href="https://developer.riotgames.com/api-methods/#lol-static-data-v3/GET_getLanguageStrings">Retrieve language strings</a>
      */
     @GET(RiotUri.URI_STATIC_DATA_LANGUAGE_STRING)
