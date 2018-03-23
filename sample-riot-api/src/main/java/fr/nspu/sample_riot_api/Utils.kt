@@ -1,9 +1,8 @@
-package fr.nspu.riot_api_android
+package fr.nspu.sample_riot_api
 
 import android.databinding.BindingAdapter
 import android.view.View
 import android.widget.TextView
-import kotlinx.android.synthetic.main.fragment_matchitem.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 

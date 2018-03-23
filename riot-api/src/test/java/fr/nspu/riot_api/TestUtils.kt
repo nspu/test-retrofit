@@ -1,33 +1,32 @@
 package fr.nspu.riot_api
 
 import com.google.gson.Gson
+import okhttp3.MediaType
+import okhttp3.Protocol
+import okhttp3.Request
+import okhttp3.Response
+import okio.BufferedSource
 import org.robolectric.Robolectric
-import retrofit.client.Response
-import retrofit.mime.TypedInput
 import java.io.*
 import java.lang.reflect.Type
 import java.nio.CharBuffer
 import java.nio.charset.Charset
-import java.util.*
 
 object TestUtils {
     private val TEST_DATA_DIR = "/fixtures/"
     private val MAX_TEST_DATA_FILE_SIZE = 4131072
     private val gson = Gson()
 
-    private class ResponseBody internal constructor(private val mJson: String) : TypedInput {
+    private class ResponseBody internal constructor(private val mJson: String): okhttp3.ResponseBody() {
+        override fun contentLength(): Long {
+            return mJson.length.toLong()        }
 
-        override fun mimeType(): String {
-            return "application/json"
+        override fun contentType(): MediaType? {
+            return MediaType.parse("application/json")
         }
 
-        override fun length(): Long {
-            return mJson.length.toLong()
-        }
-
-        @Throws(IOException::class)
-        override fun `in`(): InputStream {
-            return ByteArrayInputStream(mJson.toByteArray(Charset.forName("UTF-8")))
+        override fun source(): BufferedSource {
+            return ByteArrayInputStream(mJson.toByteArray(Charset.forName("UTF-8"))) as BufferedSource
         }
     }
 
@@ -47,7 +46,14 @@ object TestUtils {
     }
 
     private fun createResponse(statusCode: Int, responseBody: ResponseBody): Response {
-        return Response("", statusCode, "", ArrayList(), responseBody)
+        var request = Request.Builder().url("http://riot.com").tag("").build()
+        return Response.Builder()
+                .body(responseBody)
+                .code(statusCode)
+                .protocol(Protocol.HTTP_1_0)
+                .message("")
+                .request(request)
+                .build()
     }
 
     fun readTestData(fileName: String): String {

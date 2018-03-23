@@ -1,4 +1,4 @@
-package fr.nspu.riot_api_android
+package fr.nspu.sample_riot_api
 
 
 import android.content.Intent
@@ -6,8 +6,10 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import fr.nspu.riot_api_android.databinding.ActivityMainBinding
+import fr.nspu.sample_riot_api.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
+
+
 
 class MainActivity : AppCompatActivity(){
     private lateinit var binding : ActivityMainBinding

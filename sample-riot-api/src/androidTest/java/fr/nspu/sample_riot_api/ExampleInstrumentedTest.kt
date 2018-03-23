@@ -1,4 +1,4 @@
-package fr.nspu.riot_api_android
+package fr.nspu.sample_riot_api
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

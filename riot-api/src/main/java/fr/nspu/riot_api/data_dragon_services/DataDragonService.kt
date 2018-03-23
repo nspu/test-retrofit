@@ -1,9 +1,10 @@
 package fr.nspu.riot_api.data_dragon_services
 
 import fr.nspu.riot_api.models.*
-import retrofit.Callback
-import retrofit.http.GET
-import retrofit.http.Path
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.http.GET
+import retrofit2.http.Path
 
 /**
  * Created by nspu on 15/03/18.
@@ -23,7 +24,7 @@ interface DataDragonService {
      * Champions
      */
     @GET(DataDragonUri.URI_CHAMPIONS)
-    fun getChampions(): ChampionListData?
+    fun getChampions(): Call<ChampionListData>?
 
     @GET(DataDragonUri.URI_CHAMPIONS)
     fun getChampions(callback: Callback<ChampionListData>)
@@ -33,7 +34,7 @@ interface DataDragonService {
      * Champion
      */
     @GET(DataDragonUri.URI_CHAMPION)
-    fun getChampion(@Path("championName") championName: String): ChampionListData?
+    fun getChampion(@Path("championName") championName: String): Call<ChampionListData>?
 
     @GET(DataDragonUri.URI_CHAMPION)
     fun getChampion(@Path("championName") championName: String, callback: Callback<ChampionListData>)

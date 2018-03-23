@@ -19,3 +19,10 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+# Retain generic type information for use by reflection by converters and adapters.
+-keepattributes *Annotation*
+-keep class retrofit.** { *; }
+-keepclasseswithmembers class * {
+@retrofit.http.* <methods>; }
+-keepattributes Signature
+

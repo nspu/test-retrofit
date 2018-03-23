@@ -11,7 +11,7 @@ import fr.nspu.sample_data_dragon.R
 import fr.nspu.sample_data_dragon.view.SettingsActivity
 
 
-class MainActivity : AppCompatActivity(),
+class ChampionActivity : AppCompatActivity(),
         ChampionsFragment.OnChampionsFragmentInteractionListener,
         ChampionDetailsFragment.OnListFragmentInteractionListener {
 
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(),
         return when (item.itemId) {
             R.id.action_settings -> {
                 val intent = Intent(this, SettingsActivity::class.java)
-                intent.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT, SettingsActivity.PreferencesFragment::class.java!!.getName())
+                intent.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT, SettingsActivity.PreferencesFragment::class.java.getName())
                 intent.putExtra(PreferenceActivity.EXTRA_NO_HEADERS, true)
                 startActivity(intent)
                 return true

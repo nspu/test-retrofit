@@ -1,9 +1,10 @@
 package fr.nspu.riot_api.riot_services
 
-import retrofit.Callback
-import retrofit.http.GET
-import retrofit.http.Path
-import retrofit.http.QueryMap
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.QueryMap
 
 /**
  * Created by nspu on 13/03/18.
@@ -19,7 +20,7 @@ interface ThirdPartyCodeService {
      * @see <a href="https://developer.riotgames.com/api-methods/#third-party-code-v3/GET_getThirdPartyCodeBySummonerId">Get third party code for a given summoner ID</a>
      */
     @GET(RiotUri.URI_THIRD_PARTY_CODE_BY_SUMMONER_ID)
-    fun getThirdPartyCodeBySummonerId(@Path("summonerId") summonerId: Long, @QueryMap options: Map<String, String>? =null): String?
+    fun getThirdPartyCodeBySummonerId(@Path("summonerId") summonerId: Long, @QueryMap options: Map<String, String>? =null): Call<String>
 
     @GET(RiotUri.URI_THIRD_PARTY_CODE_BY_SUMMONER_ID)
     fun getThirdPartyCodeBySummonerId(@Path("summonerId") summonerId: Long, callback: Callback<String>, @QueryMap options: Map<String, String>? =null)

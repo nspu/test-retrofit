@@ -1,13 +1,13 @@
-package fr.nspu.riot_api_android
+package fr.nspu.sample_riot_api
 
-import android.databinding.DataBindingComponent
 import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import fr.nspu.riot_api.models.ChampionData
 import fr.nspu.riot_api.models.MatchReference
-import fr.nspu.riot_api_android.databinding.ActivityMatchBinding
+import fr.nspu.sample_riot_api.databinding.ActivityMatchBinding
+
+
 
 class MatchActivity : AppCompatActivity(), MatchFragment.OnListFragmentInteractionListener{
     override fun onListFragmentInteraction(item: MatchReference) {

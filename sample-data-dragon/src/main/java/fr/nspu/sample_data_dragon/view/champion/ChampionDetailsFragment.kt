@@ -16,10 +16,9 @@ import fr.nspu.riot_api.models.ChampionListData
 import fr.nspu.sample_data_dragon.R
 import fr.nspu.sample_data_dragon.databinding.FragmentChampionDetailsBinding
 import fr.nspu.sample_data_dragon.view.SettingsActivity
-import retrofit.Callback
-import retrofit.RetrofitError
-import retrofit.client.Response
-
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 /**
  * A simple [Fragment] subclass.
@@ -29,18 +28,18 @@ import retrofit.client.Response
 class ChampionDetailsFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v!!.id) {
-            binding.btnAbilities!!.id -> mListener?.onListFragmentInteraction(champion!!, ChampionSubEnum.Abilities)
-            binding.btnSkins!!.id -> mListener?.onListFragmentInteraction(champion!!, ChampionSubEnum.Skins)
-            binding.btnAllytips!!.id -> mListener?.onListFragmentInteraction(champion!!, ChampionSubEnum.AlliTips)
-            binding.btnEnnemytips!!.id -> mListener?.onListFragmentInteraction(champion!!, ChampionSubEnum.EnemyTips)
-            binding.btnLore!!.id -> mListener?.onListFragmentInteraction(champion!!, ChampionSubEnum.Lore)
+            binding.btnAbilities.id -> mListener?.onListFragmentInteraction(champion!!, ChampionSubEnum.Abilities)
+            binding.btnSkins.id -> mListener?.onListFragmentInteraction(champion!!, ChampionSubEnum.Skins)
+            binding.btnAllytips.id -> mListener?.onListFragmentInteraction(champion!!, ChampionSubEnum.AlliTips)
+            binding.btnEnnemytips.id -> mListener?.onListFragmentInteraction(champion!!, ChampionSubEnum.EnemyTips)
+            binding.btnLore.id -> mListener?.onListFragmentInteraction(champion!!, ChampionSubEnum.Lore)
         }
     }
 
     private var nameChampion: String? = null
     private var champion: ChampionData? = null
     private lateinit var binding: FragmentChampionDetailsBinding
-    private var mListener: ChampionDetailsFragment.OnListFragmentInteractionListener? = null
+    private var mListener: OnListFragmentInteractionListener? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,29 +63,41 @@ class ChampionDetailsFragment : Fragment(), View.OnClickListener {
         val version = sharedPref.getString(SettingsActivity.PREF_VERSION, "")
         var dataDragonApi = DataDragonApi(version, language, context)
         var progressDialog: ProgressDialog = ProgressDialog.show(context, "", "loading...", true);
-        dataDragonApi.dataDragonService.getChampion(nameChampion!!, object : Callback<ChampionListData> {
-            override fun success(t: ChampionListData?, response: Response?) {
-                champion = t!!.data!!.get(nameChampion!!)
-                dataDragonApi.imageService.getLoadingScreenArt(champion!!.name!!, 0, binding.ivLoadingSplach)
-                binding.tvName.text = nameChampion
-                binding.btnAbilities!!.setOnClickListener(this@ChampionDetailsFragment)
-                binding.btnSkins!!.setOnClickListener(this@ChampionDetailsFragment)
-                binding.btnAllytips!!.setOnClickListener(this@ChampionDetailsFragment)
-                binding.btnEnnemytips!!.setOnClickListener(this@ChampionDetailsFragment)
-                binding.btnLore!!.setOnClickListener(this@ChampionDetailsFragment)
+        dataDragonApi.dataDragonService.getChampion((nameChampion!!) )!!.enqueue( object : Callback<ChampionListData> {
+
+
+            override fun onFailure(call: Call<ChampionListData>?, t: Throwable?) {
                 progressDialog.cancel()
             }
 
-            override fun failure(error: RetrofitError?) {
+            override fun onResponse(call: Call<ChampionListData>?, response: Response<ChampionListData>?) {
+                champion = response!!.body()!!.data!!.get(nameChampion!!)
+                activity!!.runOnUiThread{
+                    image()
+                }
                 progressDialog.cancel()
             }
-
         })
+    }
+
+    fun image() {
+        val sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
+        val language = sharedPref.getString(SettingsActivity.PREF_LANGUAGE, "")
+        val version = sharedPref.getString(SettingsActivity.PREF_VERSION, "")
+        var dataDragonApi = DataDragonApi(version, language, activity)
+        binding.tvName.text = nameChampion
+        binding.btnAbilities!!.setOnClickListener(this@ChampionDetailsFragment)
+        binding.btnSkins!!.setOnClickListener(this@ChampionDetailsFragment)
+        binding.btnAllytips!!.setOnClickListener(this@ChampionDetailsFragment)
+        binding.btnEnnemytips!!.setOnClickListener(this@ChampionDetailsFragment)
+        binding.btnLore!!.setOnClickListener(this@ChampionDetailsFragment)
+        dataDragonApi.imageService.getLoadingScreenArt(this.champion!!.name!!, 0, binding.ivLoadingSplach)
+
     }
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        if (context is ChampionDetailsFragment.OnListFragmentInteractionListener) {
+        if (context is OnListFragmentInteractionListener) {
             mListener = context
         } else {
             throw RuntimeException(context!!.toString() + " must implement OnChampionSkinsFragmentInteractionListener")

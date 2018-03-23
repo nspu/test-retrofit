@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/RiotApiAndroid.iml" filepath="$PROJECT_DIR$/RiotApiAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/riot-api/riot-api.iml" filepath="$PROJECT_DIR$/riot-api/riot-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/riot-api-android.iml" filepath="$PROJECT_DIR$/riot-api-android.iml" />
       <module fileurl="file://$PROJECT_DIR$/sample-data-dragon/sample-data-dragon.iml" filepath="$PROJECT_DIR$/sample-data-dragon/sample-data-dragon.iml" />
       <module fileurl="file://$PROJECT_DIR$/sample-riot-api/sample-riot-api.iml" filepath="$PROJECT_DIR$/sample-riot-api/sample-riot-api.iml" />
     </modules>

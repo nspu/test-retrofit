@@ -9,5 +9,5 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="fr.nspu.riot_api_android.MatchFragment"
+    tools:context="fr.nspu.sample_riot_api.MatchFragment"
     tools:listitem="@layout/fragment_matchitem" />

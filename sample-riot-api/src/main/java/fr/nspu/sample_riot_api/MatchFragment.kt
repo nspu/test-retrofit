@@ -1,4 +1,4 @@
-package fr.nspu.riot_api_android
+package fr.nspu.sample_riot_api
 
 import android.app.ProgressDialog
 import android.content.Context
@@ -42,7 +42,7 @@ class MatchFragment() : Fragment() {
         if (view is RecyclerView) {
             val context = view.getContext()
             val recyclerView = view as RecyclerView
-            recyclerView.layoutManager = LinearLayoutManager(context) as RecyclerView.LayoutManager?
+            recyclerView.layoutManager = LinearLayoutManager(context)
             GetMatchsAsync(recyclerView).execute()
         }
         return view
@@ -123,16 +123,12 @@ class MatchFragment() : Fragment() {
      * See the Android Training lesson [Communicating with Other Fragments](http://developer.android.com/training/basics/fragments/communicating.html) for more information.
      */
     interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
         fun onListFragmentInteraction(item: MatchReference)
     }
 
     companion object {
-
-        // TODO: Customize parameter argument names
         val ARG_NAME = "summoner-name"
 
-        // TODO: Customize parameter initialization
         fun newInstance(name: String): MatchFragment {
             val fragment = MatchFragment()
             val args = Bundle()

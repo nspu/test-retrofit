@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="fr.nspu.riot_api_android.MatchActivity">
+        tools:context="fr.nspu.sample_riot_api.MatchActivity">
 
         <LinearLayout
             android:layout_width="match_parent"

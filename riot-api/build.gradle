@@ -1,44 +1,38 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
+//apply plugin: 'kotlin-kapt'
 apply plugin: 'org.jetbrains.dokka'
 version = VERSION
 android {
     compileSdkVersion 27
-
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
-
     buildTypes {
         release {
-            minifyEnabled = false
-            testCoverageEnabled = true
+            minifyEnabled true
+            testCoverageEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    compile('com.squareup.retrofit:retrofit:1.9.0')
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.4.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.8.0'
 
-    implementation 'com.android.support:appcompat-v7:27.1.0'
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
-    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
-    compile 'com.jakewharton.retrofit:retrofit1-okhttp3-client:1.0.2'
-
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     //test
     testCompile("org.robolectric:robolectric:${ROBOLECTRIC_VERSION}") {
@@ -46,23 +40,15 @@ dependencies {
         exclude group: 'commons-logging', module: 'commons-logging'
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
     }
-    testCompile "com.google.guava:guava:${GUAVA_VERSION}"
-    testCompile "junit:junit:${JUNIT_VERSION}"
-    testCompile "org.easytesting:fest-assert-core:${FEST_ASSERT_CORE_VERSION}"
-    testCompile "org.mockito:mockito-core:${MOCKITO_CORE_VERSION}"
-    testImplementation 'junit:junit:4.12'
+    testImplementation "com.google.guava:guava:${GUAVA_VERSION}"
+    testImplementation "junit:junit:${JUNIT_VERSION}"
+    testImplementation "org.easytesting:fest-assert-core:${FEST_ASSERT_CORE_VERSION}"
+    testImplementation "org.mockito:mockito-core:${MOCKITO_CORE_VERSION}"
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    androidTestCompile 'com.android.support.test:runner:0.2'
-
-    compile 'org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.16'
-
-
+    androidTestImplementation 'com.android.support.test:runner:0.2'
+    testImplementation "com.squareup.okhttp3:mockwebserver:3.8.0"
 }
-repositories {
-    mavenCentral()
-}
-
 
 // make proper name for 'aar' file
 android.libraryVariants.all { variant ->

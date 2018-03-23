@@ -8,18 +8,15 @@ import fr.nspu.riot_api.riot_services.LeagueService
 import org.junit.Test
 import org.mockito.Matchers
 import org.mockito.Mockito
-import retrofit.RestAdapter
+import retrofit2.Retrofit
 import java.io.IOException
 
-/**
- * Created by nspu on 12/03/18.
- */
 class LeagueServiceTest: ServiceTest() {
     var service: LeagueService? = null
     override fun implementService() {
-        val restAdapter = RestAdapter.Builder()
-                .setClient(mockClient!!)
-                .setEndpoint("https://na1.api.riotgames.com")
+        val restAdapter = Retrofit.Builder()
+                .client(mockClient!!)
+                .baseUrl("https://na1.api.riotgames.com")
                 .build()
         service= restAdapter.create(LeagueService::class.java)
     }
@@ -31,7 +28,7 @@ class LeagueServiceTest: ServiceTest() {
         val fixture = gson!!.fromJson(body, LeagueList::class.java)
 
         val response = TestUtils.getResponseFromModel(fixture, LeagueList::class.java)
-        Mockito.`when`(mockClient!!.execute(Matchers.argThat(MatchesId(fixture.queue!!)))).thenReturn(response)
+        Mockito.`when`(mockClient!!.newCall(Matchers.argThat(MatchesId(fixture.queue!!))).execute()).thenReturn(response)
 
         val challengers = service!!.getChallengersByQueue(RankedType.RANKED_SOLO_5x5)
         this.compareJSONWithoutNulls(body, challengers)
@@ -44,7 +41,7 @@ class LeagueServiceTest: ServiceTest() {
         val fixture = gson!!.fromJson(body, LeagueList::class.java)
 
         val response = TestUtils.getResponseFromModel(fixture, LeagueList::class.java)
-        Mockito.`when`(mockClient!!.execute(Matchers.argThat(MatchesId(fixture.leagueId!!)))).thenReturn(response)
+        Mockito.`when`(mockClient!!.newCall(Matchers.argThat(MatchesId(fixture.leagueId!!))).execute()).thenReturn(response)
 
         val league = service!!.getLeagueById("930faadc-f191-3fc0-b715-79804ef73cfc")
         this.compareJSONWithoutNulls(body, league)
@@ -57,7 +54,7 @@ class LeagueServiceTest: ServiceTest() {
         val fixture = gson!!.fromJson(body, LeagueList::class.java)
 
         val response = TestUtils.getResponseFromModel(fixture, LeagueList::class.java)
-        Mockito.`when`(mockClient!!.execute(Matchers.argThat(MatchesId(fixture.queue!!)))).thenReturn(response)
+        Mockito.`when`(mockClient!!.newCall(Matchers.argThat(MatchesId(fixture.queue!!))).execute()).thenReturn(response)
 
         val master = service!!.getLeagueMasterByQueue(RankedType.RANKED_SOLO_5x5)
         this.compareJSONWithoutNulls(body, master)
@@ -70,7 +67,7 @@ class LeagueServiceTest: ServiceTest() {
         val fixture = gson!!.fromJson(body, Set::class.java)
 
         val response = TestUtils.getResponseFromModel(fixture, Set::class.java)
-        Mockito.`when`(mockClient!!.execute(Matchers.argThat(MatchesId(25166026L)))).thenReturn(response)
+        Mockito.`when`(mockClient!!.newCall(Matchers.argThat(MatchesId(25166026L.toString()))).execute()).thenReturn(response)
 
         val master = service!!.getPositionBySummoner(25166026L)
         this.compareJSONWithoutNulls(body, master)

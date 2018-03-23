@@ -2,10 +2,10 @@ package fr.nspu.riot_api.riot_services
 
 import fr.nspu.riot_api.models.ChampionInfo
 import fr.nspu.riot_api.models.ChampionListInfo
-import retrofit.Callback
-import retrofit.http.GET
-import retrofit.http.Path
-import retrofit.http.QueryMap
+import retrofit2.Callback
+import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.QueryMap
 
 /**
  * champion

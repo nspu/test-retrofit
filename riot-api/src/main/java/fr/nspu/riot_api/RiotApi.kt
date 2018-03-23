@@ -1,13 +1,13 @@
 package fr.nspu.riot_api
 
-/**
- * Created by nspu on 09/03/18.
- */
-
 import fr.nspu.riot_api.riot_services.*
-import retrofit.RequestInterceptor
-import retrofit.RestAdapter
-import retrofit.android.MainThreadExecutor
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
+import okhttp3.Response
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
+import java.io.IOException
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 
@@ -52,12 +52,17 @@ class RiotApi(
     val thirdPartyCodeService: ThirdPartyCodeService
 
     init {
-        val restAdapter = RestAdapter.Builder()
-                .setLogLevel(RestAdapter.LogLevel.BASIC)
-                .setExecutors(httpExecutor, callbackExecutor)
-                .setEndpoint(endPoint)
-                .setRequestInterceptor(ApiAuthenticator())
-                .build()
+        val okhttpClient = OkHttpClient.Builder().addInterceptor(AddHeaderTokenInterceptor())
+        val restAdapterBuilder = Retrofit.Builder()
+                .baseUrl(endPoint)
+                .callbackExecutor(callbackExecutor)
+                .callbackExecutor(httpExecutor)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .client(okhttpClient.build())
+
+        var restAdapter = restAdapterBuilder.build()
+
         staticDataService = restAdapter.create(StaticDataService::class.java)
         championMasteryService = restAdapter.create(ChampionMasteryService::class.java)
         championService = restAdapter.create(ChampionService::class.java)
@@ -77,7 +82,7 @@ class RiotApi(
      */
     constructor(endPoint:String, accessToken: String) : this(
             Executors.newSingleThreadExecutor(),
-            MainThreadExecutor(),
+            Executors.newSingleThreadExecutor(),
             endPoint,
             accessToken
     )
@@ -86,10 +91,13 @@ class RiotApi(
      * The request interceptor that will add the header with OAuth
      * token to every request made with the wrapper.
      */
-    private inner class ApiAuthenticator : RequestInterceptor {
-        override fun intercept(request: RequestInterceptor.RequestFacade){
-            request.addHeader("X-Riot-Token", accessToken)
+    inner class AddHeaderTokenInterceptor : Interceptor {
+        @Throws(IOException::class)
+        override fun intercept(chain: Interceptor.Chain): Response {
+            val builder = chain.request().newBuilder()
+            builder.addHeader("X-Riot-Token", accessToken)
+            return chain.proceed(builder.build())
         }
-
     }
+
 }

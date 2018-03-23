@@ -1,5 +1,6 @@
 package fr.nspu.riot_api.data_dragon_services
 
+import android.content.Context
 import android.graphics.Bitmap
 import android.widget.ImageView
 import com.squareup.picasso.Callback
@@ -9,7 +10,7 @@ import com.squareup.picasso.RequestCreator
 /**
  * Created by nspu on 16/03/18.
  */
-class ImageService(var uri: String, var version: String) {
+class ImageService(var uri: String, var version: String, private val mContext:Context) {
 
     private fun getProfileIconUri(profileIconId: Int) = "$uri/cdn/$version/img/profileicon/$profileIconId.png"
     private fun getSplashArtUri(nameChampion: String, skinNum: Int) = "$uri/cdn/img/champion/splash/${nameChampion}_$skinNum.jpg"
@@ -224,9 +225,8 @@ class ImageService(var uri: String, var version: String) {
     }
 
     private fun initPicasso(uri: String, options: Map<String, Any>? = null): RequestCreator {
-        var picasso = Picasso.get()
+        var picasso = Picasso.get()//Builder(mContext).build()
         picasso.setIndicatorsEnabled(true)
-//        picasso.isLoggingEnabled = true
         var requestCreator: RequestCreator = picasso.load(uri)
         config(options, requestCreator)
         return requestCreator

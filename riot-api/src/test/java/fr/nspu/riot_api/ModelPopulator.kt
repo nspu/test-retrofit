@@ -165,7 +165,7 @@ class ModelPopulator(vararg excludeFields: String) {
             return RANDOM.nextBoolean()
         }
 
-        if(type == Any::class.javaObjectType){
+        if (type == Any::class.javaObjectType) {
             return null
         }
 
@@ -177,7 +177,7 @@ class ModelPopulator(vararg excludeFields: String) {
         val DEFAULT_STRING_LENGTH = 10
         val DEFAULT_COLLECTION_SIZE = 5
 
-        val  RANDOM = Random()
+        val RANDOM = Random()
         val DEFAULT_GENERIC_CLASS: Class<String> = String::class.java
     }
 }

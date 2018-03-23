@@ -3,28 +3,25 @@ package fr.nspu.riot_api
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonParser
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import org.junit.Assert
 import org.junit.Before
 import org.mockito.ArgumentMatcher
 import org.mockito.Mockito
-import retrofit.client.Client
-import retrofit.client.Request
 import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
 
-/**
- * Created by nspu on 12/03/18.
- */
 abstract class ServiceTest {
 
-    protected var mockClient: Client? = null
+    protected var mockClient: OkHttpClient? = null
     protected var gson: Gson? = null
 
-    protected inner class MatchesId internal constructor(private val mId: Any) : ArgumentMatcher<Request>() {
+    protected inner class MatchesId internal constructor(private val mId: String) : ArgumentMatcher<Request>() {
 
-        override fun matches(request: Any): Boolean {
+        override fun matches(request: Any?): Boolean {
             try {
-                return (request as Request).url.contains(URLEncoder.encode(mId.toString(), "UTF-8"))
+                return (request as Request).url().encodedPath().contains(URLEncoder.encode(mId.toString(), "UTF-8"))
             } catch (e: UnsupportedEncodingException) {
                 return false
             }
@@ -34,7 +31,7 @@ abstract class ServiceTest {
 
     @Before
     fun setUp() {
-        mockClient = Mockito.mock(Client::class.java)
+        mockClient = Mockito.mock(OkHttpClient::class.java, Mockito.RETURNS_DEEP_STUBS)
         implementService()
         gson = GsonBuilder().create()
     }

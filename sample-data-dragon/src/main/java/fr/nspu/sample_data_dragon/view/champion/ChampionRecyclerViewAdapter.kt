@@ -38,7 +38,7 @@ class ChampionRecyclerViewAdapter(private val mValues: List<ChampionData>,privat
         val sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
         val language = sharedPref.getString(SettingsActivity.PREF_LANGUAGE, "")
         val version = sharedPref.getString(SettingsActivity.PREF_VERSION, "")
-        DataDragonApi(version,language, context).imageService!!.getChampionSquare(holder.binding.champion!!.id!! as String, holder.binding.ivChampionSquare, mapOf("fit" to false))
+        DataDragonApi(version,language, context).imageService.getChampionSquare(holder.binding.champion!!.id!! as String, holder.binding.ivChampionSquare, mapOf("fit" to false))
         holder.binding.executePendingBindings()
     }
 

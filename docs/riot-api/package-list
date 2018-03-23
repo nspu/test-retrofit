@@ -1,18 +1,7 @@
 $dokka.format:html
 $dokka.linkExtension:html
 
-android.arch.core
-android.arch.lifecycle
-android.arch.lifecycle.livedata.core
-android.arch.lifecycle.viewmodel
-android.support.compat
-android.support.coreui
-android.support.coreutils
 android.support.exifinterface
-android.support.fragment
-android.support.graphics.drawable
-android.support.graphics.drawable.animated
-android.support.v7.appcompat
 com.squareup.picasso
 fr.nspu.riot_api
 fr.nspu.riot_api.data_dragon_services

@@ -53,17 +53,26 @@ class ChampionsFragment : Fragment() {
     }
 
     inner class ChampionsAsync(val view :RecyclerView) : AsyncTask<Unit, Unit, ChampionListData>() {
-        override fun doInBackground(vararg params: Unit?): ChampionListData {
+        override fun doInBackground(vararg params: Unit?): ChampionListData? {
             val sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
             val language = sharedPref.getString(SettingsActivity.PREF_LANGUAGE, "")
             val version = sharedPref.getString(SettingsActivity.PREF_VERSION, "")
-            return  DataDragonApi(version,language, context).dataDragonService.getChampions()!!
 
+            try {
+                return DataDragonApi(version,language, context).dataDragonService.getChampions()!!.execute().body()
+            }catch (e: Exception){
+                cancel(true)
+                return null
+            }
         }
 
         override fun onPostExecute(result: ChampionListData?) {
             super.onPostExecute(result)
             view.adapter = ChampionRecyclerViewAdapter(result!!.data!!.values.toList(), context!!, mListener)
+        }
+
+        override fun onCancelled(result: ChampionListData?) {
+            super.onCancelled(result)
         }
     }
 

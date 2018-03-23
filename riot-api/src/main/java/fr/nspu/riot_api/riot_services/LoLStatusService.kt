@@ -1,9 +1,9 @@
 package fr.nspu.riot_api.riot_services
 
 import fr.nspu.riot_api.models.ShardStatus
-import retrofit.Callback
-import retrofit.http.GET
-import retrofit.http.QueryMap
+import retrofit2.Callback
+import retrofit2.http.GET
+import retrofit2.http.QueryMap
 
 /**
  * lol-status

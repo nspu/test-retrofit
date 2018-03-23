@@ -1,4 +1,4 @@
-package fr.nspu.riot_api_android
+package fr.nspu.sample_riot_api
 
 import fr.nspu.riot_api.RiotApi
 

@@ -5,11 +5,12 @@ import fr.nspu.riot_api.ServiceTest
 import fr.nspu.riot_api.TestUtils
 import fr.nspu.riot_api.data_dragon_services.DataDragonService
 import fr.nspu.riot_api.models.*
+import okhttp3.Call
+import okhttp3.Request
 import org.junit.Test
 import org.mockito.Matchers
 import org.mockito.Mockito
-import retrofit.RestAdapter
-import retrofit.client.Request
+import retrofit2.Retrofit
 import java.io.IOException
 
 /**
@@ -18,9 +19,9 @@ import java.io.IOException
 class DataDragonServiceTest: ServiceTest(){
     var service: DataDragonService? = null
     override fun implementService() {
-        val restAdapter = RestAdapter.Builder()
-                .setClient(mockClient!!)
-                .setEndpoint(DataDragonApi.DATA_DRAGON_API_ENDPOINT)
+        val restAdapter = Retrofit.Builder()
+                .client(mockClient!!)
+                .baseUrl(DataDragonApi.DATA_DRAGON_API_ENDPOINT)
                 .build()
         service= restAdapter.create(DataDragonService::class.java)
     }
@@ -32,7 +33,7 @@ class DataDragonServiceTest: ServiceTest(){
         val fixture = gson!!.fromJson(body, ProfileIconData::class.java)
 
         val response = TestUtils.getResponseFromModel(fixture, ProfileIconData::class.java)
-        Mockito.`when`(mockClient!!.execute(Matchers.isA(Request::class.java))).thenReturn(response)
+        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java))).thenReturn( response as Call)
 
         val profileIconData = service!!.getProfileIcon()
         this.compareJSONWithoutNulls(body, profileIconData)
@@ -45,7 +46,7 @@ class DataDragonServiceTest: ServiceTest(){
         val fixture = gson!!.fromJson(body, ChampionListData::class.java)
 
         val response = TestUtils.getResponseFromModel(fixture, ChampionListData::class.java)
-        Mockito.`when`(mockClient!!.execute(Matchers.isA(Request::class.java))).thenReturn(response)
+        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java))).thenReturn( response as Call)
 
         val championListData = service!!.getChampions()
         this.compareJSONWithoutNulls(body, championListData)
@@ -59,7 +60,7 @@ class DataDragonServiceTest: ServiceTest(){
 //        val fixture = gson!!.fromJson(body, ChampionListData::class.java)
 //
 //        val response = TestUtils.getResponseFromModel(fixture, ChampionListData::class.java)
-//        Mockito.`when`(mockClient!!.execute(Matchers.isA(Request::class.java))).thenReturn(response)
+//        Mockito.`when`(mockClient!!.execute(Matchers.isA(Request::class.java))).thenReturn( response as Call)
 //
 //        val championData = service!!.getChampion("","","")
 //        this.compareJSONWithoutNulls(body, championData)
@@ -72,7 +73,7 @@ class DataDragonServiceTest: ServiceTest(){
         val fixture = gson!!.fromJson(body, ItemList::class.java)
 
         val response = TestUtils.getResponseFromModel(fixture, ItemList::class.java)
-        Mockito.`when`(mockClient!!.execute(Matchers.isA(Request::class.java))).thenReturn(response)
+        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java))).thenReturn( response as Call)
 
         val items = service!!.getItems()
         this.compareJSONWithoutNulls(body, items)
@@ -85,7 +86,7 @@ class DataDragonServiceTest: ServiceTest(){
         val fixture = gson!!.fromJson(body, MasteryList::class.java)
 
         val response = TestUtils.getResponseFromModel(fixture, MasteryList::class.java)
-        Mockito.`when`(mockClient!!.execute(Matchers.isA(Request::class.java))).thenReturn(response)
+        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java))).thenReturn( response as Call)
 
         val masteries = service!!.getMasteries()
         this.compareJSONWithoutNulls(body, masteries)
@@ -98,7 +99,7 @@ class DataDragonServiceTest: ServiceTest(){
         val fixture = gson!!.fromJson(body, RuneList::class.java)
 
         val response = TestUtils.getResponseFromModel(fixture, RuneList::class.java)
-        Mockito.`when`(mockClient!!.execute(Matchers.isA(Request::class.java))).thenReturn(response)
+        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java))).thenReturn( response as Call)
 
         val runes = service!!.getRunes()
         this.compareJSONWithoutNulls(body, runes)
@@ -111,7 +112,7 @@ class DataDragonServiceTest: ServiceTest(){
         val fixture = gson!!.fromJson(body, SummonerSpellList::class.java)
 
         val response = TestUtils.getResponseFromModel(fixture, SummonerSpellList::class.java)
-        Mockito.`when`(mockClient!!.execute(Matchers.isA(Request::class.java))).thenReturn(response)
+        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java))).thenReturn( response as Call)
 
         val summonerSpells = service!!.getSummonerSpells()
         this.compareJSONWithoutNulls(body, summonerSpells)
@@ -124,7 +125,7 @@ class DataDragonServiceTest: ServiceTest(){
         val fixture = gson!!.fromJson(body, List::class.java)
 
         val response = TestUtils.getResponseFromModel(fixture, List::class.java)
-        Mockito.`when`(mockClient!!.execute(Matchers.isA(Request::class.java))).thenReturn(response)
+        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java))).thenReturn( response as Call)
 
         val versions = service!!.getVersions()
         this.compareJSONWithoutNulls(body, versions)
@@ -139,7 +140,7 @@ class DataDragonServiceTest: ServiceTest(){
         val fixture = gson!!.fromJson(body, List::class.java)
 
         val response = TestUtils.getResponseFromModel(fixture, List::class.java)
-        Mockito.`when`(mockClient!!.execute(Matchers.isA(Request::class.java))).thenReturn(response)
+        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java))).thenReturn( response as Call)
 
         val languages = service!!.getLanguages()
         this.compareJSONWithoutNulls(body, languages)
@@ -152,7 +153,7 @@ class DataDragonServiceTest: ServiceTest(){
         val fixture = gson!!.fromJson(body, LanguageStrings::class.java)
 
         val response = TestUtils.getResponseFromModel(fixture, LanguageStrings::class.java)
-        Mockito.`when`(mockClient!!.execute(Matchers.isA(Request::class.java))).thenReturn(response)
+        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java))).thenReturn( response as Call)
 
         val languageStrings = service!!.getLanguageString()
         this.compareJSONWithoutNulls(body, languageStrings)

@@ -1,19 +1,23 @@
 package fr.nspu.riot_api
 
 import android.content.Context
-import android.content.SyncRequest
 import android.util.Log
-import com.jakewharton.retrofit.Ok3Client
 import fr.nspu.riot_api.data_dragon_services.DataDragonService
 import fr.nspu.riot_api.data_dragon_services.ImageService
 import okhttp3.Cache
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import retrofit.RequestInterceptor
-import retrofit.RestAdapter
-import retrofit.android.MainThreadExecutor
+import okhttp3.Response
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Retrofit
 import java.io.IOException
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+
+
 
 /**
  * Creates and configures a REST adapter for DataDragon.
@@ -43,34 +47,19 @@ class DataDragonApi(
     val imageService: ImageService
 
     init {
-        val restAdapterBuilder = RestAdapter.Builder()
-                .setLogLevel(RestAdapter.LogLevel.BASIC)
-                .setExecutors(httpExecutor, callbackExecutor)
-                .setEndpoint(DATA_DRAGON_API_ENDPOINT)
+        val restAdapterBuilder = Retrofit.Builder()
+                .baseUrl(DATA_DRAGON_API_ENDPOINT)
+                .callbackExecutor(callbackExecutor)
+                .callbackExecutor(httpExecutor)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
 
+        val okhttpClient = OkHttpClient.Builder()
+        setupClient(okhttpClient)
+        restAdapterBuilder.client(okhttpClient.build())
 
-        if (context != null) {
-            useCache(restAdapterBuilder)
-        }else{
-            restAdapterBuilder.setRequestInterceptor{ request ->
-                requestAddParameter(request)
-            }
-        }
-
-        val restAdapter = restAdapterBuilder.build()
-
-        dataDragonService = restAdapter.create(DataDragonService::class.java)
-        imageService = ImageService(DATA_DRAGON_API_ENDPOINT, version)
-    }
-
-
-    /**
-     * The request interceptor that will add the parameters with version
-     * and language to every request made with the wrapper.
-     */
-    fun requestAddParameter(request: RequestInterceptor.RequestFacade) {
-        request.addPathParam("version", version)
-        request.addPathParam("language", language)
+        dataDragonService = restAdapterBuilder.build().create(DataDragonService::class.java)
+        imageService = ImageService(DATA_DRAGON_API_ENDPOINT, version, context!!)
     }
 
 
@@ -82,42 +71,75 @@ class DataDragonApi(
      */
     constructor(version: String, language: String, context: Context?) : this(
             Executors.newSingleThreadExecutor(),
-            MainThreadExecutor(),
+            Executors.newSingleThreadExecutor(),
             version,
             language,
             context)
 
     /**
-     * Set up the cache if the context is not null
+     * Set up the client
      */
-    private fun useCache(buildRestAdapter: RestAdapter.Builder) {
-        var okHttpClient: OkHttpClient? = null
+    private fun setupClient(okHttpClient: OkHttpClient.Builder) {
+        val logging = HttpLoggingInterceptor()
+        logging.level = HttpLoggingInterceptor.Level.BODY
 
-        try {
-            var cacheSize: Long = 10 * 1024 * 1024  // 10 Mb
-            var cache = Cache(context!!.externalCacheDir, cacheSize);
-            okHttpClient = OkHttpClient.Builder().cache(cache).build()
+        okHttpClient.addInterceptor(logging)
 
-        } catch (e: IOException) {
-            Log.e(TAG, "Could not set cache", e);
+        if (context != null) {
+            try {
+                var cacheSize: Long = 10 * 1024 * 1024  // 10 Mb
+                var cache = Cache(context!!.externalCacheDir, cacheSize);
+                okHttpClient.cache(cache)
+
+            } catch (e: IOException) {
+                Log.e(TAG, "Could not set cache", e);
+            }
+            okHttpClient.addNetworkInterceptor(AddHeaderCacheInterceptor())
         }
 
-        val cacheInterceptor = RequestInterceptor {
-            request -> request.addHeader("Cache-Control", "max-stale=" + Integer.MAX_VALUE)
-            requestAddParameter(request)
-        }
+        okHttpClient.addNetworkInterceptor(AddHeaderQueryParamInterceptor())
+    }
 
-        buildRestAdapter.setClient(Ok3Client(okHttpClient))
-                .setRequestInterceptor(cacheInterceptor)
+    /**
+     * The request interceptor that will add the header with the maximal time for the cache.
+     */
+    inner class AddHeaderCacheInterceptor : Interceptor {
+        @Throws(IOException::class)
+        override fun intercept(chain: Interceptor.Chain): Response {
+            val builder = chain.request().newBuilder()
+            builder.addHeader("Cache-Control", "max-stale=" + Integer.MAX_VALUE)
+            return chain.proceed(builder.build())
+        }
+    }
+
+    /**
+     * The request interceptor that will add the header with the version and the language.
+     */
+    inner class AddHeaderQueryParamInterceptor : Interceptor {
+        @Throws(IOException::class)
+        override fun intercept(chain: Interceptor.Chain): Response {
+            val builder = chain.request().newBuilder()
+            val url = chain.request().url().newBuilder()
+            val segments = chain.request().url().pathSegments()
+
+            for (i in 0 until segments.size) {
+                if ("{version}".equals(segments[i])) {
+                    url.setPathSegment(i, version)
+                }
+                if ("{language}".equals(segments[i])) {
+                    url.setPathSegment(i, language)
+                }
+            }
+            builder.url(url.build())
+            return chain.proceed(builder.build())
+        }
     }
 
 
     companion object {
         const val TAG = "DataDragonApi"
 
-        /**
-         * Data dragon endpoint
-         */
+        /** Data dragon endpoint */
         const val DATA_DRAGON_API_ENDPOINT = "https://ddragon.leagueoflegends.com"
     }
 }

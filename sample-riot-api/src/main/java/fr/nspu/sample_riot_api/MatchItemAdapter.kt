@@ -1,4 +1,4 @@
-package fr.nspu.riot_api_android
+package fr.nspu.sample_riot_api
 
 import android.content.Context
 import android.databinding.DataBindingUtil
@@ -8,9 +8,8 @@ import android.view.ViewGroup
 import fr.nspu.riot_api.models.MatchList
 import fr.nspu.riot_api.models.MatchReference
 
-import fr.nspu.riot_api_android.MatchFragment.OnListFragmentInteractionListener
-import fr.nspu.riot_api_android.databinding.FragmentMatchitemBinding
-import java.util.*
+import fr.nspu.sample_riot_api.MatchFragment.OnListFragmentInteractionListener
+import fr.nspu.sample_riot_api.databinding.FragmentMatchitemBinding
 
 /**
  * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the

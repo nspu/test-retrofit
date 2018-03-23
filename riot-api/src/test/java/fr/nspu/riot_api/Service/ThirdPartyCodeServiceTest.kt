@@ -1,13 +1,12 @@
 package fr.nspu.riot_api.Service
 
-import fr.nspu.riot_api.RiotApi
 import fr.nspu.riot_api.ServiceTest
 import fr.nspu.riot_api.TestUtils
 import fr.nspu.riot_api.riot_services.ThirdPartyCodeService
 import org.junit.Test
 import org.mockito.Matchers
-import org.mockito.Mockito
-import retrofit.RestAdapter
+import org.mockito.Mockito.`when`
+import retrofit2.Retrofit
 import java.io.IOException
 
 /**
@@ -17,9 +16,9 @@ class ThirdPartyCodeServiceTest: ServiceTest() {
     var service: ThirdPartyCodeService? = null
 
     override fun implementService() {
-        val restAdapter = RestAdapter.Builder()
-                .setClient(mockClient!!)
-                .setEndpoint("https://na1.api.riotgames.com")
+        val restAdapter = Retrofit.Builder()
+                .client(mockClient!!)
+                .baseUrl("https://na1.api.riotgames.com")
                 .build()
         service  = restAdapter.create(ThirdPartyCodeService::class.java)
     }
@@ -31,9 +30,9 @@ class ThirdPartyCodeServiceTest: ServiceTest() {
         val fixture = gson!!.fromJson(body, String::class.java)
 
         val response = TestUtils.getResponseFromModel(fixture, String::class.java)
-        Mockito.`when`(mockClient!!.execute(Matchers.argThat(MatchesId(48509080)))).thenReturn(response)
+        `when`(mockClient!!.newCall(Matchers.argThat(MatchesId(48509080.toString()))).execute()).thenReturn(response)
 
-        val thirdPartyCode = service!!.getThirdPartyCodeBySummonerId(48509080)
+        val thirdPartyCode = service!!.getThirdPartyCodeBySummonerId(48509080).execute().body()
         this.compareJSONWithoutNulls(body, thirdPartyCode)
     }
 }

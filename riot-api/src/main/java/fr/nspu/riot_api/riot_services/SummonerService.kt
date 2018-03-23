@@ -1,10 +1,11 @@
 package fr.nspu.riot_api.riot_services
 
 import fr.nspu.riot_api.models.Summoner
-import retrofit.Callback
-import retrofit.http.GET
-import retrofit.http.Path
-import retrofit.http.QueryMap
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.QueryMap
 
 /**
  * summoner
@@ -19,7 +20,7 @@ interface SummonerService {
      * @see <a href="https://developer.riotgames.com/api-methods/#summoner-v3/GET_getByAccountId">Get a summoner by account ID</a>
      */
     @GET(RiotUri.URI_SUMMOMER_BY_ACCOUNT_ID)
-    fun getSummonerByAccountId(@Path("accountId") accountId: Long, @QueryMap options: Map<String, String>? =null): Summoner?
+    fun getSummonerByAccountId(@Path("accountId") accountId: Long, @QueryMap options: Map<String, String>? =null): Call<Summoner>?
 
     /**
      * Get a summoner by account ID

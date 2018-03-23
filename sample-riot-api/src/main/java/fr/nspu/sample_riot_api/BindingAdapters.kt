@@ -1,11 +1,11 @@
-package fr.nspu.riot_api_android
+package fr.nspu.sample_riot_api
 
 import android.databinding.BindingAdapter
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
 
-import com.squareup.picasso.Picasso
+//import com.squareup.picasso.Picasso
 
 /**
  * Created by nspu on 02/03/18.
@@ -29,9 +29,9 @@ object BindingAdapters {
 
     @BindingAdapter("imageUrl")
     fun loadImage(view: ImageView, imageUrl: String) {
-        Picasso.with(view.context)
-                .load(imageUrl)
-                .placeholder(R.drawable.placeholder).error(R.color.background_floating_material_dark)
-                .into(view)
+//        Picasso.get()
+//                .load(imageUrl)
+//                .placeholder(R.drawable.placeholder).error(R.color.background_floating_material_dark)
+//                .into(view)
     }
 }

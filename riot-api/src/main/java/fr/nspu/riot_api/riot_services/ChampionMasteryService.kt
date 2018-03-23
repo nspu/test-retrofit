@@ -1,10 +1,11 @@
 package fr.nspu.riot_api.riot_services
 
 import fr.nspu.riot_api.models.ChampionMastery
-import retrofit.Callback
-import retrofit.http.GET
-import retrofit.http.Path
-import retrofit.http.QueryMap
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.QueryMap
 
 /**
  * champion-mastery
@@ -19,7 +20,7 @@ interface ChampionMasteryService{
      * @see <a href="https://developer.riotgames.com/api-methods/#champion-mastery-v3/GET_getAllChampionMasteries">Get all champion mastery entries</a>
      */
     @GET(RiotUri.URI_CHAMPION_MASTERIES_BY_SUMMONER)
-    fun getChampionMasteriesBySummoner(@Path("summonerId") summonerId: Long, @QueryMap options: Map<String, String>? =null): List<ChampionMastery>?
+    fun getChampionMasteriesBySummoner(@Path("summonerId") summonerId: Long, @QueryMap options: Map<String, String>? =null): Call<List<ChampionMastery>>?
 
     /**
      * Get all champion mastery entries sorted by number of champion points descending
