@@ -1,12 +1,11 @@
 package fr.nspu.riot_api.Service
 
-import fr.nspu.riot_api.RiotApi
 import fr.nspu.riot_api.ServiceTest
 import fr.nspu.riot_api.TestUtils
 import fr.nspu.riot_api.models.SpectatorFeaturedGames
 import fr.nspu.riot_api.riot_services.SpectatorService
-import okhttp3.Call
 import okhttp3.Request
+import okhttp3.mockwebserver.MockResponse
 import org.junit.Test
 import org.mockito.Matchers
 import org.mockito.Mockito
@@ -17,14 +16,25 @@ import java.io.IOException
  * Created by nspu on 13/03/18.
  */
 class SpectatorServiceTest: ServiceTest() {
+    private val SUMMONER_ID = 48509080L
     var service: SpectatorService? = null
 
-    override fun implementService() {
-        val restAdapter = Retrofit.Builder()
-                .client(mockClient!!)
-                .baseUrl("https://na1.api.riotgames.com")
-                .build()
-        service  = restAdapter.create(SpectatorService::class.java)
+    override fun implementService(retrofit: Retrofit) {
+        service  = retrofit.create(SpectatorService::class.java)
+    }
+
+    @Test
+    @Throws(IOException::class)
+    fun shouldGetActiveGameBySummonerData() {
+        val body = TestUtils.readTestData("active-game.json")
+        val fixture = gson!!.fromJson(body, SpectatorFeaturedGames::class.java)
+
+        val response = TestUtils.getResponseFromModel(fixture, SpectatorFeaturedGames::class.java)
+        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java)).execute()).thenReturn(response)
+
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val featuredGames = service!!.getActiveGameBySummonerId(SUMMONER_ID)!!.execute().body()
+        this.compareJSONWithoutNulls(body, featuredGames)
     }
 
     @Test
@@ -36,7 +46,8 @@ class SpectatorServiceTest: ServiceTest() {
         val response = TestUtils.getResponseFromModel(fixture, SpectatorFeaturedGames::class.java)
         Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java)).execute()).thenReturn(response)
 
-        val featuredGames = service!!.getFeaturedGame()
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val featuredGames = service!!.getFeaturedGame()!!.execute().body()
         this.compareJSONWithoutNulls(body, featuredGames)
     }
 }

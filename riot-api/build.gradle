@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-//apply plugin: 'kotlin-kapt'
 apply plugin: 'org.jetbrains.dokka'
 version = VERSION
 android {
@@ -19,6 +18,9 @@ android {
             testCoverageEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    testOptions {
+        unitTests.returnDefaultValues true
     }
 }
 

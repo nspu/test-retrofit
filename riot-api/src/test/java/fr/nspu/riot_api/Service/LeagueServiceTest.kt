@@ -5,20 +5,17 @@ import fr.nspu.riot_api.ServiceTest
 import fr.nspu.riot_api.TestUtils
 import fr.nspu.riot_api.models.LeagueList
 import fr.nspu.riot_api.riot_services.LeagueService
+import okhttp3.mockwebserver.MockResponse
 import org.junit.Test
 import org.mockito.Matchers
 import org.mockito.Mockito
 import retrofit2.Retrofit
 import java.io.IOException
 
-class LeagueServiceTest: ServiceTest() {
+class LeagueServiceTest : ServiceTest() {
     var service: LeagueService? = null
-    override fun implementService() {
-        val restAdapter = Retrofit.Builder()
-                .client(mockClient!!)
-                .baseUrl("https://na1.api.riotgames.com")
-                .build()
-        service= restAdapter.create(LeagueService::class.java)
+    override fun implementService(retrofit: Retrofit) {
+        service = retrofit.create(LeagueService::class.java)
     }
 
     @Test
@@ -30,7 +27,8 @@ class LeagueServiceTest: ServiceTest() {
         val response = TestUtils.getResponseFromModel(fixture, LeagueList::class.java)
         Mockito.`when`(mockClient!!.newCall(Matchers.argThat(MatchesId(fixture.queue!!))).execute()).thenReturn(response)
 
-        val challengers = service!!.getChallengersByQueue(RankedType.RANKED_SOLO_5x5)
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val challengers = service!!.getChallengersByQueue(RankedType.RANKED_SOLO_5x5)!!.execute().body()
         this.compareJSONWithoutNulls(body, challengers)
     }
 
@@ -43,7 +41,8 @@ class LeagueServiceTest: ServiceTest() {
         val response = TestUtils.getResponseFromModel(fixture, LeagueList::class.java)
         Mockito.`when`(mockClient!!.newCall(Matchers.argThat(MatchesId(fixture.leagueId!!))).execute()).thenReturn(response)
 
-        val league = service!!.getLeagueById("930faadc-f191-3fc0-b715-79804ef73cfc")
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val league = service!!.getLeagueById("930faadc-f191-3fc0-b715-79804ef73cfc")!!.execute().body()
         this.compareJSONWithoutNulls(body, league)
     }
 
@@ -56,7 +55,8 @@ class LeagueServiceTest: ServiceTest() {
         val response = TestUtils.getResponseFromModel(fixture, LeagueList::class.java)
         Mockito.`when`(mockClient!!.newCall(Matchers.argThat(MatchesId(fixture.queue!!))).execute()).thenReturn(response)
 
-        val master = service!!.getLeagueMasterByQueue(RankedType.RANKED_SOLO_5x5)
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val master = service!!.getLeagueMasterByQueue(RankedType.RANKED_SOLO_5x5)!!.execute().body()
         this.compareJSONWithoutNulls(body, master)
     }
 
@@ -69,7 +69,8 @@ class LeagueServiceTest: ServiceTest() {
         val response = TestUtils.getResponseFromModel(fixture, Set::class.java)
         Mockito.`when`(mockClient!!.newCall(Matchers.argThat(MatchesId(25166026L.toString()))).execute()).thenReturn(response)
 
-        val master = service!!.getPositionBySummoner(25166026L)
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val master = service!!.getPositionBySummoner(25166026L)!!.execute().body()
         this.compareJSONWithoutNulls(body, master)
     }
 

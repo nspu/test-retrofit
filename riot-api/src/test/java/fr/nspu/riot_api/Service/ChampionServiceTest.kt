@@ -6,6 +6,7 @@ import fr.nspu.riot_api.models.ChampionInfo
 import fr.nspu.riot_api.models.ChampionListInfo
 import fr.nspu.riot_api.riot_services.ChampionService
 import okhttp3.Request
+import okhttp3.mockwebserver.MockResponse
 import org.junit.Test
 import org.mockito.Matchers
 import org.mockito.Mockito
@@ -17,12 +18,8 @@ import java.io.IOException
  */
 class ChampionServiceTest : ServiceTest()  {
     var service: ChampionService? = null
-    override fun implementService() {
-        val restAdapter = Retrofit.Builder()
-                .client(mockClient!!)
-                .baseUrl("https://na1.api.riotgames.com")
-                .build()
-        service= restAdapter.create(ChampionService::class.java)
+    override fun implementService(retrofit: Retrofit) {
+        service= retrofit.create(ChampionService::class.java)
     }
 
     @Test
@@ -34,7 +31,8 @@ class ChampionServiceTest : ServiceTest()  {
         val response = TestUtils.getResponseFromModel(fixture, ChampionListInfo::class.java)
         Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java)).execute()).thenReturn(response )
 
-        val champions = service!!.getChampions()
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val champions = service!!.getChampions()!!.execute().body()
         this.compareJSONWithoutNulls(body, champions)
     }
 
@@ -47,7 +45,8 @@ class ChampionServiceTest : ServiceTest()  {
         val response = TestUtils.getResponseFromModel(fixture, ChampionInfo::class.java)
         Mockito.`when`(mockClient!!.newCall(Matchers.argThat(MatchesId(fixture.id!!.toString()))).execute()).thenReturn(response)
 
-        val champion = service!!.getChampion(fixture.id!!)
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val champion = service!!.getChampion(fixture.id!!)!!.execute().body()
         this.compareJSONWithoutNulls(body, champion)
     }
 }

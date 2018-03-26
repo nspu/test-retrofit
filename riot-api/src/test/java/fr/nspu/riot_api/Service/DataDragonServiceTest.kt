@@ -1,12 +1,11 @@
 package fr.nspu.riot_api.Service
 
-import fr.nspu.riot_api.DataDragonApi
 import fr.nspu.riot_api.ServiceTest
 import fr.nspu.riot_api.TestUtils
 import fr.nspu.riot_api.data_dragon_services.DataDragonService
 import fr.nspu.riot_api.models.*
-import okhttp3.Call
 import okhttp3.Request
+import okhttp3.mockwebserver.MockResponse
 import org.junit.Test
 import org.mockito.Matchers
 import org.mockito.Mockito
@@ -16,14 +15,10 @@ import java.io.IOException
 /**
  * Created by nspu on 15/03/18.
  */
-class DataDragonServiceTest: ServiceTest(){
+class DataDragonServiceTest : ServiceTest() {
     var service: DataDragonService? = null
-    override fun implementService() {
-        val restAdapter = Retrofit.Builder()
-                .client(mockClient!!)
-                .baseUrl(DataDragonApi.DATA_DRAGON_API_ENDPOINT)
-                .build()
-        service= restAdapter.create(DataDragonService::class.java)
+    override fun implementService(retrofit: Retrofit) {
+        service = retrofit.create(DataDragonService::class.java)
     }
 
     @Test
@@ -33,9 +28,10 @@ class DataDragonServiceTest: ServiceTest(){
         val fixture = gson!!.fromJson(body, ProfileIconData::class.java)
 
         val response = TestUtils.getResponseFromModel(fixture, ProfileIconData::class.java)
-        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java))).thenReturn( response as Call)
+        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java)).execute()).thenReturn(response)
 
-        val profileIconData = service!!.getProfileIcon()
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val profileIconData = service!!.getProfileIcon()!!.execute().body()
         this.compareJSONWithoutNulls(body, profileIconData)
     }
 
@@ -46,9 +42,10 @@ class DataDragonServiceTest: ServiceTest(){
         val fixture = gson!!.fromJson(body, ChampionListData::class.java)
 
         val response = TestUtils.getResponseFromModel(fixture, ChampionListData::class.java)
-        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java))).thenReturn( response as Call)
+        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java)).execute()).thenReturn(response)
 
-        val championListData = service!!.getChampions()
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val championListData = service!!.getChampions()!!.execute().body()
         this.compareJSONWithoutNulls(body, championListData)
     }
 
@@ -60,7 +57,7 @@ class DataDragonServiceTest: ServiceTest(){
 //        val fixture = gson!!.fromJson(body, ChampionListData::class.java)
 //
 //        val response = TestUtils.getResponseFromModel(fixture, ChampionListData::class.java)
-//        Mockito.`when`(mockClient!!.execute(Matchers.isA(Request::class.java))).thenReturn( response as Call)
+//        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java)).execute()).thenReturn( response )
 //
 //        val championData = service!!.getChampion("","","")
 //        this.compareJSONWithoutNulls(body, championData)
@@ -73,9 +70,10 @@ class DataDragonServiceTest: ServiceTest(){
         val fixture = gson!!.fromJson(body, ItemList::class.java)
 
         val response = TestUtils.getResponseFromModel(fixture, ItemList::class.java)
-        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java))).thenReturn( response as Call)
+        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java)).execute()).thenReturn(response)
 
-        val items = service!!.getItems()
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val items = service!!.getItems()!!.execute().body()
         this.compareJSONWithoutNulls(body, items)
     }
 
@@ -86,9 +84,10 @@ class DataDragonServiceTest: ServiceTest(){
         val fixture = gson!!.fromJson(body, MasteryList::class.java)
 
         val response = TestUtils.getResponseFromModel(fixture, MasteryList::class.java)
-        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java))).thenReturn( response as Call)
+        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java)).execute()).thenReturn(response)
 
-        val masteries = service!!.getMasteries()
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val masteries = service!!.getMasteries()!!.execute().body()
         this.compareJSONWithoutNulls(body, masteries)
     }
 
@@ -99,9 +98,10 @@ class DataDragonServiceTest: ServiceTest(){
         val fixture = gson!!.fromJson(body, RuneList::class.java)
 
         val response = TestUtils.getResponseFromModel(fixture, RuneList::class.java)
-        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java))).thenReturn( response as Call)
+        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java)).execute()).thenReturn(response)
 
-        val runes = service!!.getRunes()
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val runes = service!!.getRunes()!!.execute().body()
         this.compareJSONWithoutNulls(body, runes)
     }
 
@@ -112,9 +112,10 @@ class DataDragonServiceTest: ServiceTest(){
         val fixture = gson!!.fromJson(body, SummonerSpellList::class.java)
 
         val response = TestUtils.getResponseFromModel(fixture, SummonerSpellList::class.java)
-        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java))).thenReturn( response as Call)
+        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java)).execute()).thenReturn(response)
 
-        val summonerSpells = service!!.getSummonerSpells()
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val summonerSpells = service!!.getSummonerSpells()!!.execute().body()
         this.compareJSONWithoutNulls(body, summonerSpells)
     }
 
@@ -125,12 +126,12 @@ class DataDragonServiceTest: ServiceTest(){
         val fixture = gson!!.fromJson(body, List::class.java)
 
         val response = TestUtils.getResponseFromModel(fixture, List::class.java)
-        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java))).thenReturn( response as Call)
+        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java)).execute()).thenReturn(response)
 
-        val versions = service!!.getVersions()
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val versions = service!!.getVersions()!!.execute().body()
         this.compareJSONWithoutNulls(body, versions)
     }
-
 
 
     @Test
@@ -140,9 +141,10 @@ class DataDragonServiceTest: ServiceTest(){
         val fixture = gson!!.fromJson(body, List::class.java)
 
         val response = TestUtils.getResponseFromModel(fixture, List::class.java)
-        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java))).thenReturn( response as Call)
+        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java)).execute()).thenReturn(response)
 
-        val languages = service!!.getLanguages()
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val languages = service!!.getLanguages()!!.execute().body()
         this.compareJSONWithoutNulls(body, languages)
     }
 
@@ -153,9 +155,10 @@ class DataDragonServiceTest: ServiceTest(){
         val fixture = gson!!.fromJson(body, LanguageStrings::class.java)
 
         val response = TestUtils.getResponseFromModel(fixture, LanguageStrings::class.java)
-        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java))).thenReturn( response as Call)
+        Mockito.`when`(mockClient!!.newCall(Matchers.isA(Request::class.java)).execute()).thenReturn(response)
 
-        val languageStrings = service!!.getLanguageString()
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val languageStrings = service!!.getLanguageString()!!.execute().body()
         this.compareJSONWithoutNulls(body, languageStrings)
     }
 

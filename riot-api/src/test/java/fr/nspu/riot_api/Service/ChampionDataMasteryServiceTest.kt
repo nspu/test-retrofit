@@ -4,8 +4,8 @@ import fr.nspu.riot_api.ServiceTest
 import fr.nspu.riot_api.TestUtils
 import fr.nspu.riot_api.models.ChampionMastery
 import fr.nspu.riot_api.riot_services.ChampionMasteryService
-import okhttp3.Call
 import okhttp3.Request
+import okhttp3.mockwebserver.MockResponse
 import org.junit.Test
 import org.mockito.ArgumentMatcher
 import org.mockito.Matchers
@@ -15,8 +15,6 @@ import retrofit2.Retrofit
 import java.io.IOException
 import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
-import okhttp3.mockwebserver.MockResponse
-
 
 
 /**
@@ -27,12 +25,8 @@ class ChampionDataMasteryServiceTest : ServiceTest() {
 
     var service: ChampionMasteryService? = null
 
-    override fun implementService() {
-        val restAdapter = Retrofit.Builder()
-                .client(mockClient!!)
-                .baseUrl("https://na1.api.riotgames.com")
-                .build()
-        service = restAdapter.create(ChampionMasteryService::class.java)
+    override fun implementService(retrofit: Retrofit) {
+        service = retrofit.create(ChampionMasteryService::class.java)
     }
 
     @Test
@@ -44,7 +38,7 @@ class ChampionDataMasteryServiceTest : ServiceTest() {
         val response = TestUtils.getResponseFromModel(fixture, List::class.java)
         Mockito.`when`(mockClient!!.newCall(Matchers.argThat(MatchesId(SUMMONER_ID.toString()))).execute()).thenReturn(response)
 
-
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
         val championMastery = service!!.getChampionMasteriesBySummoner(SUMMONER_ID)!!.execute().body()
         this.compareJSONWithoutNulls(body, championMastery)
     }
@@ -68,7 +62,8 @@ class ChampionDataMasteryServiceTest : ServiceTest() {
             }
         }))).execute()).thenReturn(response)
 
-        val championMastery = service!!.getChampionMasteriesBySummonerByChampion(fixture.playerId!!, fixture.championId!!)
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val championMastery = service!!.getChampionMasteriesBySummonerByChampion(fixture.playerId!!, fixture.championId!!)!!.execute().body()
         this.compareJSONWithoutNulls(body, championMastery)
     }
 
@@ -81,7 +76,8 @@ class ChampionDataMasteryServiceTest : ServiceTest() {
         val response = TestUtils.getResponseFromModel(fixture, Int::class.java)
         `when`(mockClient!!.newCall(Matchers.argThat(MatchesId(SUMMONER_ID.toString()))).execute()).thenReturn(response)
 
-        val scores = service!!.getScoresBySummoner(SUMMONER_ID)
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val scores = service!!.getScoresBySummoner(SUMMONER_ID)!!.execute().body()
         this.compareJSONWithoutNulls(body, scores)
     }
 

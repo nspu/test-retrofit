@@ -5,10 +5,14 @@ import com.google.gson.GsonBuilder
 import com.google.gson.JsonParser
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.mockwebserver.MockWebServer
 import org.junit.Assert
 import org.junit.Before
 import org.mockito.ArgumentMatcher
 import org.mockito.Mockito
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
 
@@ -16,6 +20,7 @@ abstract class ServiceTest {
 
     protected var mockClient: OkHttpClient? = null
     protected var gson: Gson? = null
+    var mockWebServer: MockWebServer?=null
 
     protected inner class MatchesId internal constructor(private val mId: String) : ArgumentMatcher<Request>() {
 
@@ -32,11 +37,17 @@ abstract class ServiceTest {
     @Before
     fun setUp() {
         mockClient = Mockito.mock(OkHttpClient::class.java, Mockito.RETURNS_DEEP_STUBS)
-        implementService()
+        mockWebServer = MockWebServer()
+        val retrofit = Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(mockWebServer!!.url("").toString())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build()
+        implementService(retrofit)
         gson = GsonBuilder().create()
     }
 
-    abstract fun implementService()
+    abstract fun implementService(retrofit: Retrofit)
 
     /**
      * Compares the mapping fixture <-> object, ignoring NULL fields

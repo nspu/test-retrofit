@@ -5,6 +5,7 @@ import fr.nspu.riot_api.TestUtils
 import fr.nspu.riot_api.models.*
 import fr.nspu.riot_api.riot_services.StaticDataService
 import okhttp3.Request
+import okhttp3.mockwebserver.MockResponse
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Matchers.argThat
@@ -17,17 +18,12 @@ import java.io.IOException
 /**
  * Inspired by spotify-web-api-android
  */
-@RunWith(RobolectricTestRunner::class)
-class StaticDataServiceTest : ServiceTest(){
+class StaticDataServiceTest : ServiceTest() {
 
     var service: StaticDataService? = null
 
-    override fun implementService() {
-        val restAdapter = Retrofit.Builder()
-                .client(mockClient!!)
-                .baseUrl("https://na1.api.riotgames.com")
-                .build()
-        service  = restAdapter.create(StaticDataService::class.java)
+    override fun implementService(retrofit: Retrofit) {
+        service = retrofit.create(StaticDataService::class.java)
     }
 
 
@@ -40,9 +36,9 @@ class StaticDataServiceTest : ServiceTest(){
         val response = TestUtils.getResponseFromModel(fixture, ChampionListData::class.java)
         `when`(mockClient!!.newCall(isA(Request::class.java)).execute()).thenReturn(response)
 
-        var options : Map<String, String> = hashMapOf("tags" to  "all", "champListData" to "all")
-
-        val champions = service!!.getChampions(options)
+        var options: Map<String, String> = hashMapOf("tags" to "all", "champListData" to "all")
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val champions = service!!.getChampions(options)!!.execute().body()
         this.compareJSONWithoutNulls(body, champions)
     }
 
@@ -55,9 +51,9 @@ class StaticDataServiceTest : ServiceTest(){
         val response = TestUtils.getResponseFromModel(fixture, ChampionData::class.java)
         `when`(mockClient!!.newCall(isA(Request::class.java)).execute()).thenReturn(response)
 
-        var options : Map<String, String> = hashMapOf("tags" to  "all", "champData" to "all")
-
-        val champion = service!!.getChampion(0, options)
+        val options: Map<String, String> = hashMapOf("tags" to "all", "champData" to "all")
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val champion = service!!.getChampion(0, options)!!.execute().body()
         this.compareJSONWithoutNulls(body, champion)
     }
 
@@ -70,9 +66,9 @@ class StaticDataServiceTest : ServiceTest(){
         val response = TestUtils.getResponseFromModel(fixture, ItemList::class.java)
         `when`(mockClient!!.newCall(isA(Request::class.java)).execute()).thenReturn(response)
 
-        var options : Map<String, String> = hashMapOf("tags" to  "all", "itemListData" to "all")
-
-        val items = service!!.getItems(options)
+        val options: Map<String, String> = hashMapOf("tags" to "all", "itemListData" to "all")
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val items = service!!.getItems(options)!!.execute().body()
         this.compareJSONWithoutNulls(body, items)
     }
 
@@ -85,9 +81,10 @@ class StaticDataServiceTest : ServiceTest(){
         val response = TestUtils.getResponseFromModel(fixture, Item::class.java)
         `when`(mockClient!!.newCall(argThat(MatchesId(fixture.id!!.toString()))).execute()).thenReturn(response)
 
-        var options : Map<String, String> = hashMapOf("tags" to  "all", "itemData" to "all")
 
-        val item = service!!.getItem(fixture.id!!, options)
+        val options: Map<String, String> = hashMapOf("tags" to "all", "itemData" to "all")
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val item = service!!.getItem(fixture.id!!, options)!!.execute().body()
         this.compareJSONWithoutNulls(body, item)
     }
 
@@ -100,7 +97,8 @@ class StaticDataServiceTest : ServiceTest(){
         val response = TestUtils.getResponseFromModel(fixture, LanguageStrings::class.java)
         `when`(mockClient!!.newCall(isA(Request::class.java)).execute()).thenReturn(response)
 
-        val languageStrings = service!!.getLanguageString()
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val languageStrings = service!!.getLanguageString()!!.execute().body()
         this.compareJSONWithoutNulls(body, languageStrings)
     }
 
@@ -113,7 +111,8 @@ class StaticDataServiceTest : ServiceTest(){
         val response = TestUtils.getResponseFromModel(fixture, List::class.java)
         `when`(mockClient!!.newCall(isA(Request::class.java)).execute()).thenReturn(response)
 
-        val languages = service!!.getLanguages()
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val languages = service!!.getLanguages()!!.execute().body()
         this.compareJSONWithoutNulls(body, languages)
     }
 
@@ -126,7 +125,8 @@ class StaticDataServiceTest : ServiceTest(){
         val response = TestUtils.getResponseFromModel(fixture, Maps::class.java)
         `when`(mockClient!!.newCall(isA(Request::class.java)).execute()).thenReturn(response)
 
-        val maps = service!!.getMaps()
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val maps = service!!.getMaps()!!.execute().body()
         this.compareJSONWithoutNulls(body, maps)
     }
 
@@ -139,8 +139,9 @@ class StaticDataServiceTest : ServiceTest(){
         val response = TestUtils.getResponseFromModel(fixture, MasteryList::class.java)
         `when`(mockClient!!.newCall(isA(Request::class.java)).execute()).thenReturn(response)
 
-        var options: Map<String, String> = hashMapOf("tags" to "all", "masteryListData" to "all")
-        val masteries = service!!.getMasteries(options)
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val options: Map<String, String> = hashMapOf("tags" to "all", "masteryListData" to "all")
+        val masteries = service!!.getMasteries(options)!!.execute().body()
         this.compareJSONWithoutNulls(body, masteries)
     }
 
@@ -153,8 +154,9 @@ class StaticDataServiceTest : ServiceTest(){
         val response = TestUtils.getResponseFromModel(fixture, Mastery::class.java)
         `when`(mockClient!!.newCall(argThat(MatchesId(fixture.id!!.toString()))).execute()).thenReturn(response)
 
-        var options: Map<String, String> = hashMapOf("tags" to "all", "masteryData" to "all")
-        val mastery = service!!.getMastery(fixture.id!!, options)
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val options: Map<String, String> = hashMapOf("tags" to "all", "masteryData" to "all")
+        val mastery = service!!.getMastery(fixture.id!!, options)!!.execute().body()
         this.compareJSONWithoutNulls(body, mastery)
     }
 
@@ -167,7 +169,8 @@ class StaticDataServiceTest : ServiceTest(){
         val response = TestUtils.getResponseFromModel(fixture, ProfileIconData::class.java)
         `when`(mockClient!!.newCall(isA(Request::class.java)).execute()).thenReturn(response)
 
-        val profileIconData = service!!.getProfileIcons()
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val profileIconData = service!!.getProfileIcons()!!.execute().body()
         this.compareJSONWithoutNulls(body, profileIconData)
     }
 
@@ -180,7 +183,8 @@ class StaticDataServiceTest : ServiceTest(){
         val response = TestUtils.getResponseFromModel(fixture, Realm::class.java)
         `when`(mockClient!!.newCall(isA(Request::class.java)).execute()).thenReturn(response)
 
-        val realm = service!!.getRealms()
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val realm = service!!.getRealms()!!.execute().body()
         this.compareJSONWithoutNulls(body, realm)
     }
 
@@ -193,7 +197,8 @@ class StaticDataServiceTest : ServiceTest(){
         val response = TestUtils.getResponseFromModel(fixture, List::class.java)
         `when`(mockClient!!.newCall(isA(Request::class.java)).execute()).thenReturn(response)
 
-        val reforgedRunePaths = service!!.getReforgedRunePaths()
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val reforgedRunePaths = service!!.getReforgedRunePaths()!!.execute().body()
         this.compareJSONWithoutNulls(body, reforgedRunePaths)
     }
 
@@ -206,7 +211,8 @@ class StaticDataServiceTest : ServiceTest(){
         val response = TestUtils.getResponseFromModel(fixture, ReforgedRunePath::class.java)
         `when`(mockClient!!.newCall(argThat(MatchesId(fixture.id!!.toString()))).execute()).thenReturn(response)
 
-        val reforgedRunePath = service!!.getReforgedRunePath(fixture.id!!)
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val reforgedRunePath = service!!.getReforgedRunePath(fixture.id!!)!!.execute().body()
         this.compareJSONWithoutNulls(body, reforgedRunePath)
     }
 
@@ -219,7 +225,8 @@ class StaticDataServiceTest : ServiceTest(){
         val response = TestUtils.getResponseFromModel(fixture, List::class.java)
         `when`(mockClient!!.newCall(isA(Request::class.java)).execute()).thenReturn(response)
 
-        val reforgedRunes = service!!.getReforgedRunes()
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val reforgedRunes = service!!.getReforgedRunes()!!.execute().body()
         this.compareJSONWithoutNulls(body, reforgedRunes)
     }
 
@@ -232,7 +239,8 @@ class StaticDataServiceTest : ServiceTest(){
         val response = TestUtils.getResponseFromModel(fixture, ReforgedRune::class.java)
         `when`(mockClient!!.newCall(argThat(MatchesId(fixture.id!!.toString()))).execute()).thenReturn(response)
 
-        val reforgedRune = service!!.getReforgedRune(fixture.id!!)
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val reforgedRune = service!!.getReforgedRune(fixture.id!!)!!.execute().body()
         this.compareJSONWithoutNulls(body, reforgedRune)
     }
 
@@ -245,9 +253,10 @@ class StaticDataServiceTest : ServiceTest(){
         val response = TestUtils.getResponseFromModel(fixture, RuneList::class.java)
         `when`(mockClient!!.newCall(isA(Request::class.java)).execute()).thenReturn(response)
 
-        var options: Map<String, String> = hashMapOf("tags" to "all", "runeListData" to "all")
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val options: Map<String, String> = hashMapOf("tags" to "all", "runeListData" to "all")
 
-        val runes = service!!.getRunes(options)
+        val runes = service!!.getRunes(options)!!.execute().body()
         this.compareJSONWithoutNulls(body, runes)
     }
 
@@ -260,9 +269,10 @@ class StaticDataServiceTest : ServiceTest(){
         val response = TestUtils.getResponseFromModel(fixture, Rune::class.java)
         `when`(mockClient!!.newCall(argThat(MatchesId(fixture.id!!.toString()))).execute()).thenReturn(response)
 
-        var options: Map<String, String> = hashMapOf("tags" to "all", "runeData" to "all")
 
-        val rune = service!!.getRune(fixture.id!!, options)
+        val options: Map<String, String> = hashMapOf("tags" to "all", "runeData" to "all")
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val rune = service!!.getRune(fixture.id!!, options)!!.execute().body()
         this.compareJSONWithoutNulls(body, rune)
     }
 
@@ -275,9 +285,9 @@ class StaticDataServiceTest : ServiceTest(){
         val response = TestUtils.getResponseFromModel(fixture, SummonerSpellList::class.java)
         `when`(mockClient!!.newCall(isA(Request::class.java)).execute()).thenReturn(response)
 
-        var options: Map<String, String> = hashMapOf("tags" to "all", "spellListData" to "all")
-
-        val summonerSpells = service!!.getSummonerSpells(options)
+        val options: Map<String, String> = hashMapOf("tags" to "all", "spellListData" to "all")
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val summonerSpells = service!!.getSummonerSpells(options)!!.execute().body()
         this.compareJSONWithoutNulls(body, summonerSpells)
     }
 
@@ -290,9 +300,10 @@ class StaticDataServiceTest : ServiceTest(){
         val response = TestUtils.getResponseFromModel(fixture, SummonerSpell::class.java)
         `when`(mockClient!!.newCall(argThat(MatchesId(fixture.id!!.toString()))).execute()).thenReturn(response)
 
-        var options: Map<String, String> = hashMapOf("tags" to "all", "spellData" to "all")
 
-        val rune = service!!.getSummonerSpell(fixture.id!!, options)
+        val options: Map<String, String> = hashMapOf("tags" to "all", "spellData" to "all")
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val rune = service!!.getSummonerSpell(fixture.id!!, options)!!.execute().body()
         this.compareJSONWithoutNulls(body, rune)
     }
 
@@ -305,7 +316,8 @@ class StaticDataServiceTest : ServiceTest(){
         val response = TestUtils.getResponseFromModel(fixture, String::class.java)
         `when`(mockClient!!.newCall(isA(Request::class.java)).execute()).thenReturn(response)
 
-        val tarballLinks = service!!.getTarballLinks()
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val tarballLinks = service!!.getTarballLinks()!!.execute().body()
         this.compareJSONWithoutNulls(body, tarballLinks)
     }
 
@@ -318,7 +330,8 @@ class StaticDataServiceTest : ServiceTest(){
         val response = TestUtils.getResponseFromModel(fixture, List::class.java)
         `when`(mockClient!!.newCall(isA(Request::class.java)).execute()).thenReturn(response)
 
-        val versions = service!!.getVersions()
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val versions = service!!.getVersions()!!.execute().body()
         this.compareJSONWithoutNulls(body, versions)
     }
 }

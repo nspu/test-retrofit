@@ -6,7 +6,7 @@ import fr.nspu.riot_api.models.Match
 import fr.nspu.riot_api.models.MatchList
 import fr.nspu.riot_api.models.MatchTimeline
 import fr.nspu.riot_api.riot_services.MatchService
-import okhttp3.Call
+import okhttp3.mockwebserver.MockResponse
 import org.junit.Test
 import org.mockito.Matchers
 import org.mockito.Mockito
@@ -18,12 +18,8 @@ import java.io.IOException
  */
 class MatchServiceTest: ServiceTest() {
     var service: MatchService? = null
-    override fun implementService() {
-        val restAdapter = Retrofit.Builder()
-                .client(mockClient!!)
-                .baseUrl("https://na1.api.riotgames.com")
-                .build()
-        service= restAdapter.create(MatchService::class.java)
+    override fun implementService(retrofit: Retrofit) {
+        service= retrofit.create(MatchService::class.java)
     }
 
     @Test
@@ -35,7 +31,8 @@ class MatchServiceTest: ServiceTest() {
         val response = TestUtils.getResponseFromModel(fixture, Match::class.java)
         Mockito.`when`(mockClient!!.newCall(Matchers.argThat(MatchesId(fixture.gameId!!.toString()))).execute()).thenReturn(response)
 
-        val challengers = service!!.getMatchById(fixture.gameId!!)
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val challengers = service!!.getMatchById(fixture.gameId!!)!!.execute().body()
         this.compareJSONWithoutNulls(body, challengers)
     }
 
@@ -48,7 +45,8 @@ class MatchServiceTest: ServiceTest() {
         val response = TestUtils.getResponseFromModel(fixture, MatchList::class.java)
         Mockito.`when`(mockClient!!.newCall(Matchers.argThat(MatchesId(211234522.toString()))).execute()).thenReturn(response)
 
-        val matchListByAccount = service!!.getMatchListByAccountId(211234522)
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val matchListByAccount = service!!.getMatchListByAccountId(211234522)!!.execute().body()
         this.compareJSONWithoutNulls(body, matchListByAccount)
     }
 
@@ -61,7 +59,8 @@ class MatchServiceTest: ServiceTest() {
         val response = TestUtils.getResponseFromModel(fixture, MatchList::class.java)
         Mockito.`when`(mockClient!!.newCall(Matchers.argThat(MatchesId(211234522.toString()))).execute()).thenReturn(response)
 
-        val matchListByAccount = service!!.getRecentMatchListByAccountId(211234522)
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val matchListByAccount = service!!.getRecentMatchListByAccountId(211234522)!!.execute().body()
         this.compareJSONWithoutNulls(body, matchListByAccount)
     }
 
@@ -74,7 +73,8 @@ class MatchServiceTest: ServiceTest() {
         val response = TestUtils.getResponseFromModel(fixture, MatchTimeline::class.java)
         Mockito.`when`(mockClient!!.newCall(Matchers.argThat(MatchesId(211234522.toString()))).execute()).thenReturn(response)
 
-        val matchListByAccount = service!!.getTimelineByMatchId(211234522)
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val matchListByAccount = service!!.getTimelineByMatchId(211234522)!!.execute().body()
         this.compareJSONWithoutNulls(body, matchListByAccount)
     }
 
@@ -87,7 +87,8 @@ class MatchServiceTest: ServiceTest() {
         val response = TestUtils.getResponseFromModel(fixture, MatchTimeline::class.java)
         Mockito.`when`(mockClient!!.newCall(Matchers.argThat(MatchesId(211234522.toString()))).execute()).thenReturn(response)
 
-        val matchListByAccount = service!!.getTimelineByMatchId(211234522)
+        mockWebServer!!.enqueue(MockResponse().setBody(body).setResponseCode(200))
+        val matchListByAccount = service!!.getTimelineByMatchId(211234522)!!.execute().body()
         this.compareJSONWithoutNulls(body, matchListByAccount)
     }
 }
