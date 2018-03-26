@@ -3,7 +3,7 @@
 This project is a wrapper for [Riot API](https://developer.riotgames.com/).
 It uses [Retrofit](http://square.github.io/retrofit/).
 
-[Documentation here](https://nspu.github.io/riot-api-android/docs)
+[Documentation here](https://nspu.github.io/riot-api-android/docs/index.html)
 
 ## Getting starting
 To build this project, use `./gradlew assemble`.
