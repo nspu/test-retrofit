@@ -3,9 +3,6 @@ package fr.nspu.riot_api.models
 import android.os.Parcel
 import android.os.Parcelable
 
-/**
- * Created by nspu on 09/03/18.
- */
 
 data class ChampionSpellVar(var ranksWith: String? = null,
                             var dyn: String? = null,
@@ -17,7 +14,7 @@ data class ChampionSpellVar(var ranksWith: String? = null,
         if (coeff is List<*>) {
             coefficient = coeff as List<Double>
         } else if (coeff is Double) {
-            if (coeff != null) coefficient= arrayListOf(coeff as Double)
+            if (coeff != null) coefficient = arrayListOf(coeff as Double)
         }
     }
 

@@ -2,13 +2,10 @@ package fr.nspu.riot_api.data_dragon_services
 
 import fr.nspu.riot_api.models.*
 import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-/**
- * Created by nspu on 15/03/18.
- */
+
 interface DataDragonService {
 
     /**

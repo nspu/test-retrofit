@@ -7,10 +7,11 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.RequestCreator
 
+
 /**
  * Created by nspu on 16/03/18.
  */
-class ImageService(var uri: String, var version: String, private val mContext:Context) {
+class ImageService(var uri: String, var version: String, private val mContext: Context) {
 
     private fun getProfileIconUri(profileIconId: Int) = "$uri/cdn/$version/img/profileicon/$profileIconId.png"
     private fun getSplashArtUri(nameChampion: String, skinNum: Int) = "$uri/cdn/img/champion/splash/${nameChampion}_$skinNum.jpg"
@@ -213,19 +214,19 @@ class ImageService(var uri: String, var version: String, private val mContext:Co
      * Generic
      */
     private fun getImage(uri: String, options: Map<String, Any>? = null): Bitmap {
-        return initPicasso(uri,options).get()
+        return initPicasso(uri, options).get()
     }
 
     private fun getImage(uri: String, view: ImageView, options: Map<String, Any>? = null) {
-        initPicasso(uri,options).into(view)
+        initPicasso(uri, options).into(view)
     }
 
     private fun getImage(uri: String, callback: Callback, options: Map<String, Any>? = null) {
-        initPicasso(uri,options).fetch(callback)
+        initPicasso(uri, options).fetch(callback)
     }
 
     private fun initPicasso(uri: String, options: Map<String, Any>? = null): RequestCreator {
-        var picasso = Picasso.get()//Builder(mContext).build()
+        var picasso = Picasso.get()
         picasso.setIndicatorsEnabled(true)
         var requestCreator: RequestCreator = picasso.load(uri)
         config(options, requestCreator)
@@ -233,7 +234,7 @@ class ImageService(var uri: String, var version: String, private val mContext:Co
     }
 
     private fun config(options: Map<String, Any>?, requestCreator: RequestCreator) {
-        if(options == null) return
+        if (options == null) return
 
         if (options!!.containsKey("resize")) {
             resize(options["resite"], requestCreator)

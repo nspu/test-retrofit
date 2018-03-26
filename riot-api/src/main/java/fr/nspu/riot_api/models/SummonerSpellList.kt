@@ -3,16 +3,14 @@ package fr.nspu.riot_api.models
 import android.os.Parcel
 import android.os.Parcelable
 
-/**
- * Created by nspu on 12/03/18.
- */
+
 data class SummonerSpellList(
         var data: Map<String, SummonerSpell>? = null,
         var version: String? = null,
         var type: String? = null
 ) : Parcelable {
     constructor(source: Parcel) : this(
-            hashMapOf<String,SummonerSpell>().apply { source.readMap(this, Map::class.java.classLoader) },
+            hashMapOf<String, SummonerSpell>().apply { source.readMap(this, Map::class.java.classLoader) },
             source.readString(),
             source.readString()
     )

@@ -2,14 +2,13 @@ package fr.nspu.riot_api.riot_services
 
 import fr.nspu.riot_api.models.ShardStatus
 import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.http.GET
 import retrofit2.http.QueryMap
 
 /**
  * lol-status
  */
-interface LoLStatusService{
+interface LoLStatusService {
     /**
      * Get League of Legends status for the given shard.
      *

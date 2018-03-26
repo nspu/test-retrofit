@@ -3,15 +3,13 @@ package fr.nspu.riot_api.models
 import android.os.Parcel
 import android.os.Parcelable
 
-/**
- * Created by nspu on 11/03/18.
- */
+
 data class MasteryList(var data: Map<String, Mastery>? = null,
                        var version: String? = null,
                        var tree: MasteryTree? = null,
                        var type: String? = null) : Parcelable {
     constructor(source: Parcel) : this(
-            emptyMap<String, Mastery>().apply {  source.readMap(this, Map::class.java.classLoader)},
+            emptyMap<String, Mastery>().apply { source.readMap(this, Map::class.java.classLoader) },
             source.readString(),
             source.readParcelable<MasteryTree>(MasteryTree::class.java.classLoader),
             source.readString()

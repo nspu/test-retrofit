@@ -3,9 +3,7 @@ package fr.nspu.riot_api.models
 import android.os.Parcel
 import android.os.Parcelable
 
-/**
- * Created by nspu on 13/03/18.
- */
+
 data class Service(
         var status: String? = null,
         var incidents: List<Incident>? = null,

@@ -4,7 +4,6 @@ import fr.nspu.riot_api.RankedType
 import fr.nspu.riot_api.models.LeagueList
 import fr.nspu.riot_api.models.LeaguePosition
 import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.QueryMap

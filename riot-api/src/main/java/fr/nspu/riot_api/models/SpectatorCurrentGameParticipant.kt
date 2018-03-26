@@ -3,9 +3,7 @@ package fr.nspu.riot_api.models
 import android.os.Parcel
 import android.os.Parcelable
 
-/**
- * Created by nspu on 13/03/18.
- */
+
 data class SpectatorCurrentGameParticipant(
         var profileIconId: Long? = null,// 	The ID of the profile icon used by this participant
         var championId: Long? = null,// 	The ID of the champion played by this participant

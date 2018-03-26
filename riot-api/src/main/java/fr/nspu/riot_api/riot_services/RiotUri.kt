@@ -1,8 +1,5 @@
 package fr.nspu.riot_api.riot_services
 
-/**
- * Created by nspu on 11/03/18.
- */
 object RiotUri {
     private const val VERSION = "v3"
 
@@ -62,8 +59,7 @@ object RiotUri {
     const val URI_SUMMONER_BY_NAME = URI_SUMMONER + "by-name/{summonerName}"// Get a summoner by summoner name.
     const val URI_SUMMONER_BY_SUMMONER_ID = URI_SUMMONER + "{summonerId}" //Get a summoner by summoner ID.
 
-    const val URI_THIRD_PARTY_CODE_BY_SUMMONER_ID =  "/lol/platform/$VERSION/third-party-code/by-summoner/{summonerId}" //Get third party code for a given summoner ID.
-
+    const val URI_THIRD_PARTY_CODE_BY_SUMMONER_ID = "/lol/platform/$VERSION/third-party-code/by-summoner/{summonerId}" //Get third party code for a given summoner ID.
 
 
 }

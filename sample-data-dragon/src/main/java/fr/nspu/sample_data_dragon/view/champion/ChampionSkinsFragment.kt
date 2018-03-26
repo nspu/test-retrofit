@@ -39,7 +39,7 @@ class ChampionSkinsFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         if (arguments != null) {
-            mChampionSkins = arguments!!.getParcelableArrayList<ChampionSkin>(ARG_CHAMPION_SKIN_LIST)
+            mChampionSkins = arguments!!.getParcelableArrayList<ChampionSkin>(ARG_CHAMPION_SKIN_LIST)!!
             mChampionNameKey= arguments!!.getString(ARG_CHAMPION_NAME)
         }
         // Create the adapter that will return a fragment for each of the three

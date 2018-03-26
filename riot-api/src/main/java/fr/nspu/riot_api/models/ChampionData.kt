@@ -3,9 +3,7 @@ package fr.nspu.riot_api.models
 import android.os.Parcel
 import android.os.Parcelable
 
-/**
- * Created by nspu on 09/03/18.
- */
+
 class ChampionData(
         var info: ChampionDataInfo? = null,
         var enemytips: List<String>? = null,

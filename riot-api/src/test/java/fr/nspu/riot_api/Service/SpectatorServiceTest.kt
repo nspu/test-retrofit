@@ -12,9 +12,7 @@ import org.mockito.Mockito
 import retrofit2.Retrofit
 import java.io.IOException
 
-/**
- * Created by nspu on 13/03/18.
- */
+
 class SpectatorServiceTest: ServiceTest() {
     private val SUMMONER_ID = 48509080L
     var service: SpectatorService? = null

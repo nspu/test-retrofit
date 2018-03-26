@@ -1,13 +1,12 @@
 package fr.nspu.riot_api.riot_services
 
 import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.QueryMap
 
 /**
- * Created by nspu on 13/03/18.
+ * third party code
  */
 interface ThirdPartyCodeService {
     /**
@@ -20,5 +19,5 @@ interface ThirdPartyCodeService {
      * @see <a href="https://developer.riotgames.com/api-methods/#third-party-code-v3/GET_getThirdPartyCodeBySummonerId">Get third party code for a given summoner ID</a>
      */
     @GET(RiotUri.URI_THIRD_PARTY_CODE_BY_SUMMONER_ID)
-    fun getThirdPartyCodeBySummonerId(@Path("summonerId") summonerId: Long, @QueryMap options: Map<String, String>? =mapOf()): Call<String>?
+    fun getThirdPartyCodeBySummonerId(@Path("summonerId") summonerId: Long, @QueryMap options: Map<String, String>? = mapOf()): Call<String>?
 }

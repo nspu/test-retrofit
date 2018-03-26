@@ -12,9 +12,7 @@ import retrofit2.Retrofit
 import java.io.IOException
 
 
-/**
- * Created by nspu on 13/03/18.
- */
+
 class SummonerServiceTest: ServiceTest() {
     var service: SummonerService? = null
 

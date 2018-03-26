@@ -37,15 +37,15 @@ import java.util.concurrent.Executors
 class RiotApi(
         httpExecutor: Executor,
         callbackExecutor: Executor,
-        var endPoint:String,
+        var endPoint: String,
         private var accessToken: String
 ) {
 
     val staticDataService: StaticDataService
     val championMasteryService: ChampionMasteryService
-    val championService : ChampionService
+    val championService: ChampionService
     val leagueService: LeagueService
-    val lolStatusService : LoLStatusService
+    val lolStatusService: LoLStatusService
     val matchService: MatchService
     val spectatorService: SpectatorService
     val summonerService: SummonerService
@@ -80,7 +80,7 @@ class RiotApi(
      *   @param endPoint url for the riot endpoint
      *   @param accessToken settings access token
      */
-    constructor(endPoint:String, accessToken: String) : this(
+    constructor(endPoint: String, accessToken: String) : this(
             Executors.newSingleThreadExecutor(),
             Executors.newSingleThreadExecutor(),
             endPoint,

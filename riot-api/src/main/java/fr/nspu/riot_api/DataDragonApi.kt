@@ -8,15 +8,13 @@ import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
-import okhttp3.logging.HttpLoggingInterceptor;
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
-
-
 
 
 /**
@@ -107,7 +105,7 @@ class DataDragonApi(
         @Throws(IOException::class)
         override fun intercept(chain: Interceptor.Chain): Response {
             val builder = chain.request().newBuilder()
-            builder.addHeader("Cache-Control", "max-stale=" + Integer.MAX_VALUE)
+            builder.addHeader("Cache-Control", "public, max-stale=2419200")
             return chain.proceed(builder.build())
         }
     }

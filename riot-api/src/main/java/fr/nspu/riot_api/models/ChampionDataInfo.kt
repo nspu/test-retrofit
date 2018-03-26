@@ -3,15 +3,13 @@ package fr.nspu.riot_api.models
 import android.os.Parcel
 import android.os.Parcelable
 
-/**
- * Created by nspu on 09/03/18.
- */
+
 data class ChampionDataInfo(
         var difficulty: Int? = null,
         var attack: Int? = null,
         var defense: Int? = null,
         var magic: Int? = null
-        ) : Parcelable {
+) : Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readValue(Int::class.java.classLoader) as? Int,
             parcel.readValue(Int::class.java.classLoader) as? Int,

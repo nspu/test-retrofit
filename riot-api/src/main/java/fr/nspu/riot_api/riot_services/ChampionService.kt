@@ -3,7 +3,6 @@ package fr.nspu.riot_api.riot_services
 import fr.nspu.riot_api.models.ChampionInfo
 import fr.nspu.riot_api.models.ChampionListInfo
 import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.QueryMap
@@ -30,5 +29,5 @@ interface ChampionService {
      * @see <a href="https://developer.riotgames.com/api-methods/#champion-v3/GET_getChampionsById">Retrieve champion by ID</a>
      */
     @GET(RiotUri.URI_CHAMPION)
-    fun getChampion(@Path("id") id: Long,@QueryMap options: Map<String, String>? = mapOf()): Call<ChampionInfo>?
+    fun getChampion(@Path("id") id: Long, @QueryMap options: Map<String, String>? = mapOf()): Call<ChampionInfo>?
 }

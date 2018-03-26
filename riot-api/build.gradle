@@ -19,9 +19,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    testOptions {
-        unitTests.returnDefaultValues true
-    }
 }
 
 dependencies {
@@ -64,7 +61,7 @@ android.libraryVariants.all { variant ->
 }
 
 dokka {
-    outputFormat = 'html'
+    outputFormat = 'javadoc'
     outputDirectory = "$rootDir/docs"
 }
 

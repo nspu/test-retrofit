@@ -3,6 +3,7 @@ package fr.nspu.sample_data_dragon.view.champion
 import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceActivity
+import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
@@ -18,7 +19,15 @@ class ChampionActivity : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        initChamptionsFragment()
+
+        val sharedPref = PreferenceManager.getDefaultSharedPreferences(this)
+        val language = sharedPref.getString(SettingsActivity.PREF_LANGUAGE, "")
+        val version = sharedPref.getString(SettingsActivity.PREF_VERSION, "")
+        if(version.isEmpty() || language.isEmpty()){
+            openSettings()
+        }else{
+            initChamptionsFragment()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -33,10 +42,7 @@ class ChampionActivity : AppCompatActivity(),
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.action_settings -> {
-                val intent = Intent(this, SettingsActivity::class.java)
-                intent.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT, SettingsActivity.PreferencesFragment::class.java.getName())
-                intent.putExtra(PreferenceActivity.EXTRA_NO_HEADERS, true)
-                startActivity(intent)
+                openSettings()
                 return true
             }
             else -> super.onOptionsItemSelected(item)
@@ -74,6 +80,13 @@ class ChampionActivity : AppCompatActivity(),
                 .replace(R.id.fl_container, fragment, ChampionDetailsFragment.TAG)
                 .addToBackStack(ChampionDetailsFragment.TAG)
                 .commit()
+    }
+
+    fun openSettings(){
+        val intent = Intent(this, SettingsActivity::class.java)
+        intent.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT, SettingsActivity.PreferencesFragment::class.java.getName())
+        intent.putExtra(PreferenceActivity.EXTRA_NO_HEADERS, true)
+        startActivity(intent)
     }
 
     fun initChamptionsFragment() {

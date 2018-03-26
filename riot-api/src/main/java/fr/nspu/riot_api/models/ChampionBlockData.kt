@@ -3,9 +3,6 @@ package fr.nspu.riot_api.models
 import android.os.Parcel
 import android.os.Parcelable
 
-/**
- * Created by nspu on 09/03/18.
- */
 
 data class ChampionBlockData(var items: List<ChampionRecommandedBlockItem>? = null,
                              var recMath: Boolean? = null,

@@ -10,9 +10,7 @@ import org.mockito.Mockito.`when`
 import retrofit2.Retrofit
 import java.io.IOException
 
-/**
- * Created by nspu on 13/03/18.
- */
+
 class ThirdPartyCodeServiceTest: ServiceTest() {
     var service: ThirdPartyCodeService? = null
 

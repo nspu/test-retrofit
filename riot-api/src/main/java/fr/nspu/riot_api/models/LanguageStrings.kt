@@ -3,9 +3,7 @@ package fr.nspu.riot_api.models
 import android.os.Parcel
 import android.os.Parcelable
 
-/**
- * Created by nspu on 11/03/18.
- */
+
 data class LanguageStrings(var data: Map<String, String>? = null,
                            var version: String? = null,
                            var type: String? = null) : Parcelable {

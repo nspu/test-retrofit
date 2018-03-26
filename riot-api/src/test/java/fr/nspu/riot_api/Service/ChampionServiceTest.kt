@@ -13,9 +13,7 @@ import org.mockito.Mockito
 import retrofit2.Retrofit
 import java.io.IOException
 
-/**
- * Created by nspu on 12/03/18.
- */
+
 class ChampionServiceTest : ServiceTest()  {
     var service: ChampionService? = null
     override fun implementService(retrofit: Retrofit) {

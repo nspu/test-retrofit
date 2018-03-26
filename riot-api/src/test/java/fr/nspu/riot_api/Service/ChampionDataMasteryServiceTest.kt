@@ -17,9 +17,7 @@ import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
 
 
-/**
- * Created by nspu on 12/03/18.
- */
+
 class ChampionDataMasteryServiceTest : ServiceTest() {
     private val SUMMONER_ID = 48509080L
 

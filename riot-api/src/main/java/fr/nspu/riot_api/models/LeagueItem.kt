@@ -3,9 +3,7 @@ package fr.nspu.riot_api.models
 import android.os.Parcel
 import android.os.Parcelable
 
-/**
- * Created by nspu on 12/03/18.
- */
+
 data class LeagueItem(
         var rank: String? = null,
         var hotStreak: Boolean? = null,

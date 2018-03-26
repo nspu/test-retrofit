@@ -1,8 +1,6 @@
 package fr.nspu.riot_api.data_dragon_services
 
-/**
- * Created by nspu on 15/03/18.
- */
+
 object DataDragonUri {
     const val PREFIX = "/cdn/{version}/data/{language}/"
 
@@ -10,7 +8,7 @@ object DataDragonUri {
     const val URI_CHAMPIONS = PREFIX + "champion.json"
     const val URI_CHAMPION = PREFIX + "champion/{championName}.json"
     const val URI_ITEMS = PREFIX + "item.json"
-    const val URI_MASTERIES  = PREFIX + "mastery.json"
+    const val URI_MASTERIES = PREFIX + "mastery.json"
     const val URI_RUNES = PREFIX + "rune.json"
     const val URI_SUMMONER_SPELLS = PREFIX + "summoner.json"
 

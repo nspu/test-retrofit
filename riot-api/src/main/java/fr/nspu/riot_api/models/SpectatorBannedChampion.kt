@@ -3,9 +3,7 @@ package fr.nspu.riot_api.models
 import android.os.Parcel
 import android.os.Parcelable
 
-/**
- * Created by nspu on 13/03/18.
- */
+
 data class SpectatorBannedChampion(
         var pickTurn: Int? = null,// 	The turn during which the champion was banned
         var championId: Long? = null,// 	The ID of the banned champion

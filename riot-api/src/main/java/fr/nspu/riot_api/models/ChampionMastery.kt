@@ -3,9 +3,7 @@ package fr.nspu.riot_api.models
 import android.os.Parcel
 import android.os.Parcelable
 
-/**
- * Created by nspu on 12/03/18.
- */
+
 class ChampionMastery(
         var chestGranted: Boolean? = null,    //Is chest granted for this champion or not in current season.
         var championLevel: Int? = null,    //ChampionData level for specified player and champion combination.

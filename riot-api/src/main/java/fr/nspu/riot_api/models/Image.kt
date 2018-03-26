@@ -4,12 +4,12 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class Image(var full: String? = null,
-            var group: String? = null,
-            var sprite: String? = null,
-            var h: Int? = null,
-            var w: Int? = null,
-            var y: Int? = null,
-            var x: Int? = null) : Parcelable {
+                 var group: String? = null,
+                 var sprite: String? = null,
+                 var h: Int? = null,
+                 var w: Int? = null,
+                 var y: Int? = null,
+                 var x: Int? = null) : Parcelable {
     constructor(source: Parcel) : this(
             source.readString(),
             source.readString(),

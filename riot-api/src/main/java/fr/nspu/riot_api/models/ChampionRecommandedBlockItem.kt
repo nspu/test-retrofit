@@ -3,9 +3,7 @@ package fr.nspu.riot_api.models
 import android.os.Parcel
 import android.os.Parcelable
 
-/**
- * Created by nspu on 09/03/18.
- */
+
 data class ChampionRecommandedBlockItem(var count: Int? = null,
                                         var id: Int? = null) : Parcelable {
     constructor(source: Parcel) : this(

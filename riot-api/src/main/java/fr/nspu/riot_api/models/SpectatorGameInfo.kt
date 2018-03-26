@@ -3,9 +3,7 @@ package fr.nspu.riot_api.models
 import android.os.Parcel
 import android.os.Parcelable
 
-/**
- * Created by nspu on 13/03/18.
- */
+
 data class SpectatorGameInfo(
         var gameId: Long? = null,// 	The ID of the game
         var gameStartTime: Long? = null,// 	The game start time represented in epoch milliseconds

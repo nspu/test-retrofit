@@ -3,9 +3,7 @@ package fr.nspu.riot_api.models
 import android.os.Parcel
 import android.os.Parcelable
 
-/**
- * Created by nspu on 12/03/18.
- */
+
 data class MetaData(
         var tier: String? = null,
         var type: String? = null,

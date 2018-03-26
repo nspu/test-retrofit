@@ -3,9 +3,7 @@ package fr.nspu.riot_api.models
 import android.os.Parcel
 import android.os.Parcelable
 
-/**
- * Created by nspu on 12/03/18.
- */
+
 data class Realm(
         var lg: String? = null,    //Legacy script mode for IE6 or older.
         var dd: String? = null,    //Latest changed version of Dragon Magic.
