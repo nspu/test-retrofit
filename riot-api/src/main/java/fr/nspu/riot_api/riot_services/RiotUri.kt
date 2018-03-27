@@ -61,5 +61,17 @@ object RiotUri {
 
     const val URI_THIRD_PARTY_CODE_BY_SUMMONER_ID = "/lol/platform/$VERSION/third-party-code/by-summoner/{summonerId}" //Get third party code for a given summoner ID.
 
+    private const val URI_TOURNAMENT_STUB = "/lol/tournament-stub/$VERSION/"
+    const val URI_TOURNAMENT_STUB_CODES = URI_TOURNAMENT_STUB + "codes" //Create a mock tournament code for the given tournament.
+    const val URI_TOURNAMENT_STUB_LOBBY_EVENTS_BY_CODE = URI_TOURNAMENT_STUB + "lobby-events/by-code/{tournamentCode}" //Gets a mock list of lobby events by tournament code.
+    const val URI_TOURNAMENT_STUB_PROVIDERS = URI_TOURNAMENT_STUB + "providers" //Creates a mock tournament provider and returns its ID.
+    const val URI_TOURNAMENT_STUB_TOURNAMENTS = URI_TOURNAMENT_STUB + "tournaments" //Creates a mock tournament and returns its ID
 
+    private const val URI_TOURNAMENT = "/lol/tournament/$VERSION/"
+    const val URI_TOURNAMENT_CODES = URI_TOURNAMENT + "codes" //Create a tournament code for the given tournament.
+    const val URI_TOURNAMENT_UPDATE = URI_TOURNAMENT + "codes/{tournamentCode}" //Update the pick type, map, spectator type, or allowed summoners for a code.
+    const val URI_TOURNAMENT_RETURN_CODE = URI_TOURNAMENT + "codes/{tournamentCode}" //Returns the tournament code DTO associated with a tournament code string.
+    const val URI_TOURNAMENT_LOBBY_EVENTS_BY_CODE = URI_TOURNAMENT + "lobby-events/by-code/{tournamentCode}" //Gets a list of lobby events by tournament code.
+    const val URI_TOURNAMENT_PROVIDERS = URI_TOURNAMENT + "providers" //Creates a tournament provider and returns its ID.
+    const val URI_TOURNAMENT_TOURNAMENTS = URI_TOURNAMENT + "tournaments" //Creates a tournament and returns its ID
 }

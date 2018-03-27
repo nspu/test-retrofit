@@ -50,6 +50,7 @@ class RiotApi(
     val spectatorService: SpectatorService
     val summonerService: SummonerService
     val thirdPartyCodeService: ThirdPartyCodeService
+    val tournamentStub:TournamentStub
 
     init {
         val okhttpClient = OkHttpClient.Builder().addInterceptor(AddHeaderTokenInterceptor())
@@ -72,6 +73,7 @@ class RiotApi(
         spectatorService = restAdapter.create(SpectatorService::class.java)
         summonerService = restAdapter.create(SummonerService::class.java)
         thirdPartyCodeService = restAdapter.create(ThirdPartyCodeService::class.java)
+        tournamentStub = restAdapter.create(TournamentStub::class.java)
     }
 
     /**

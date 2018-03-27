@@ -13,7 +13,6 @@ interface ThirdPartyCodeService {
      * Get third party code for a given summoner ID
      *
      * @param summonerId id of the summoner
-     * @param callback Callback method. Success callback will return third party code
      * @param options Optional parameters. Nullable
      * @return [Call] requested third party code
      * @see <a href="https://developer.riotgames.com/api-methods/#third-party-code-v3/GET_getThirdPartyCodeBySummonerId">Get third party code for a given summoner ID</a>

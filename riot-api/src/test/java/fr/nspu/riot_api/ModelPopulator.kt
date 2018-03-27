@@ -61,7 +61,7 @@ class ModelPopulator(vararg excludeFields: String) {
     }
 
     private fun isCollectionType(type: Class<*>): Boolean {
-        return Map::class.java.isAssignableFrom(type) || List::class.java.isAssignableFrom(type)
+        return Map::class.java.isAssignableFrom(type) || List::class.java.isAssignableFrom(type) || Set::class.java.isAssignableFrom(type)
     }
 
     private fun populateCollectionField(field: Field): Any {
@@ -119,6 +119,27 @@ class ModelPopulator(vararg excludeFields: String) {
                 map.plus(Pair(getRandomValueOfType(keyClass), getRandomValueOfType(valueClass)))
             }
             return map
+        }
+
+        /* Set */
+        if (Set::class.java.isAssignableFrom(type)) {
+            val genericType = field.genericType
+            val pt = genericType as ParameterizedType
+            val actualType = pt.actualTypeArguments[0]
+            val elementClass: Class<*>
+
+            if (actualType is Class<*>) {
+                elementClass = actualType
+            } else {
+                // Sets with generics will be populated by default type
+                elementClass = DEFAULT_GENERIC_CLASS
+            }
+
+            val list = emptySet<Any>()
+            for (i in 0 until DEFAULT_COLLECTION_SIZE) {
+                list.plus(getRandomValueOfType(elementClass)!!)
+            }
+            return list
         }
 
         throw UnsupportedOperationException("Unsupported collection field type! $type")

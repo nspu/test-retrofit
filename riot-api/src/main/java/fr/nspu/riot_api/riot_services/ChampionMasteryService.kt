@@ -7,7 +7,7 @@ import retrofit2.http.Path
 import retrofit2.http.QueryMap
 
 /**
- * champion-mastery
+ * Champion Mastery
  */
 interface ChampionMasteryService {
     /**

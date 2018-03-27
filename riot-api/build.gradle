@@ -24,14 +24,17 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava:2.4.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
-    implementation 'com.squareup.okhttp3:okhttp:3.8.0'
-
-    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
-    implementation 'com.squareup.picasso:picasso:2.71828'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    implementation 'com.squareup.okhttp3:okhttp:3.8.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.4.0'
+
 
     //test
     testCompile("org.robolectric:robolectric:${ROBOLECTRIC_VERSION}") {
