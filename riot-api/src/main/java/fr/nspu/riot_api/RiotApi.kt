@@ -17,28 +17,28 @@ import java.util.concurrent.Executors
  * Basic usage:
  * RiotApi riotApi = new RiotApi(endPoint, accessToken);
  *
- *  * Create instance of RiotApi with given executors.
- *   @property httpExecutor executor for http request. Cannot be null.
- *   @property callbackExecutor executor for callbacks. If null is passed than the same
- *   @property endPoint url for the riot endpoint
- *   @property accessToken settings access token
+ * Create instance of RiotApi with given executors.
+ * @property httpExecutor executor for http request. Cannot be null.
+ * @property callbackExecutor executor for callbacks. If null is passed than the same
+ * @property endPoint url for the riot endpoint
+ * @property accessToken settings access token
  *
- *   @property staticDataService instance for access to static data
- *   @property championMasteryService: instance for access to champion mastery
- *   @property championService : instance for access to champions
- *   @property leagueService: instance for access to league
- *   @property lolStatusService : instance for access to lol status
- *   @property matchService: instance for access to match
- *   @property spectatorService: instance for access to spectator
- *   @property summonerService: instance for access to summoner
- *   @property thirdPartyCodeService: instance for access to third party code
- *   @constructor thread that created the instances.
+ * @property staticDataService instance for access to static data
+ * @property championMasteryService: instance for access to champion mastery
+ * @property championService : instance for access to champions
+ * @property leagueService: instance for access to league
+ * @property lolStatusService : instance for access to lol status
+ * @property matchService: instance for access to match
+ * @property spectatorService: instance for access to spectator
+ * @property summonerService: instance for access to summoner
+ * @property thirdPartyCodeService: instance for access to third party code
+ * @constructor thread that created the instances.
  */
 class RiotApi(
-        httpExecutor: Executor,
-        callbackExecutor: Executor,
-        var endPoint: String,
-        private var accessToken: String
+    httpExecutor: Executor,
+    callbackExecutor: Executor,
+    var endPoint: String,
+    private var accessToken: String
 ) {
 
     val staticDataService: StaticDataService
@@ -50,19 +50,19 @@ class RiotApi(
     val spectatorService: SpectatorService
     val summonerService: SummonerService
     val thirdPartyCodeService: ThirdPartyCodeService
-    val tournamentStub:TournamentStub
+    val tournamentStub: TournamentStub
 
     init {
         val okhttpClient = OkHttpClient.Builder().addInterceptor(AddHeaderTokenInterceptor())
         val restAdapterBuilder = Retrofit.Builder()
-                .baseUrl(endPoint)
-                .callbackExecutor(callbackExecutor)
-                .callbackExecutor(httpExecutor)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .client(okhttpClient.build())
+            .baseUrl(endPoint)
+            .callbackExecutor(callbackExecutor)
+            .callbackExecutor(httpExecutor)
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+            .client(okhttpClient.build())
 
-        var restAdapter = restAdapterBuilder.build()
+        val restAdapter = restAdapterBuilder.build()
 
         staticDataService = restAdapter.create(StaticDataService::class.java)
         championMasteryService = restAdapter.create(ChampionMasteryService::class.java)
@@ -83,10 +83,10 @@ class RiotApi(
      *   @param accessToken settings access token
      */
     constructor(endPoint: String, accessToken: String) : this(
-            Executors.newSingleThreadExecutor(),
-            Executors.newSingleThreadExecutor(),
-            endPoint,
-            accessToken
+        Executors.newSingleThreadExecutor(),
+        Executors.newSingleThreadExecutor(),
+        endPoint,
+        accessToken
     )
 
     /**

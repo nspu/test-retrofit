@@ -8,10 +8,9 @@ android {
     defaultConfig {
         applicationId "fr.nspu.riot_api_android"
         minSdkVersion 21
-        targetSdkVersion 21
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
-        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -23,8 +22,10 @@ android {
     dataBinding {
         enabled = true
     }
-    buildToolsVersion '26.0.2'
-    productFlavors {
+    buildToolsVersion '27.0.3'
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 ext {
@@ -36,16 +37,14 @@ ext {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "com.android.support:appcompat-v7:$support_lib_version"
     implementation "com.android.support:design:$support_lib_version"
     implementation "com.android.support:support-v4:$support_lib_version"
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-
-    kapt 'com.android.databinding:compiler:3.0.1'
+    kapt 'com.android.databinding:compiler:3.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    implementation project(':riot-api')
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_version"
+    api project(':riot-api')
 }

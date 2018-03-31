@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import fr.nspu.riot_api.models.MatchList
 import fr.nspu.riot_api.models.MatchReference
+import fr.nspu.riot_api.models.Summoner
 
 
 /**
@@ -81,15 +82,16 @@ class MatchFragment() : Fragment() {
 
         override fun doInBackground(vararg params: Unit?): MatchList? {
             var matchs:MatchList? = null
+            var summoner: Summoner? = null
             try {
 
-                var account = RiotService.instance!!.riotApi.summonerService.getSummonerByName(mName!!)
+                 summoner = RiotService.instance!!.riotApi.summonerService.getSummonerByName(mName!!)!!.execute().body()
 
-                if (account == null) {
+                if (summoner == null) {
                     Throwable("User not find")
                 }
 
-                matchs = RiotService.instance!!.riotApi.matchService.getMatchListByAccountId(account!!.accountId!!)
+                matchs = RiotService.instance!!.riotApi.matchService.getMatchListByAccountId(summoner!!.accountId!!)!!.execute().body()
 
                 if(matchs == null){
                     Throwable("No match")
@@ -98,7 +100,7 @@ class MatchFragment() : Fragment() {
 
             } catch (e: Exception) {
                 cancel(true)
-                Snackbar.make(recyclerView!!, e.message.toString(), Snackbar.LENGTH_LONG)
+                Snackbar.make(recyclerView, e.message.toString(), Snackbar.LENGTH_LONG)
                         .setAction("Ok") { v -> }.show()
             }
             return matchs

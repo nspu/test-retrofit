@@ -226,9 +226,9 @@ class ImageService(var uri: String, var version: String, private val mContext: C
     }
 
     private fun initPicasso(uri: String, options: Map<String, Any>? = null): RequestCreator {
-        var picasso = Picasso.get()
+        val picasso = Picasso.get()
         picasso.setIndicatorsEnabled(true)
-        var requestCreator: RequestCreator = picasso.load(uri)
+        val requestCreator: RequestCreator = picasso.load(uri)
         config(options, requestCreator)
         return requestCreator
     }
@@ -236,15 +236,15 @@ class ImageService(var uri: String, var version: String, private val mContext: C
     private fun config(options: Map<String, Any>?, requestCreator: RequestCreator) {
         if (options == null) return
 
-        if (options!!.containsKey("resize")) {
+        if (options.containsKey("resize")) {
             resize(options["resite"], requestCreator)
         }
 
-        if (options!!.containsKey("center-crop")) {
+        if (options.containsKey("center-crop")) {
             centerCrop(options["center-crop"], requestCreator)
         }
 
-        if (options!!.containsKey("fit")) {
+        if (options.containsKey("fit")) {
             fit(options["fit"], requestCreator)
         }
     }

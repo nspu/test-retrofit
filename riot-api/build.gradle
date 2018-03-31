@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android'
 apply plugin: 'org.jetbrains.dokka'
 version = VERSION
@@ -21,6 +22,8 @@ android {
     }
 }
 
+
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
@@ -37,7 +40,7 @@ dependencies {
 
 
     //test
-    testCompile("org.robolectric:robolectric:${ROBOLECTRIC_VERSION}") {
+    testImplementation("org.robolectric:robolectric:${ROBOLECTRIC_VERSION}") {
         exclude group: 'com.android.support', module: 'support-v4'
         exclude group: 'commons-logging', module: 'commons-logging'
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
