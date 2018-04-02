@@ -18,7 +18,6 @@ import java.util.concurrent.Executors
  * RiotApi riotApi = new RiotApi(endPoint, accessToken);
  *
  * Create instance of RiotApi with given executors.
- * @property httpExecutor executor for http request. Cannot be null.
  * @property callbackExecutor executor for callbacks. If null is passed than the same
  * @property endPoint url for the riot endpoint
  * @property accessToken settings access token
@@ -35,7 +34,6 @@ import java.util.concurrent.Executors
  * @constructor thread that created the instances.
  */
 class RiotApi(
-    httpExecutor: Executor,
     callbackExecutor: Executor,
     var endPoint: String,
     private var accessToken: String
@@ -57,7 +55,6 @@ class RiotApi(
         val restAdapterBuilder = Retrofit.Builder()
             .baseUrl(endPoint)
             .callbackExecutor(callbackExecutor)
-            .callbackExecutor(httpExecutor)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
             .client(okhttpClient.build())
@@ -83,7 +80,6 @@ class RiotApi(
      *   @param accessToken settings access token
      */
     constructor(endPoint: String, accessToken: String) : this(
-        Executors.newSingleThreadExecutor(),
         Executors.newSingleThreadExecutor(),
         endPoint,
         accessToken

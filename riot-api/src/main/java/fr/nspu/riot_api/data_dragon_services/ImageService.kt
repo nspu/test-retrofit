@@ -7,10 +7,6 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.RequestCreator
 
-
-/**
- * Created by nspu on 16/03/18.
- */
 class ImageService(var uri: String, var version: String, private val mContext: Context) {
 
     private fun getProfileIconUri(profileIconId: Int) = "$uri/cdn/$version/img/profileicon/$profileIconId.png"
