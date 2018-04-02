@@ -1,7 +1,6 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android'
-apply plugin: 'org.jetbrains.dokka'
+apply plugin: "com.android.library"
+apply plugin: "kotlin-kapt"
+apply plugin: "org.jetbrains.dokka"
 version = VERSION
 android {
     compileSdkVersion 27
@@ -17,57 +16,55 @@ android {
         release {
             minifyEnabled true
             testCoverageEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
 }
 
-
-
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ["*.jar"], dir: "libs")
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$KOTLIN_VERSION"
 
-    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation "com.squareup.picasso:picasso:$PICASSO_VERSION"
 
-    implementation 'com.squareup.okhttp3:okhttp:3.8.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+    implementation "com.squareup.okhttp3:okhttp:$OK_HTTP_3_VERSION"
+    implementation "com.squareup.okhttp3:logging-interceptor:$OK_HTTP_3_VERSION"
 
-    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava:2.4.0'
+    implementation "com.squareup.retrofit2:retrofit:$RETROFIT_2_VERSION"
+    implementation "com.squareup.retrofit2:converter-gson:$RETROFIT_2_VERSION"
+    implementation "com.squareup.retrofit2:adapter-rxjava:$RETROFIT_2_VERSION"
 
 
     //test
-    testImplementation("org.robolectric:robolectric:${ROBOLECTRIC_VERSION}") {
-        exclude group: 'com.android.support', module: 'support-v4'
-        exclude group: 'commons-logging', module: 'commons-logging'
-        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+    testImplementation("org.robolectric:robolectric:$ROBOLECTRIC_VERSION") {
+        exclude group: "com.android.support", module: "support-v4"
+        exclude group: "commons-logging", module: "commons-logging"
+        exclude group: "org.apache.httpcomponents", module: "httpclient"
     }
-    testImplementation "com.google.guava:guava:${GUAVA_VERSION}"
-    testImplementation "junit:junit:${JUNIT_VERSION}"
-    testImplementation "org.easytesting:fest-assert-core:${FEST_ASSERT_CORE_VERSION}"
-    testImplementation "org.mockito:mockito-core:${MOCKITO_CORE_VERSION}"
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    androidTestImplementation 'com.android.support.test:runner:0.2'
-    testImplementation "com.squareup.okhttp3:mockwebserver:3.8.0"
+    testImplementation "com.google.guava:guava:$GUAVA_VERSION"
+    testImplementation "junit:junit:$JUNIT_VERSION"
+    testImplementation "org.easytesting:fest-assert-core:$FEST_ASSERT_CORE_VERSION"
+    testImplementation "org.mockito:mockito-core:$MOCKITO_CORE_VERSION"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$OK_HTTP_3_VERSION"
+
+    androidTestImplementation "com.android.support.test:runner:$RUNNER_VERSION"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$ESPRESSO_VERSION"
 }
 
-// make proper name for 'aar' file
+// make proper name for "aar" file
 android.libraryVariants.all { variant ->
     variant.outputs.each { output ->
         def outputFile = output.outputFile
-        if (outputFile != null && outputFile.name.endsWith('.aar')) {
-            def fileName = "${'riot-api'}-${version}.aar"
+        if (outputFile != null && outputFile.name.endsWith(".aar")) {
+            def fileName = "${"riot-api"}-${version}.aar"
             output.outputFileName = new File(fileName)
         }
     }
 }
 
 dokka {
-    outputFormat = 'javadoc'
+    outputFormat = "javadoc"
     outputDirectory = "$rootDir/docs"
 }
 

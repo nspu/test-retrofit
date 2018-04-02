@@ -1,1 +1,1 @@
-include ':sample-riot-api', ':riot-api', ':sample-data-dragon'
+include ':riot-api'
